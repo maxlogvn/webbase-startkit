@@ -24,7 +24,7 @@ git clone https://github.com/maxlogvn/webbase-startkit.git
 cd webbase-startkit
 ```
 
-### 2. Khởi động Directus (CMS backend)
+### 2. Khởi động CMS backend
 
 Sao chép file env mẫu và chạy Docker:
 
