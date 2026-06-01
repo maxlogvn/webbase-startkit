@@ -1,4 +1,4 @@
-# Directus CMS Starter -- SvelteKit
+# webbase-startkit -- template SvelteKit
 
 Starter kit xây dựng trang web với **Directus** làm headless CMS và **SvelteKit** làm frontend. Bạn quản lý nội dung trong Directus (soạn trang kéo thả, tạo form động, viết blog), frontend tự động render ra website tương ứng.
 
@@ -11,7 +11,7 @@ Dự án phù hợp cho: landing page, blog, trang marketing công ty, trang bá
 ## Kiến trúc
 
 ```
-webbase-startkit/
+webbase-startkit (template SvelteKit)/
 ├── directus/          # Docker Compose cho Directus CMS
 │   ├── docker-compose.yml
 │   ├── template/      # Cấu trúc dữ liệu và nội dung mẫu
