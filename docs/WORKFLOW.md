@@ -107,14 +107,16 @@ Chạy các kiểm tra chất lượng trước khi xem xét hoàn thành:
 
 > **Lưu ý:** Các lỗi có sẵn từ `src/lib/components/ui/` (shadcn-svelte) có thể bỏ qua. Chỉ kiểm tra lỗi mới phát sinh từ code của tính năng.
 
-### 8. Viết overview
+### 8. Viết product + overview
 
-Tổng kết tính năng đã làm thành một tài liệu tổng quan cho developer khác dễ dàng nắm bắt.
+Viết tài liệu tính năng và báo cáo tổng quan kết quả thực hiện.
 
 - **Input:** Tính năng đã pass kiểm tra.
-- **Output:** File overview tại `docs/overviews/<tên-tính-năng>.overview.md`.
-- **Người:** Kiểm tra nội dung overview.
-- **AI:** Viết overview dựa trên design, spec và code đã thực hiện.
+- **Output:**
+  - File product tại `docs/products/<tên-tính-năng>.product.md` -- tài liệu tính năng cho developer.
+  - File overview tại `docs/overviews/<tên-tính-năng>.overview.md` -- báo cáo tổng quan kết quả thực hiện plan.
+- **Người:** Kiểm tra nội dung product và overview.
+- **AI:** Viết product dựa trên design, spec và code đã thực hiện. Viết overview báo cáo quá trình thực hiện.
 
 ### 9. Cập nhật Roadmap
 
@@ -134,7 +136,8 @@ docs/
 ├── designs/       # <tên>.design.md -- tài liệu thiết kế, brainstorm
 ├── specs/         # <tên>.spec.md   -- đặc tả chi tiết tính năng
 ├── plans/         # <tên>.plan.md   -- kế hoạch thực hiện
-├── overviews/     # <tên>.overview.md   -- tổng quan tính năng
+├── overviews/     # <tên>.overview.md   -- tổng quan kết quả thực hiện plan
+├── products/      # <tên>.product.md    -- tài liệu tính năng
 ├── ROADMAP.md     -- theo dõi tiến độ tất cả tính năng
 ├── CONVENTIONS.md -- quy ước code
 ├── STACK.md       -- công nghệ sử dụng

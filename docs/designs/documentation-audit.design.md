@@ -33,7 +33,8 @@ Tổng cộng **16 tính năng**, chia làm 2 nhóm:
 ### Đầu ra
 - **Spec tổng thể** -- `docs/specs/documentation-audit.spec.md` (một file duy nhất cho toàn bộ dự án)
 - **Plan tổng thể** -- `docs/plans/documentation-audit.plan.md` (một file duy nhất)
-- **Overview** (cho mỗi tính năng nhóm 2) -- `docs/overviews/<tên>.overview.md`, 13 files
+- **Product** (cho mỗi tính năng nhóm 2) -- `docs/products/<tên>.product.md`, 13 files -- tài liệu tính năng cho developer
+- **Overview** (cho mỗi tính năng nhóm 2) -- `docs/overviews/<tên>.overview.md`, 13 files -- báo cáo tổng quan kết quả thực hiện plan
 
 Không viết spec hay plan riêng cho từng tính năng vì đây là dự án tài liệu thuần túy, không có thay đổi code.
 
@@ -42,9 +43,10 @@ Không viết spec hay plan riêng cho từng tính năng vì đây là dự án
 2. **Viết design** -- done khi bạn approve file này (đang làm).
 3. **Viết spec tổng thể** -- một file `.spec.md` duy nhất mô tả toàn bộ dự án tài liệu hóa (không tách từng tính năng). Done khi được bạn approve.
 4. **Viết plan tổng thể** -- một file `.plan.md` liệt kê các bước cụ thể để viết 13 overview files. Done khi được bạn approve.
-5. **Viết 13 overview files** -- không giới hạn độ dài, viết đủ để dev hiểu rõ tính năng. Done khi tất cả file đã tạo.
-6. **Review + chỉnh sửa** -- đọc lại toàn bộ, sửa lỗi, đảm bảo nhất quán. Done khi không còn lỗi.
-7. **Cập nhật Roadmap** -- đánh dấu "Hoàn thành" cho mục tài liệu hóa. Done khi ROADMAP.md được cập nhật.
+5. **Viết 13 product files** tại `docs/products/` -- tài liệu tính năng cho developer. Done khi tất cả file đã tạo.
+6. **Viết 13 overview files** tại `docs/overviews/` -- báo cáo tổng quan kết quả. Done khi tất cả file đã tạo.
+7. **Review + chỉnh sửa** -- đọc lại toàn bộ, sửa lỗi, đảm bảo nhất quán. Done khi không còn lỗi.
+8. **Cập nhật Roadmap** -- đánh dấu "Hoàn thành" cho mục tài liệu hóa. Done khi ROADMAP.md được cập nhật.
 
 > **Lưu ý về thứ tự spec → plan:** Thông thường plan viết trước spec. Ở đây tôi đảo lại vì spec mô tả "cần viết gì" (nội dung), còn plan mô tả "viết thế nào" (các bước gõ phím). Với dự án tài liệu thuần túy, biết nội dung trước mới lên kế hoạch được -- nên spec trước plan là hợp lý.
 

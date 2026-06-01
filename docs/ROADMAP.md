@@ -21,13 +21,13 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 ### Tài liệu hóa các tính năng đã có
 - **Trạng thái:** Hoàn thành
 - **Tài liệu:** [thiết kế](designs/documentation-audit.design.md) | [đặc tả](specs/documentation-audit.spec.md) | [kế hoạch](plans/documentation-audit.plan.md)
-- **Ghi chú:** Đã rà soát codebase, phát hiện 13 tính năng thiếu tài liệu, viết overview cho tất cả. Xem danh sách bên dưới.
+- **Ghi chú:** Đã rà soát codebase, phát hiện 13 tính năng thiếu tài liệu, viết product và overview cho tất cả. Xem danh sách bên dưới.
 
 ---
 
 ### Nâng cấp các gói thư viện phía frontend (2026)
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [thiết kế](designs/package-upgrade-2026.design.md) | [đặc tả](specs/package-upgrade-2026.spec.md) | [kế hoạch](plans/package-upgrade-2026.plan.md) | [tổng quan](overviews/package-upgrade-2026.overview.md)
+- **Tài liệu:** [thiết kế](designs/package-upgrade-2026.design.md) | [đặc tả](specs/package-upgrade-2026.spec.md) | [kế hoạch](plans/package-upgrade-2026.plan.md) | [product](products/package-upgrade-2026.product.md) | [overview](overviews/package-upgrade-2026.overview.md)
 - **Ghi chú:**
   - Đã nâng cấp 42 trên tổng số 44 gói thư viện.
   - Giữ nguyên **Zod** ở phiên bản 3.25.76 vì việc nâng lên phiên bản 4 sẽ cần thay đổi nhiều trong code. Sẽ làm sau.
@@ -38,7 +38,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Block builder
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [blocks.overview.md](overviews/blocks.overview.md)
+- **Tài liệu:** [product](products/blocks.product.md) | [overview](overviews/blocks.overview.md)
 - **Ghi chú:**
   - 7 block components trong `src/lib/components/blocks/`: `BaseBlock.svelte` (bộ định tuyến block), `Hero.svelte`, `RichText.svelte`, `Gallery.svelte`, `Pricing.svelte`, `Posts.svelte`, `Form.svelte`
   - `BaseBlock.svelte` ánh xạ tên collection từ Directus sang component Svelte
@@ -50,7 +50,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Routing
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [routing.overview.md](overviews/routing.overview.md)
+- **Tài liệu:** [product](products/routing.product.md) | [overview](overviews/routing.overview.md)
 - **Ghi chú:**
   - Hai route chính: `[...permalink]` (trang CMS động) và `blog/[slug]` (blog riêng)
   - `[...permalink]` nhận URL, kiểm tra query params preview/version, fetch dữ liệu từ Directus, render qua `PageBuilder.svelte`
@@ -61,7 +61,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Directus SDK client
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [tổng quan](overviews/directus-sdk-client.overview.md)
+- **Tài liệu:** [product](products/directus-sdk-client.product.md)
 - **Ghi chú:**
   - File chính: `src/lib/directus/directus.ts`
   - Tự động giới hạn tối đa 10 request mỗi 500ms, tránh quá tải Directus
@@ -73,7 +73,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Draft / Preview mode
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [tổng quan](overviews/draft-preview.overview.md)
+- **Tài liệu:** [product](products/draft-preview.product.md)
 - **Ghi chú:**
   - Dùng query params: `?preview=true` (xem nháp) hoặc `?version=X&id=Y` (xem phiên bản cụ thể)
   - Yêu cầu biến môi trường `DIRECTUS_SERVER_TOKEN` (đặt trong `.env`, không public)
@@ -83,7 +83,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Directus Visual Editor
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [tổng quan](overviews/visual-editing.overview.md)
+- **Tài liệu:** [product](products/visual-editing.product.md)
 - **Ghi chú:**
   - File chính: `src/lib/directus/visualEditing.ts`
   - Kích hoạt qua `?visual-editing=true`, có thể tắt bằng biến `PUBLIC_ENABLE_VISUAL_EDITING=false`
@@ -96,7 +96,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Dynamic form builder + submission
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [tổng quan](overviews/form-builder.overview.md)
+- **Tài liệu:** [product](products/form-builder.product.md)
 - **Ghi chú:**
   - Block Form trong Directus hiển thị form động ra ngoài trang
   - Hỗ trợ field types: text, checkbox, checkbox group, radio, file upload
@@ -108,7 +108,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Search API
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [tổng quan](overviews/search-api.overview.md)
+- **Tài liệu:** [product](products/search-api.product.md)
 - **Ghi chú:**
   - Endpoint: `GET /api/search?search=từ_khóa` (yêu cầu tối thiểu 3 ký tự)
   - Tìm kiếm trong pages (title, permalink) và posts (title, description, slug, content)
@@ -120,7 +120,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Redirect handling (server hook)
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [tổng quan](overviews/redirect-handling.overview.md)
+- **Tài liệu:** [product](products/redirect-handling.product.md)
 - **Ghi chú:**
   - File chính: `src/hooks.server.ts` và `src/lib/directus/fetchRedirects.ts`
   - Tự động tải danh sách redirect từ Directus collection `redirects` khi server khởi động
@@ -132,7 +132,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Type generation từ Directus schema
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [tổng quan](overviews/type-generation.overview.md)
+- **Tài liệu:** [product](products/type-generation.product.md)
 - **Ghi chú:**
   - Chạy: `pnpm run generate:types` trong thư mục `svelte/`
   - Output: `src/lib/types/directus-schema.ts`
@@ -143,7 +143,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Dark mode (mode-watcher)
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [tổng quan](overviews/dark-mode.overview.md)
+- **Tài liệu:** [product](products/dark-mode.product.md)
 - **Ghi chú:**
   - Component `LightSwitch.svelte` trong `src/lib/components/layout/`
   - Dùng thư viện `mode-watcher` để chuyển đổi sáng/tối toàn ứng dụng
@@ -153,7 +153,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Enhanced image (DirectusImage)
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [tổng quan](overviews/enhanced-image.overview.md)
+- **Tài liệu:** [product](products/enhanced-image.product.md)
 - **Ghi chú:**
   - Component `DirectusImage.svelte` dùng `@sveltejs/enhanced-img` để tối ưu ảnh
   - Props: `uuid`, `alt`, `class`, `fill`, `width`, `height`, `sizes`
@@ -164,7 +164,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Blog system (nâng cao)
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [tổng quan](overviews/blog-system.overview.md)
+- **Tài liệu:** [product](products/blog-system.product.md)
 - **Ghi chú:**
   - Route `blog/[slug]` với đầy đủ: tác giả, bài viết liên quan (2 bài), SEO, phân trang
   - `ShareDialog.svelte` cho phép chia sẻ bài viết lên mạng xã hội
@@ -174,7 +174,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Navigation system
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [tổng quan](overviews/navigation-system.overview.md)
+- **Tài liệu:** [product](products/navigation-system.product.md)
 - **Ghi chú:**
   - Components: `NavigationBar.svelte` (header) và `Footer.svelte` (chân trang)
   - Dữ liệu từ Directus collection `navigation` (main + footer)
@@ -184,7 +184,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### SEO management
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [tổng quan](overviews/seo-management.overview.md)
+- **Tài liệu:** [product](products/seo-management.product.md)
 - **Ghi chú:**
   - Layout global: tự động thêm `<title>`, `<meta description>`, `<link rel="icon">`
   - Pages và posts có field SEO riêng (title, meta_description) trong Directus
@@ -194,7 +194,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Zod schema builder
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [tổng quan](overviews/zod-schema-builder.overview.md)
+- **Tài liệu:** [product](products/zod-schema-builder.product.md)
 - **Ghi chú:**
   - File: `src/lib/zodSchemaBuilder.ts` -- xây dựng schema validation động từ cấu hình form Directus
   - Hỗ trợ validation: email, url, min, max, length

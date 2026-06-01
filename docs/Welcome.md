@@ -15,7 +15,8 @@ docs/
 ├── designs/       # <tên>.design.md -- tài liệu thiết kế, brainstorm
 ├── specs/         # <tên>.spec.md   -- đặc tả chi tiết tính năng
 ├── plans/         # <tên>.plan.md   -- kế hoạch thực hiện
-├── overviews/     # <tên>.overview.md   -- tổng quan tính năng
+├── overviews/     # <tên>.overview.md   -- báo cáo tổng quan kết quả thực hiện plan
+├── products/      # <tên>.product.md    -- tài liệu tính năng (đọc để hiểu tính năng)
 ├── ROADMAP.md     -- theo dõi tiến độ tất cả tính năng
 ├── CONVENTIONS.md -- quy ước code
 ├── STACK.md       -- công nghệ sử dụng
@@ -37,4 +38,5 @@ docs/
 - `designs/*.design.md` -- tài liệu thiết kế
 - `specs/*.spec.md` -- đặc tả chi tiết
 - `plans/*.plan.md` -- kế hoạch thực hiện
-- `overviews/*.overview.md` -- tổng quan tính năng
+- `overviews/*.overview.md` -- báo cáo tổng quan kết quả thực hiện plan
+- `products/*.product.md` -- tài liệu tính năng
