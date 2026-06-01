@@ -7,8 +7,9 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Tên tính năng
 - **Trạng thái:** Sắp làm
-- **Ghi chú:** ...
 - **Tài liệu:** ...
+- **Ghi chú:** ...
+
 
 ---
 
@@ -19,12 +20,12 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Nâng cấp các gói thư viện phía frontend (2026)
 - **Trạng thái:** Hoàn thành
+- **Tài liệu:** [thiết kế](designs/package-upgrade-2026.design.md) | [đặc tả](specs/package-upgrade-2026.spec.md) | [kế hoạch](plans/package-upgrade-2026.plan.md)
 - **Ghi chú:**
   - Đã nâng cấp 42 trên tổng số 44 gói thư viện.
   - Giữ nguyên **Zod** ở phiên bản 3.25.76 vì việc nâng lên phiên bản 4 sẽ cần thay đổi nhiều trong code. Sẽ làm sau.
   - **prettier-plugin-tailwindcss** bị kẹt ở phiên bản 0.6.14 vì phiên bản mới hơn (0.8.0) không tương thích với Prettier và prettier-plugin-svelte hiện tại.
   - Các gói quan trọng đã nâng: Svelte 5.56, SvelteKit 2.61, TypeScript 6, Vite 8, Directus SDK 21, ESLint 10.
-- **Tài liệu:** [thiết kế](designs/package-upgrade-2026.design.md) | [đặc tả](specs/package-upgrade-2026.spec.md) | [kế hoạch](plans/package-upgrade-2026.plan.md)
 
 ---
 

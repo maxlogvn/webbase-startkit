@@ -28,7 +28,10 @@
   7. [Kiểm tra] ──lint, type-check, test──
         │
         v
-  8. [Cập nhật Roadmap] ──đánh dấu "Hoàn thành"──
+  8. [Viết overview] ──tổng quan tính năng cho developer──
+        │
+        v
+  9. [Cập nhật Roadmap] ──đánh dấu "Hoàn thành"──
 ```
 
 ---
@@ -105,7 +108,16 @@ Chạy các kiểm tra chất lượng trước khi xem xét hoàn thành:
 
 > **Lưu ý:** Các lỗi có sẵn từ `src/lib/components/ui/` (shadcn-svelte) có thể bỏ qua. Chỉ kiểm tra lỗi mới phát sinh từ code của tính năng.
 
-### 8. Cập nhật Roadmap
+### 8. Viết overview
+
+Tổng kết tính năng đã làm thành một tài liệu tổng quan cho developer khác dễ dàng nắm bắt.
+
+- **Input:** Tính năng đã pass kiểm tra.
+- **Output:** File overview tại `docs/overviews/<tên-tính-năng>.overview.md`.
+- **Người:** Kiểm tra nội dung overview.
+- **AI:** Viết overview dựa trên design, spec và code đã thực hiện.
+
+### 9. Cập nhật Roadmap
 
 Khi tính năng hoàn thành, cập nhật Roadmap.
 
