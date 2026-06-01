@@ -10,10 +10,12 @@ Dự án phù hợp cho: landing page, blog, trang marketing công ty, trang bá
 
 ### Yêu cầu
 
-- Git
-- Docker + Docker Compose
-- Node.js 18+
-- pnpm
+| Công cụ | Phiên bản tối thiểu |
+|---|---|
+| Git | -- |
+| Docker + Docker Compose | Docker 24+ |
+| Node.js | 18+ |
+| pnpm | 8+ |
 
 ### 0. Clone dự án
 
@@ -22,24 +24,34 @@ git clone https://github.com/maxlogvn/webbase-startkit.git
 cd webbase-startkit
 ```
 
-### 1. Khởi động Directus
+### 1. Khởi động Directus (CMS backend)
+
+Sao chép file env mẫu và chạy Docker:
 
 ```bash
+cd directus
 cp .env.example .env
 docker compose up -d
 ```
 
-Truy cập http://localhost:8055, tạo tài khoản admin, và tạo static token.
+Sau khi container chạy, truy cập **http://localhost:8055** và tạo tài khoản admin.  
+Vào **User Directory -> chọn user admin -> Token -> nhập token -> Save** (cần token cho bước sau).
 
-### 2. Áp dụng template CMS
+### 2. Áp dụng cấu trúc CMS
+
+Lệnh này sẽ tạo collection, field, và nội dung mẫu trong Directus:
 
 ```bash
 npx directus-template-cli@latest apply
 ```
 
-Chọn: Local directory -> `./template` -> URL `http://localhost:8055` -> dán token admin.
+Khi được hỏi, chọn:
+- **Source type:** `Local directory`
+- **Đường dẫn:** `./template`
+- **URL Directus:** `http://localhost:8055`
+- **Token:** dán token admin vừa tạo ở bước 1
 
-### 3. Chạy frontend
+### 3. Chạy frontend (SvelteKit)
 
 ```bash
 cd svelte
@@ -48,7 +60,7 @@ pnpm install
 pnpm run dev
 ```
 
-Mở http://localhost:3000.
+Mở **http://localhost:3000** -- trang web đã sẵn sàng.
 
 ## Kiến trúc
 
