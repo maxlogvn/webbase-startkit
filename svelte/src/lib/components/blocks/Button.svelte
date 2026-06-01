@@ -44,7 +44,7 @@
 		plus: Plus
 	};
 
-	const Icon = $state(customIcon || (icon ? icons[icon] : null));
+	const Icon = $derived(customIcon || (icon ? icons[icon] : null));
 
 	const href = $derived.by((): string | undefined => {
 		if (type === 'page' && page?.permalink) return page.permalink;

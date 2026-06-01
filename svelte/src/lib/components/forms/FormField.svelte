@@ -26,14 +26,16 @@
 	const fieldName = field.name as string;
 
 	const { form: formData } = form;
-	const widthClass = field.width
-		? {
-				100: 'flex-[100%]',
-				50: 'flex-[calc(50%-1rem)]',
-				67: 'flex-[calc(67%-1rem)]',
-				33: 'flex-[calc(33%-1rem)]'
-			}[field.width] || 'flex-[100%]'
-		: 'flex-[100%]';
+	const widthClass = $derived(
+		field.width
+			? {
+					100: 'flex-[100%]',
+					50: 'flex-[calc(50%-1rem)]',
+					67: 'flex-[calc(67%-1rem)]',
+					33: 'flex-[calc(33%-1rem)]'
+				}[field.width] || 'flex-[100%]'
+			: 'flex-[100%]'
+	);
 
 	const fieldErrors = $derived($errors?.[fieldName] as string[] | []);
 </script>

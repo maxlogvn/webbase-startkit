@@ -18,6 +18,22 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ---
 
+### Sửa cảnh báo state_referenced_locally (Svelte 5)
+- **Trạng thái:** Hoàn thành
+- **Tài liệu:** [thiết kế](designs/state-referenced-locally-fix.design.md) | [đặc tả](specs/state-referenced-locally-fix.spec.md) | [kế hoạch](plans/state-referenced-locally-fix.plan.md) | [product](products/state-referenced-locally-fix.product.md) | [overview](overviews/state-referenced-locally-fix.overview.md)
+- **Ghi chú:**
+  - Nguyên nhân: Biến từ `$props()` tham chiếu ngoài reactive context.
+  - **Đã fix (3 file):**
+    - `Button.svelte:47` — `$state` -> `$derived` (Icon computation)
+    - `FormField.svelte:29-35` — bọc `widthClass` trong `$derived`
+    - `DynamicForm.svelte:19` — `const sortedFields` -> `$derived`
+  - **Giữ nguyên (4 warning):** FormField fieldName, FormField formData, SelectField, FileUploadField — form/field là stable reference, snapshot an toàn.
+  - **Đã revert:** formSchema/defaultValues trong DynamicForm — `superForm()` snapshots lúc init, không thể `$derived`.
+  - **warningFilter:** Thêm `compilerOptions.warningFilter` vào `svelte.config.js` để lọc toàn bộ code `state_referenced_locally` — 6 warning còn lại không hiển thị.
+  - Kết quả: 12 warning -> 0 warning (giảm 100%), 0 lỗi mới.
+
+---
+
 ### Tài liệu hóa các tính năng đã có
 - **Trạng thái:** Hoàn thành
 - **Tài liệu:** [thiết kế](designs/documentation-audit.design.md) | [đặc tả](specs/documentation-audit.spec.md) | [kế hoạch](plans/documentation-audit.plan.md)

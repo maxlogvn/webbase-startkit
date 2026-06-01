@@ -16,7 +16,7 @@
 
 	const { fields, onSubmit, submitLabel, id }: DynamicFormProps = $props();
 
-	const sortedFields = [...fields].sort((a, b) => (a.sort || 0) - (b.sort || 0));
+	const sortedFields = $derived([...fields].sort((a, b) => (a.sort || 0) - (b.sort || 0)));
 	const formSchema = buildZodSchema(fields);
 
 	const defaultValues = fields.reduce<Record<string, any>>((defaults, field) => {
