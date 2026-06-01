@@ -9,7 +9,7 @@ Rà soát toàn bộ codebase SvelteKit + Directus, xác định tất cả tín
 1. Roadmap phải liệt kê đầy đủ tất cả tính năng với trạng thái chính xác.
 2. Mỗi tính năng trong nhóm 2 (gồm 13 tính năng) phải có:
    - File product tại `docs/products/<tên>.product.md` -- tài liệu tính năng cho developer
-   - File overview tại `docs/overviews/<tên>.overview.md` -- báo cáo tổng quan kết quả thực hiện plan
+   - (Overviews là báo cáo kết quả thực hiện plan, không cần viết riêng cho từng tính năng)
 3. Product viết bằng tiếng Việt, dễ hiểu cho developer mới vào dự án.
 4. Mỗi product gồm: tính năng làm gì, file chính nằm ở đâu, cách dùng/cấu hình, lưu ý quan trọng.
 5. Không thay đổi bất kỳ dòng code nào.
@@ -68,7 +68,6 @@ Hướng dẫn ngắn: cần cấu hình gì, chạy thế nào, query param ra 
 - `docs/specs/documentation-audit.spec.md`
 - `docs/plans/documentation-audit.plan.md`
 - `docs/products/*.product.md` -- 13 files (tài liệu tính năng)
-- `docs/overviews/*.overview.md` -- 13 files (báo cáo tổng quan kết quả)
 
 ## Kiểm tra
 
@@ -79,5 +78,5 @@ Hướng dẫn ngắn: cần cấu hình gì, chạy thế nào, query param ra 
 
 ### Format
 - Không lỗi chính tả, viết đúng tiếng Việt có dấu
-- ROADMAP.md có link đến tất cả product và overview files
+- ROADMAP.md có link đến tất cả product files
 - Link giữa các product file trỏ qua lại chính xác

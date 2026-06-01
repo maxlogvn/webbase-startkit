@@ -21,13 +21,13 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 ### Tài liệu hóa các tính năng đã có
 - **Trạng thái:** Hoàn thành
 - **Tài liệu:** [thiết kế](designs/documentation-audit.design.md) | [đặc tả](specs/documentation-audit.spec.md) | [kế hoạch](plans/documentation-audit.plan.md)
-- **Ghi chú:** Đã rà soát codebase, phát hiện 13 tính năng thiếu tài liệu, viết product và overview cho tất cả. Xem danh sách bên dưới.
+- **Ghi chú:** Đã rà soát codebase, phát hiện 13 tính năng thiếu tài liệu, viết product cho tất cả. Xem danh sách bên dưới.
 
 ---
 
 ### Nâng cấp các gói thư viện phía frontend (2026)
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [thiết kế](designs/package-upgrade-2026.design.md) | [đặc tả](specs/package-upgrade-2026.spec.md) | [kế hoạch](plans/package-upgrade-2026.plan.md) | [product](products/package-upgrade-2026.product.md) | [overview](overviews/package-upgrade-2026.overview.md)
+- **Tài liệu:** [thiết kế](designs/package-upgrade-2026.design.md) | [đặc tả](specs/package-upgrade-2026.spec.md) | [kế hoạch](plans/package-upgrade-2026.plan.md) | [product](products/package-upgrade-2026.product.md)
 - **Ghi chú:**
   - Đã nâng cấp 42 trên tổng số 44 gói thư viện.
   - Giữ nguyên **Zod** ở phiên bản 3.25.76 vì việc nâng lên phiên bản 4 sẽ cần thay đổi nhiều trong code. Sẽ làm sau.
@@ -38,7 +38,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Block builder
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [product](products/blocks.product.md) | [overview](overviews/blocks.overview.md)
+- **Tài liệu:** [product](products/blocks.product.md)
 - **Ghi chú:**
   - 7 block components trong `src/lib/components/blocks/`: `BaseBlock.svelte` (bộ định tuyến block), `Hero.svelte`, `RichText.svelte`, `Gallery.svelte`, `Pricing.svelte`, `Posts.svelte`, `Form.svelte`
   - `BaseBlock.svelte` ánh xạ tên collection từ Directus sang component Svelte
@@ -50,7 +50,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Routing
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [product](products/routing.product.md) | [overview](overviews/routing.overview.md)
+- **Tài liệu:** [product](products/routing.product.md)
 - **Ghi chú:**
   - Hai route chính: `[...permalink]` (trang CMS động) và `blog/[slug]` (blog riêng)
   - `[...permalink]` nhận URL, kiểm tra query params preview/version, fetch dữ liệu từ Directus, render qua `PageBuilder.svelte`

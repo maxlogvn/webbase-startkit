@@ -27,7 +27,7 @@
   7. [Kiểm tra] ──lint, type-check, test──
         │
         v
-  8. [Viết overview] ──tổng quan tính năng cho developer──
+  8. [Viết product + overview] ──tài liệu tính năng + báo cáo kết quả──
         │
         v
   9. [Cập nhật Roadmap] ──đánh dấu "Hoàn thành"──
