@@ -17,14 +17,14 @@ Dự án phù hợp cho: landing page, blog, trang marketing công ty, trang bá
 | Node.js | 18+ |
 | pnpm | 8+ |
 
-### 0. Clone dự án
+### 1. Clone dự án
 
 ```bash
 git clone https://github.com/maxlogvn/webbase-startkit.git
 cd webbase-startkit
 ```
 
-### 1. Khởi động Directus (CMS backend)
+### 2. Khởi động Directus (CMS backend)
 
 Sao chép file env mẫu và chạy Docker:
 
@@ -37,7 +37,7 @@ docker compose up -d
 Sau khi container chạy, truy cập **http://localhost:8055** và tạo tài khoản admin.  
 Vào **User Directory -> chọn user admin -> Token -> nhập token -> Save** (cần token cho bước sau).
 
-### 2. Áp dụng cấu trúc CMS
+### 3. Áp dụng cấu trúc CMS
 
 Lệnh này sẽ tạo collection, field, và nội dung mẫu trong Directus:
 
@@ -49,9 +49,9 @@ Khi được hỏi, chọn:
 - **Source type:** `Local directory`
 - **Đường dẫn:** `./template`
 - **URL Directus:** `http://localhost:8055`
-- **Token:** dán token admin vừa tạo ở bước 1
+- **Token:** dán token admin vừa tạo ở bước 2
 
-### 3. Chạy frontend (SvelteKit)
+### 4. Chạy frontend (SvelteKit)
 
 ```bash
 cd svelte
