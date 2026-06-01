@@ -1,4 +1,3 @@
-# Package upgrade 2026 overview
 
 ## Mục đích
 

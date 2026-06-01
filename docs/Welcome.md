@@ -1,4 +1,3 @@
-# Welcome
 
 Chào mừng bạn đến với tài liệu dự án Directus CMS Starter -- SvelteKit.
 

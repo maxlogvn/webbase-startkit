@@ -1,4 +1,3 @@
-# Quy trình phát triển tính năng
 
 > Tài liệu này định nghĩa quy trình chuẩn để xây dựng một tính năng mới trong dự án. Cả developer (người) và AI agent đều phải tuân theo.
 

@@ -1,4 +1,3 @@
-# Routing overview
 
 ## Hai loại route chính
 

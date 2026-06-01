@@ -1,4 +1,3 @@
-# Blocks overview
 
 ## Blocks hiện có
 
