@@ -31,7 +31,7 @@ Mọi tính năng thay đổi **phải** tuân theo quy trình trong [`docs/WORK
 5. **Review** -> cho người dùng duyệt spec + plan
 6. **Code** -> thực hiện theo plan
 7. **Kiểm tra** -> lint, type-check, test
-8. **Viết docs/products/ + docs/overviews/** -> tài liệu tính năng + báo cáo tổng quan kết quả
+8. **Viết docs/products/ + docs/overviews/** -> tài liệu tính năng + báo cáo tổng quan kết quả (feature task cần product, non-feature task chỉ overview)
 9. **Cập nhật ROADMAP.md** -> đánh dấu "Hoàn thành"
 
 > **Không được bỏ qua bất kỳ bước nào.** Đặc biệt, KHÔNG được chuyển thẳng sang bước 6 (Code) mà không có design, spec, plan, và review từ người dùng.

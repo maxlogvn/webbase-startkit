@@ -107,16 +107,21 @@ Chạy các kiểm tra chất lượng trước khi xem xét hoàn thành:
 
 > **Lưu ý:** Các lỗi có sẵn từ `src/lib/components/ui/` (shadcn-svelte) có thể bỏ qua. Chỉ kiểm tra lỗi mới phát sinh từ code của tính năng.
 
-### 8. Viết product + overview
+### 8. Viết tài liệu
 
-Viết tài liệu tính năng và báo cáo tổng quan kết quả thực hiện.
+Viết tài liệu dựa trên loại task:
 
-- **Input:** Tính năng đã pass kiểm tra.
+- **Feature task (tính năng mới của trang):** cần product doc + overview
+- **Non-feature task (bảo trì, nâng cấp, fix bug, tài liệu):** chỉ cần overview
+
+- **Input:** Task đã pass kiểm tra.
 - **Output:**
-  - File product tại `docs/products/<tên-tính-năng>.product.md` -- tài liệu tính năng cho developer.
-  - File overview tại `docs/overviews/<tên-tính-năng>.overview.md` -- báo cáo tổng quan kết quả thực hiện plan.
-- **Người:** Kiểm tra nội dung product và overview.
-- **AI:** Viết product dựa trên design, spec và code đã thực hiện. Viết overview báo cáo quá trình thực hiện.
+  - File product tại `docs/products/<tên>.product.md` -- tài liệu tính năng (chỉ cho feature task)
+  - File overview tại `docs/overviews/<tên>.overview.md` -- báo cáo kết quả thực hiện plan (mọi task)
+- **Người:** Kiểm tra nội dung tài liệu.
+- **AI:**
+  - Feature task: viết product dựa trên design, spec và code; viết overview báo cáo quá trình.
+  - Non-feature task: chỉ viết overview, so sánh kế hoạch với thực tế, ghi lại sai lệch.
 
 ### 9. Cập nhật Roadmap
 

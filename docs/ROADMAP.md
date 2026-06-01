@@ -7,6 +7,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Tên tính năng
 - **Trạng thái:** Sắp làm
+- **Ngày tạo:** YYYY-MM-DD
+- **Cập nhật:** YYYY-MM-DD
 - **Tài liệu:** ...
 - **Ghi chú:** ...
 
@@ -20,7 +22,9 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Sửa cảnh báo state_referenced_locally (Svelte 5)
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [thiết kế](designs/state-referenced-locally-fix.design.md) | [đặc tả](specs/state-referenced-locally-fix.spec.md) | [kế hoạch](plans/state-referenced-locally-fix.plan.md) | [product](products/state-referenced-locally-fix.product.md) | [overview](overviews/state-referenced-locally-fix.overview.md)
+- **Ngày tạo:** 2026-06-02
+- **Cập nhật:** 2026-06-02
+- **Tài liệu:** [thiết kế](designs/state-referenced-locally-fix.design.md) | [đặc tả](specs/state-referenced-locally-fix.spec.md) | [kế hoạch](plans/state-referenced-locally-fix.plan.md) | [overview](overviews/state-referenced-locally-fix.overview.md)
 - **Ghi chú:**
   - Nguyên nhân: Biến từ `$props()` tham chiếu ngoài reactive context.
   - **Đã fix (3 file):**
@@ -36,14 +40,18 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Tài liệu hóa các tính năng đã có
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [thiết kế](designs/documentation-audit.design.md) | [đặc tả](specs/documentation-audit.spec.md) | [kế hoạch](plans/documentation-audit.plan.md)
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-02
+- **Tài liệu:** [thiết kế](designs/documentation-audit.design.md) | [đặc tả](specs/documentation-audit.spec.md) | [kế hoạch](plans/documentation-audit.plan.md) | [overview](overviews/documentation-audit.overview.md)
 - **Ghi chú:** Đã rà soát codebase, phát hiện 13 tính năng thiếu tài liệu, viết product cho tất cả. Xem danh sách bên dưới.
 
 ---
 
 ### Nâng cấp các gói thư viện phía frontend (2026)
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [thiết kế](designs/package-upgrade-2026.design.md) | [đặc tả](specs/package-upgrade-2026.spec.md) | [kế hoạch](plans/package-upgrade-2026.plan.md) | [product](products/package-upgrade-2026.product.md)
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
+- **Tài liệu:** [thiết kế](designs/package-upgrade-2026.design.md) | [đặc tả](specs/package-upgrade-2026.spec.md) | [kế hoạch](plans/package-upgrade-2026.plan.md) | [overview](overviews/package-upgrade-2026.overview.md)
 - **Ghi chú:**
   - Đã nâng cấp 42 trên tổng số 44 gói thư viện.
   - Giữ nguyên **Zod** ở phiên bản 3.25.76 vì việc nâng lên phiên bản 4 sẽ cần thay đổi nhiều trong code. Sẽ làm sau.
@@ -54,6 +62,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Block builder
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/blocks.product.md)
 - **Ghi chú:**
   - 7 block components trong `src/lib/components/blocks/`: `BaseBlock.svelte` (bộ định tuyến block), `Hero.svelte`, `RichText.svelte`, `Gallery.svelte`, `Pricing.svelte`, `Posts.svelte`, `Form.svelte`
@@ -66,6 +76,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Routing
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/routing.product.md)
 - **Ghi chú:**
   - Hai route chính: `[...permalink]` (trang CMS động) và `blog/[slug]` (blog riêng)
@@ -77,6 +89,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Directus SDK client
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/directus-sdk-client.product.md)
 - **Ghi chú:**
   - File chính: `src/lib/directus/directus.ts`
@@ -89,6 +103,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Draft / Preview mode
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/draft-preview.product.md)
 - **Ghi chú:**
   - Dùng query params: `?preview=true` (xem nháp) hoặc `?version=X&id=Y` (xem phiên bản cụ thể)
@@ -99,6 +115,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Directus Visual Editor
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/visual-editing.product.md)
 - **Ghi chú:**
   - File chính: `src/lib/directus/visualEditing.ts`
@@ -112,6 +130,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Dynamic form builder + submission
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/form-builder.product.md)
 - **Ghi chú:**
   - Block Form trong Directus hiển thị form động ra ngoài trang
@@ -124,6 +144,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Search API
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/search-api.product.md)
 - **Ghi chú:**
   - Endpoint: `GET /api/search?search=từ_khóa` (yêu cầu tối thiểu 3 ký tự)
@@ -136,6 +158,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Redirect handling (server hook)
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/redirect-handling.product.md)
 - **Ghi chú:**
   - File chính: `src/hooks.server.ts` và `src/lib/directus/fetchRedirects.ts`
@@ -148,6 +172,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Type generation từ Directus schema
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/type-generation.product.md)
 - **Ghi chú:**
   - Chạy: `pnpm run generate:types` trong thư mục `svelte/`
@@ -159,6 +185,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Dark mode (mode-watcher)
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/dark-mode.product.md)
 - **Ghi chú:**
   - Component `LightSwitch.svelte` trong `src/lib/components/layout/`
@@ -169,6 +197,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Enhanced image (DirectusImage)
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/enhanced-image.product.md)
 - **Ghi chú:**
   - Component `DirectusImage.svelte` dùng `@sveltejs/enhanced-img` để tối ưu ảnh
@@ -180,6 +210,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Blog system (nâng cao)
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/blog-system.product.md)
 - **Ghi chú:**
   - Route `blog/[slug]` với đầy đủ: tác giả, bài viết liên quan (2 bài), SEO, phân trang
@@ -190,6 +222,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Navigation system
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/navigation-system.product.md)
 - **Ghi chú:**
   - Components: `NavigationBar.svelte` (header) và `Footer.svelte` (chân trang)
@@ -200,6 +234,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### SEO management
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/seo-management.product.md)
 - **Ghi chú:**
   - Layout global: tự động thêm `<title>`, `<meta description>`, `<link rel="icon">`
@@ -210,6 +246,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Zod schema builder
 - **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-01
+- **Cập nhật:** 2026-06-01
 - **Tài liệu:** [product](products/zod-schema-builder.product.md)
 - **Ghi chú:**
   - File: `src/lib/zodSchemaBuilder.ts` -- xây dựng schema validation động từ cấu hình form Directus
