@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button as ShadcnButton, buttonVariants } from '../ui/button';
-
+	import { resolve } from '$app/paths';
 	import { Icon as Icontype, ArrowRight, Plus } from '@lucide/svelte';
 	import { cn } from '../../utils';
 
@@ -46,7 +46,7 @@
 
 	const Icon = $state(customIcon || (icon ? icons[icon] : null));
 
-	const href = $derived.by(() => {
+	const href = $derived.by((): string | undefined => {
 		if (type === 'page' && page?.permalink) return page.permalink;
 		if (type === 'post' && post?.slug) return `/blog/${post.slug}`;
 		return url || undefined;
@@ -82,9 +82,9 @@
 	<!-- TODO CHECK IF ASCHILD WORKS -->
 	<ShadcnButton variant={variant as any} {size} class={buttonClasses} {disabled} onclick={onClick}>
 		{#if href.startsWith('/')}
-			<a {href}>{@render content()}</a>
+			<a href={resolve(href as any)}>{@render content()}</a>
 		{:else}
-			<a {href} target="_blank" rel="noopener noreferrer">
+			<a {href} target="_blank" rel="external noopener noreferrer">
 				{@render content()}
 			</a>
 		{/if}

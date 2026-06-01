@@ -4,6 +4,7 @@
 	import { CheckCircle } from '@lucide/svelte';
 	import DynamicForm from './DynamicForm.svelte';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 
 	interface FormBuilderProps {
 		class?: string;
@@ -48,7 +49,7 @@
 
 			if (form.on_success === 'redirect' && form.success_redirect_url) {
 				if (form.success_redirect_url.startsWith('/')) {
-					goto(form.success_redirect_url);
+					goto(resolve(form.success_redirect_url as any));
 				} else {
 					window.location.href = form.success_redirect_url; // TODO check if internal or external
 				}
@@ -71,7 +72,7 @@
 			</p>
 		</div>
 	{:else}
-		<div class={cn('space-y-6 rounded-lg border border-input p-8', className)}>
+		<div class={cn('border-input space-y-6 rounded-lg border p-8', className)}>
 			{#if error}
 				<div class="rounded-md bg-red-100 p-4 text-red-500">
 					<strong>Error:</strong>

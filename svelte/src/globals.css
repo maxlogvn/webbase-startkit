@@ -1,5 +1,5 @@
-﻿@import "tailwindcss";
-@import "tw-animate-css";
+﻿@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/forms";
@@ -54,9 +54,9 @@
 	--color-ring: var(--ring);
 	--color-soft: var(--soft);
 	--color-blue: #172940;
-	--color-gray: #F5F8FB;
-	--color-gray-muted: #A5B0BD;
-	--color-gray-dark: #42566E;
+	--color-gray: #f5f8fb;
+	--color-gray-muted: #a5b0bd;
+	--color-gray-dark: #42566e;
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
@@ -79,7 +79,7 @@
 	--destructive: #dc2626;
 	--destructive-foreground: #ffffff;
 	--muted: color-mix(in srgb, var(--background), var(--foreground) 5%);
-	--muted-foreground: #A5B0BD;
+	--muted-foreground: #a5b0bd;
 	--card: var(--background);
 	--card-foreground: var(--foreground);
 	--popover: var(--background);
@@ -97,7 +97,7 @@
 	--primary: color-mix(in srgb, var(--accent), white 90%);
 	--primary-foreground: var(--foreground);
 	--muted: color-mix(in srgb, var(--background), var(--foreground) 5%);
-	--muted-foreground: #A5B0BD;
+	--muted-foreground: #a5b0bd;
 	--card: var(--background);
 	--card-foreground: var(--foreground);
 	--popover: var(--background);
@@ -123,7 +123,7 @@
 	button:focus,
 	a:focus,
 	[role='button']:focus {
-		@apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+		@apply ring-ring ring-offset-background ring-2 ring-offset-2 outline-none;
 	}
 
 	[data-background='dark'] {
@@ -132,13 +132,13 @@
 
 	:root:not(.dark) [data-background='dark'] {
 		.inline-flex[class*='bg-gray'] {
-			@apply bg-[#172940] text-white hover:bg-accent;
+			@apply hover:bg-accent bg-[#172940] text-white;
 		}
 	}
 }
 
 @layer utilities {
 	a {
-		@apply no-underline transition-colors hover:text-accent;
+		@apply hover:text-accent no-underline transition-colors;
 	}
 }

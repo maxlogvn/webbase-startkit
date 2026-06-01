@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
 	import { PUBLIC_SITE_URL } from '$env/static/public';
 	import DirectusImage from '$lib/components/shared/DirectusImage.svelte';
 	import Container from '$lib/components/ui/Container.svelte';
@@ -43,7 +44,7 @@
 	<Headline
 		as="h2"
 		headline={post.title}
-		class="mb-4 !text-accent"
+		class="!text-accent mb-4"
 		data-directus={setAttr({
 			collection: 'posts',
 			item: post.id,
@@ -66,7 +67,7 @@
 			/>
 		</main>
 
-		<aside class="h-fit max-w-[496px] space-y-6 rounded-lg bg-background-muted p-6">
+		<aside class="bg-background-muted h-fit max-w-[496px] space-y-6 rounded-lg p-6">
 			{#if author}
 				<div
 					class="flex items-center space-x-4"
@@ -127,8 +128,10 @@
 				<div class="space-y-4">
 					{#each data.relatedPosts as relatedPost (relatedPost.id)}
 						<a
-							href={`/blog/${relatedPost.slug}`}
-							class="group flex items-center space-x-4 hover:text-accent"
+							href={relatedPost.slug
+								? resolve('/blog/[slug]' as any, { slug: relatedPost.slug })
+								: '#'}
+							class="group hover:text-accent flex items-center space-x-4"
 						>
 							{#if relatedPost.image}
 								<div class="relative h-[100px] w-[150px] shrink-0 overflow-hidden rounded-lg">

@@ -2,6 +2,7 @@
 	import { PUBLIC_DIRECTUS_URL } from '$env/static/public';
 
 	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
 	import Container from '../ui/Container.svelte';
 	import LightSwitch from './LightSwitch.svelte';
 
@@ -21,7 +22,7 @@
 	<Container class="text-foreground dark:text-white">
 		<div class="flex flex-col items-start justify-between gap-8 pt-8 md:flex-row">
 			<div class="flex-1">
-				<a href="/">
+				<a href={resolve('/')}>
 					{#if lightLogoUrl}
 						<img
 							src={lightLogoUrl}
@@ -38,7 +39,7 @@
 					{/if}
 				</a>
 				{#if globals?.description}
-					<p class="mt-2 text-description">{globals.description}</p>
+					<p class="text-description mt-2">{globals.description}</p>
 				{/if}
 
 				<!-- {/* Social Links */} -->
@@ -47,9 +48,9 @@
 						{#each globals.social_links as social (social.service)}
 							<!-- key={social.service} -->
 							<a
-								href={social.url}
+								href={social.url.startsWith('/') ? resolve(social.url) : social.url}
 								target="_blank"
-								rel="noopener noreferrer"
+								rel="external noopener noreferrer"
 								class="hover:text-accent"
 							>
 								<img
@@ -72,11 +73,17 @@
 							{#each navPrimary.items as group (group.id)}
 								<li>
 									{#if group.children && group.page}
-										<a href={group.page.permalink} class="text-nav font-medium hover:underline">
+										<a
+											href={resolve(group.page.permalink)}
+											class="text-nav font-medium hover:underline"
+										>
 											{group.title}
 										</a>
 									{:else}
-										<a href={group?.url || '#'} class="text-nav font-medium hover:underline">
+										<a
+											href={resolve(group?.url || '#')}
+											class="text-nav font-medium hover:underline"
+										>
 											{group.title}
 										</a>
 									{/if}
