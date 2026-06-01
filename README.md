@@ -99,23 +99,6 @@ webbase-startkit (template SvelteKit)/
     └── WORKFLOW.md    # Quy trình phát triển
 ```
 
-## Tính năng
-
-| Tính năng | Mô tả |
-|---|---|
-| **Block builder** | 7 block components (Hero, RichText, Gallery, Pricing, Posts, Form, Button) -- soạn trang kéo thả trong Directus |
-| **Routing động** | `[...permalink]` cho trang CMS, `blog/[slug]` cho blog, hỗ trợ preview/versioning |
-| **Dynamic form** | Tạo form trong Directus, tự động render ra frontend với Zod validation |
-| **Blog system** | Bài viết, tác giả, bài liên quan, phân trang, chia sẻ mạng xã hội |
-| **Search API** | `GET /api/search?search=...` tìm kiếm pages và posts |
-| **Visual editing** | `?visual-editing=true` -- chỉnh sửa nội dung inline qua Directus overlay |
-| **Dark mode** | Chuyển đổi sáng/tối qua `mode-watcher`, tích hợp Tailwind |
-| **Image optimization** | `DirectusImage.svelte` tự động tạo URL ảnh từ Directus assets |
-| **Navigation** | Menu đa cấp từ Directus, responsive (desktop dropdown + mobile collapsible) |
-| **Redirect handling** | Tự động tải redirect từ Directus khi server khởi động |
-| **SEO** | Title, meta description, favicon, Open Graph tags cho blog |
-| **Type generation** | `pnpm run generate:types` -- sinh TypeScript types từ Directus schema |
-| **Rate limiting** | Directus SDK client tự động giới hạn 10 request / 500ms, retry khi 429 |
 
 
 ## Biến môi trường (`svelte/.env`)
