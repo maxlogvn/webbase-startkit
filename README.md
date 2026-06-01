@@ -4,8 +4,6 @@ Starter kit xây dựng trang web với **Directus** làm headless CMS và **Sve
 
 Dự án phù hợp cho: landing page, blog, trang marketing công ty, trang bán sản phẩm -- bất kỳ loại site nào cần CMS nhưng muốn frontend nhanh, nhẹ, và linh hoạt.
 
-**Ra đời từ gì:** Fork từ [directus-labs/starters](https://github.com/directus-labs/starters), sau đó tùy chỉnh sâu -- thêm block builder, dynamic form, blog system, visual editing, và nhiều tính năng khác.
-
 **Tại sao Directus + SvelteKit:** Directus cung cấp CMS mạnh mẽ (REST API, đồng bộ realtime, phân quyền). SvelteKit cho tốc độ tải nhanh (SSR mặc định), bundle nhỏ, và trải nghiệm dev mượt mà. Kết hợp cả hai bạn có một site vừa dễ quản lý nội dung vừa nhanh cho người dùng cuối.
 
 ## Kiến trúc
