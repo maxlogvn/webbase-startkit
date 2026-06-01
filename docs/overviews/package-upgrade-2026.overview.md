@@ -1,24 +1,24 @@
 # Package upgrade 2026 overview
 
-## Muc dich
+## Mục đích
 
-Nang cap toan bo 44 goi thu vien trong `svelte/package.json` len phien ban moi nhat (hoac gan nhat), dam bao tuong thich va on dinh.
+Nâng cấp toàn bộ 44 gói thư viện trong `svelte/package.json` lên phiên bản mới nhất (hoặc gần nhất), đảm bảo tương thích và ổn định.
 
-## Pham vi
+## Phạm vi
 
-Tat ca dependency trong `svelte/package.json` (dev + dependencies), chia lam 3 pha:
+Tất cả dependency trong `svelte/package.json` (dev + dependencies), chia làm 3 pha:
 
-| Pha | So goi | Phan loai |
+| Pha | Số gói | Phân loại |
 |---|---|---|
-| Phase 1 | 18 | Patch & minor (it rui ro) |
-| Phase 2A | 6 | Major khong phai ESLint (rui ro trung binh) |
-| Phase 2B | 3 | ESLint 10 ecosystem (rui ro cao) |
+| Phase 1 | 18 | Patch & minor (ít rủi ro) |
+| Phase 2A | 6 | Major không phải ESLint (rủi ro trung bình) |
+| Phase 2B | 3 | ESLint 10 ecosystem (rủi ro cao) |
 
-## Cac goi da nang cap
+## Các gói đã nâng cấp
 
-### Phase 1 (18 goi)
+### Phase 1 (18 gói)
 
-| Goi | Cu | Moi |
+| Gói | Cũ | Mới |
 |---|---|---|
 | svelte | 5.55.1 | 5.56.0 |
 | vite | 8.0.3 | 8.0.16 |
@@ -37,9 +37,9 @@ Tat ca dependency trong `svelte/package.json` (dev + dependencies), chia lam 3 p
 | @tailwindcss/forms | 0.5.10 | 0.5.11 |
 | @tailwindcss/typography | 0.5.16 | 0.5.19 |
 
-### Phase 2A (6 goi)
+### Phase 2A (6 gói)
 
-| Goi | Cu | Moi |
+| Gói | Cũ | Mới |
 |---|---|---|
 | TypeScript | 5.9.2 | 6.0.3 |
 | @directus/sdk | 20.0.3 | 21.3.0 |
@@ -48,21 +48,21 @@ Tat ca dependency trong `svelte/package.json` (dev + dependencies), chia lam 3 p
 | prettier-plugin-svelte | 3.4.0 | 4.1.0 |
 | p-queue | 8.1.0 | 9.3.0 |
 
-### Phase 2B (3 goi)
+### Phase 2B (3 gói)
 
-| Goi | Cu | Moi |
+| Gói | Cũ | Mới |
 |---|---|---|
 | eslint | 9.33.0 | 10.4.1 |
 | @eslint/js | 9.33.0 | 10.0.1 |
 | @eslint/compat | 1.3.2 | 2.1.0 |
 
-## Cac van de phat sinh va cach giai quyet
+## Các vấn đề phát sinh và cách giải quyết
 
-### 1. Prettier crash voi Svelte files
+### 1. Prettier crash với Svelte files
 
-**Van de:** Prettier 3.7+ bi crash `getVisitorKeys is not a function` khi format file Svelte neu plugin `prettier-plugin-svelte` duoc dat truoc `prettier-plugin-tailwindcss` trong file cau hinh.
+**Vấn đề:** Prettier 3.7+ bị crash `getVisitorKeys is not a function` khi format file Svelte nếu plugin `prettier-plugin-svelte` được đặt trước `prettier-plugin-tailwindcss` trong file cấu hình.
 
-**Giai phap:** Dao thu tu plugin trong `.prettierrc`:
+**Giải pháp:** Đảo thứ tự plugin trong `.prettierrc`:
 
 ```json
 {
@@ -70,62 +70,62 @@ Tat ca dependency trong `svelte/package.json` (dev + dependencies), chia lam 3 p
 }
 ```
 
-### 2. prettier-plugin-tailwindcss khong tuong thich
+### 2. prettier-plugin-tailwindcss không tương thích
 
-**Van de:** Phien ban 0.8.0 bi crash `e.charCodeAt is not a function` khi chay cung Prettier 3.6.2 va prettier-plugin-svelte 3.4.0.
+**Vấn đề:** Phiên bản 0.8.0 bị crash `e.charCodeAt is not a function` khi chạy cùng Prettier 3.6.2 và prettier-plugin-svelte 3.4.0.
 
-**Giai phap:** Giu nguyen phien ban 0.6.14. Se thu lai khi nang Prettier hoac prettier-plugin-svelte trong tuong lai (neu co ban moi sua loi).
+**Giải pháp:** Giữ nguyên phiên bản 0.6.14. Sẽ thử lại khi nâng Prettier hoặc prettier-plugin-svelte trong tương lai (nếu có bản mới sửa lỗi).
 
-### 3. ESLint 10 co rule moi
+### 3. ESLint 10 có rule mới
 
-**Van de:** ESLint 10 them rule `preserve-caught-error` bat buoc phai truyen `Error.cause` khi nem lai loi tu khoi `catch`.
+**Vấn đề:** ESLint 10 thêm rule `preserve-caught-error` bắt buộc phải truyền `Error.cause` khi ném lại lỗi từ khối `catch`.
 
-**Giai phap:** Them `{ cause: error }` vao 8 cau `throw new Error()` trong `src/lib/directus/fetchers.ts`.
+**Giải pháp:** Thêm `{ cause: error }` vào 8 câu `throw new Error()` trong `src/lib/directus/fetchers.ts`.
 
-### 4. Adapter-Vercel symlink loi (Windows)
+### 4. Adapter-Vercel symlink lỗi (Windows)
 
-**Van de:** Build bi loi `EPERM: operation not permitted, symlink` o buoc dong goi Vercel function. Day la gioi han cua Windows, khong lien quan den phien ban package.
+**Vấn đề:** Build bị lỗi `EPERM: operation not permitted, symlink` ở bước đóng gói Vercel function. Đây là giới hạn của Windows, không liên quan đến phiên bản package.
 
-**Giai phap:** Build tren macOS/Linux neu can output Vercel. Build SSR+client van chay duoc tren Windows, chi adapter step cuoi bi loi.
+**Giải pháp:** Build trên macOS/Linux nếu cần output Vercel. Build SSR+client vẫn chạy được trên Windows, chỉ adapter step cuối bị lỗi.
 
-### 5. Loi check san co
+### 5. Lỗi check sẵn có
 
-**Van de:** `pnpm run check` luon bao 55 loi (54 tu shadcn-svelte + 1 tu DynamicForm). Day la loi co san tu truoc do xung dot phien ban bits-ui.
+**Vấn đề:** `pnpm run check` luôn báo 55 lỗi (54 từ shadcn-svelte + 1 từ DynamicForm). Đây là lỗi có sẵn từ trước do xung đột phiên bản bits-ui.
 
-**Giai phap:** Bo qua cac loi nay khi chay kiem tra.
+**Giải pháp:** Bỏ qua các lỗi này khi chạy kiểm tra.
 
-## Cac goi chua nang cap
+## Các gói chưa nâng cấp
 
-| Goi | Phien ban hien tai | Ly do giu lai |
+| Gói | Phiên bản hiện tại | Lý do giữ lại |
 |---|---|---|
-| zod | 3.25.76 | Phien ban 4 can thay doi nhieu code (deferred migration) |
-| prettier-plugin-tailwindcss | 0.6.14 | Phien ban 0.8.0 crash (cho ban moi) |
+| zod | 3.25.76 | Phiên bản 4 cần thay đổi nhiều code (deferred migration) |
+| prettier-plugin-tailwindcss | 0.6.14 | Phiên bản 0.8.0 crash (chờ bản mới) |
 
-## Cau lenh kiem tra
+## Câu lệnh kiểm tra
 
 ```bash
-# Kiem tra type
+# Kiểm tra type
 cd svelte
 pnpm run check
 
-# Kiem tra lint
+# Kiểm tra lint
 pnpm run lint
 
-# Kiem tra build
+# Kiểm tra build
 pnpm run build
 
-# Kiem tra dependency con outdated
+# Kiểm tra dependency còn outdated
 pnpm outdated
 
-# Kiem tra security
+# Kiểm tra security
 pnpm audit
 ```
 
-## Tags da tao
+## Tags đã tạo
 
-- `deps-phase1-baseline` - Truoc khi bat dau Phase 1
-- `deps-phase1-complete` - Sau khi hoan thanh Phase 1
-- `deps-phase2a-baseline` - Truoc khi bat dau Phase 2A
-- `deps-phase2a-complete` - Sau khi hoan thanh Phase 2A
-- `deps-phase2b-baseline` - Truoc khi bat dau Phase 2B
-- `deps-phase2b-complete` - Sau khi hoan thanh Phase 2B
+- `deps-phase1-baseline` - Trước khi bắt đầu Phase 1
+- `deps-phase1-complete` - Sau khi hoàn thành Phase 1
+- `deps-phase2a-baseline` - Trước khi bắt đầu Phase 2A
+- `deps-phase2a-complete` - Sau khi hoàn thành Phase 2A
+- `deps-phase2b-baseline` - Trước khi bắt đầu Phase 2B
+- `deps-phase2b-complete` - Sau khi hoàn thành Phase 2B
