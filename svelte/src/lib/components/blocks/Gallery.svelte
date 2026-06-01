@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- Gallery block: hiển thị ảnh dạng grid kèm lightbox (zoom + điều hướng)
 	import DirectusImage from '../shared/DirectusImage.svelte';
 	import {
 		Dialog,
@@ -28,34 +29,38 @@
 	}
 
 	let { data }: GalleryProps = $props();
+	// Destructure, mặc định items là mảng rỗng để tránh lỗi .sort
 	const { tagline, headline, items = [], id } = $derived(data);
+	// State cho lightbox — $state vì đây là UI state nội bộ
 	let isLightboxOpen = $state(false);
 	let currentIndex = $state(0);
 
+	// Sắp xếp items theo sort — $derived vì items thay đổi theo data
 	let sortedItems = $derived(items ? [...items].sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0)) : []);
+	// $derived đảm bảo isValidIndex luôn đồng bộ với currentIndex và sortedItems
 	const isValidIndex = $derived(
 		sortedItems.length > 0 && currentIndex >= 0 && currentIndex < sortedItems.length
 	);
 
+	// Hàm mở lightbox — set cả index và trạng thái mở trong một hàm
 	const handleOpenLightbox = (index: number) => {
 		currentIndex = index;
 		isLightboxOpen = true;
 	};
+	// Chuyển sang ảnh trước — không wrap vòng để tránh nhảy đột ngột
 	const handlePrev = () => {
 		if (currentIndex > 0) {
 			currentIndex--;
 		}
-
-		// setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : sortedItems.length - 1));
 	};
 
+	// Chuyển sang ảnh tiếp theo — wrap vòng về đầu
 	const handleNext = () => {
 		if (currentIndex < sortedItems.length - 1) {
 			currentIndex++;
 		} else {
 			currentIndex = 0;
 		}
-		// setCurrentIndex((prevIndex) => (prevIndex < sortedItems.length - 1 ? prevIndex + 1 : 0));
 	};
 </script>
 
@@ -106,6 +111,7 @@
 						sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 						class="h-auto w-full rounded-lg object-cover"
 					/>
+					<!-- Overlay zoom-in khi hover — dùng group-hover để tránh JS -->
 					<div
 						class="bg-opacity-60 absolute inset-0 flex items-center justify-center bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
 					>
@@ -116,7 +122,7 @@
 		</div>
 	{/if}
 
-	<!-- {/* Lightbox */} -->
+	<!-- Lightbox: Dialog phóng to ảnh với điều hướng prev/next -->
 	{#if isLightboxOpen && isValidIndex}
 		<Dialog open={isLightboxOpen} onOpenChange={() => (isLightboxOpen = false)}>
 			<DialogOverlay class="bg-opacity-30 fixed inset-0 z-50 bg-black" />

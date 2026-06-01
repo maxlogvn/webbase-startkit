@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- Error page: hiển thị mã lỗi và message — SvelteKit tự động render khi có error()
 	import { page } from '$app/state';
 </script>
 

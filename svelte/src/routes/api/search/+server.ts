@@ -1,11 +1,34 @@
+/**
+ * Search API — Tìm kiếm pages và posts
+ *
+ * Luồng hoạt động:
+ *
+ *  1. Kiểm tra query param ?search=...
+ *     └─ Null hoặc < 3 ký tự → 400
+ *
+ *  2. Fetch pages + posts song song (Promise.all)
+ *     ├─ Pages: tìm trong title, permalink (không filter status)
+ *     └─ Posts: chỉ tìm published, trong title, description, slug, content
+ *
+ *  3. Map kết quả thành format chung: { id, title, type, link, description? }
+ *
+ *  4. Trả về JSON array
+ */
+
+// ─── Import ──────────────────────────────────────────────────────────────────
+
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { useDirectus } from '$lib/directus/directus';
 
+// ─── Actions ─────────────────────────────────────────────────────────────────
+
 export const GET: RequestHandler = async ({ request }) => {
+	// ── Bước 1: Validate search query
 	const { searchParams } = new URL(request.url);
 	const search = searchParams.get('search');
 
+	// Tối thiểu 3 ký tự để tránh search quá rộng và giảm tải
 	if (!search || search.length < 3) {
 		return json({ error: 'Query must be at least 3 characters.' }, { status: 400 });
 	}
@@ -13,6 +36,7 @@ export const GET: RequestHandler = async ({ request }) => {
 	const { getDirectus, readItems } = useDirectus();
 	const directus = getDirectus();
 
+	// ── Bước 2: Fetch pages + posts song song
 	try {
 		const [pages, posts] = await Promise.all([
 			directus.request(
@@ -26,6 +50,7 @@ export const GET: RequestHandler = async ({ request }) => {
 
 			directus.request(
 				readItems('posts', {
+					// Chỉ tìm posts đã published — pages không cần filter status
 					filter: {
 						_and: [
 							{ status: { _eq: 'published' } },
@@ -44,6 +69,7 @@ export const GET: RequestHandler = async ({ request }) => {
 			)
 		]);
 
+		// ── Bước 3: Chuẩn hóa kết quả về format chung
 		const results = [
 			...pages.map((page: any) => ({
 				id: page.id,

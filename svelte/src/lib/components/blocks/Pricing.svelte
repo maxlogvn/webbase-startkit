@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- Block Pricing: hiển thị gói giá dạng grid, tự động điều chỉnh số cột theo số lượng card
 	import setAttr from '$lib/directus/visualEditing';
 	import Headline from '../ui/Headline.svelte';
 	import Tagline from '../ui/Tagline.svelte';
@@ -31,9 +32,12 @@
 		data: PricingData;
 	}
 
+	// Dùng $props() snapshot — pricing_cards từ Directus, không thay đổi reactive
 	const { data }: PricingProps = $props();
+	// $derived vì các field phụ thuộc data
 	const { tagline, headline, pricing_cards, id } = $derived(data);
 
+	// $derived.by vì có logic rẽ nhánh — grid columns dựa trên số lượng card
 	const gridClasses = $derived.by(() => {
 		if (pricing_cards.length === 1) return 'grid-cols-1';
 		if (pricing_cards.length === 2) return 'grid-cols-1 sm:grid-cols-2';
@@ -41,6 +45,7 @@
 		return 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
 	});
 
+	// Giới hạn chiều rộng container khi ít card để trông cân đối
 	const containerStyles = $derived(
 		pricing_cards.length <= 2 ? 'mx-auto max-w-screen-md' : 'max-w-full'
 	);

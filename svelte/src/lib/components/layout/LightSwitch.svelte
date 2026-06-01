@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- LightSwitch: nút chuyển đổi sáng/tối — dùng mode-watcher để quản lý theme
 	import { toggleMode, mode } from 'mode-watcher';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { cn } from '$lib/utils';

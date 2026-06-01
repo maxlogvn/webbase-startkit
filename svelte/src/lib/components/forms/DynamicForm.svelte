@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- DynamicForm: render fields động từ Directus với validation qua Zod + superforms
 	import setAttr from '$lib/directus/visualEditing';
 	import type { FormField as FormFieldType } from '$lib/types/directus-schema';
 	import { buildZodSchema } from '$lib/zodSchemaBuilder';
@@ -14,11 +15,15 @@
 		id: string;
 	}
 
+	// $props() snapshot — fields từ Directus, không thay đổi reactive
 	const { fields, onSubmit, submitLabel, id }: DynamicFormProps = $props();
 
+	// $derived vì sortedFields phụ thuộc fields — sắp xếp theo sort order từ Directus
 	const sortedFields = $derived([...fields].sort((a, b) => (a.sort || 0) - (b.sort || 0)));
+	// buildZodSchema xây dựng schema validation động — chạy một lần vì fields không đổi
 	const formSchema = buildZodSchema(fields);
 
+	// Khởi tạo giá trị mặc định cho từng field dựa trên type
 	const defaultValues = fields.reduce<Record<string, any>>((defaults, field) => {
 		if (!field.name) return defaults;
 		switch (field.type) {
@@ -39,13 +44,16 @@
 		return defaults;
 	}, {});
 
+	// superForm chụp snapshot defaultValues lúc init — KHÔNG thể dùng $derived
 	const form = superForm(defaultValues, {
 		validators: zodClient(formSchema),
 		SPA: true
 	});
 
+	// $derived lấy validateForm và enhance từ form object
 	const { validateForm, enhance } = $derived(form);
 
+	// Submit handler: validate form, nếu valid thì gọi onSubmit callback
 	const onsubmit = async (e: Event) => {
 		e.preventDefault();
 		const result = await validateForm();
@@ -90,7 +98,7 @@
 		</div>
 	</div>
 
-	<!-- HIDE FORM DEBUGGER -->
+	<!-- Form debugger tạm ẩn — có thể bật lại khi cần debug validation -->
 	<!-- {#if dev}
 		<div class="flex w-full flex-col gap-2 rounded-xl bg-red-200 p-2">
 			<p class="text-center text-red-500">Form Debugger. This is not displayed in production</p>

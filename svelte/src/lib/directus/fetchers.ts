@@ -1,3 +1,5 @@
+// ─── Import ──────────────────────────────────────────────────────────────────
+
 import {
 	type BlockPost,
 	type PageBlock,
@@ -16,15 +18,7 @@ import {
 	readItems
 } from '@directus/sdk';
 
-/**
- * Page fields configuration for Directus queries
- *
- * This defines the complete field structure for pages including:
- * - Basic page metadata (title, id)
- * - SEO fields for search engine optimization
- * - Complex nested content blocks (hero, gallery, pricing, forms, etc.)
- * - All nested relationships and dynamic content fields
- */
+// ─── Constants: Page fields ──────────────────────────────────────────────────
 const pageFields = [
 	'title',
 	'seo',
@@ -135,15 +129,7 @@ const pageFields = [
 	}
 ] as const;
 
-/**
- * Post fields configuration for Directus queries
- *
- * This defines the complete field structure for posts including:
- * - Basic post metadata (id, title, content, status, published_at)
- * - Media fields (image, description)
- * - SEO fields for search engine optimization
- * - Author relationship with nested user fields
- */
+// ─── Constants: Post fields ──────────────────────────────────────────────────
 const postFields = [
 	'id',
 	'title',
@@ -158,6 +144,8 @@ const postFields = [
 		author: ['id', 'first_name', 'last_name', 'avatar']
 	}
 ] as const;
+
+// ─── Fetchers: Page ──────────────────────────────────────────────────────────
 
 /**
  * Fetches page data by permalink, including all nested blocks and dynamically fetching blog posts if required.
@@ -237,6 +225,8 @@ export const fetchPageData = async (
 	}
 };
 
+// ── fetchPageDataById — Fetch page version cụ thể
+
 /**
  * Fetches page data by id and version
  */
@@ -273,6 +263,8 @@ export const fetchPageDataById = async (
 	}
 };
 
+// ── getPageIdByPermalink — Trả id page từ slug
+
 /**
  * Helper function to get page ID by permalink
  */
@@ -304,6 +296,8 @@ export const getPageIdByPermalink = async (permalink: string, token: string | un
 	}
 };
 
+// ── getPostIdBySlug — Trả id post từ slug
+
 /**
  * Helper function to get post ID by slug
  */
@@ -334,6 +328,10 @@ export const getPostIdBySlug = async (slug: string, token: string | undefined) =
 		return null;
 	}
 };
+
+// ─── Fetchers: Post ──────────────────────────────────────────────────────────
+
+// ── fetchPostByIdAndVersion — Fetch post version cụ thể
 
 /**
  * Fetches a single blog post by ID and version
@@ -383,6 +381,8 @@ export const fetchPostByIdAndVersion = async (
 		throw new Error('Failed to fetch versioned post', { cause: error });
 	}
 };
+
+// ─── Fetchers: Site data ─────────────────────────────────────────────────────
 
 /**
  * Fetches global site data, header navigation, and footer navigation.
@@ -453,6 +453,8 @@ export const fetchSiteData = async () => {
 	}
 };
 
+// ── fetchPostBySlug — Fetch post từ slug, có support draft/preview
+
 /**
  * Fetches a single blog post by slug and related blog posts excluding the given ID. Handles live preview mode.
  */
@@ -502,6 +504,8 @@ export const fetchPostBySlug = async (
 	}
 };
 
+// ── fetchRelatedPosts — Fetch bài viết liên quan
+
 /**
  * Fetches related blog posts excluding the given ID.
  */
@@ -525,6 +529,8 @@ export const fetchRelatedPosts = async (excludeId: string) => {
 	}
 };
 
+// ── fetchAuthorById — Fetch thông tin tác giả
+
 /**
  * Fetches author details by ID.
  */
@@ -545,6 +551,8 @@ export const fetchAuthorById = async (authorId: string) => {
 		throw new Error(`Failed to fetch author with ID "${authorId}"`, { cause: error });
 	}
 };
+
+// ── fetchPaginatedPosts — Fetch post phân trang (client-side)
 
 /**
  * Fetches paginated blog posts. - Runs Client side
@@ -569,6 +577,8 @@ export const fetchPaginatedPosts = async (limit: number, page: number): Promise<
 		throw new Error('Failed to fetch paginated posts', { cause: error });
 	}
 };
+
+// ── fetchTotalPostCount — Đếm tổng số post published
 
 /**
  * Fetches the total number of published blog posts.

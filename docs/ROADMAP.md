@@ -20,6 +20,25 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ---
 
+### Chuẩn hóa code comment và format theo CONVENTIONS.md
+- **Trạng thái:** Hoàn thành
+- **Ngày tạo:** 2026-06-02
+- **Cập nhật:** 2026-06-02
+- **Tài liệu:** [thiết kế](designs/code-comment-format.design.md) | [đặc tả](specs/code-comment-format.spec.md) | [kế hoạch](plans/code-comment-format.plan.md) | [overview](overviews/code-comment-format.overview.md)
+- **Ghi chú:**
+  - 46 file đã được chuẩn hóa qua 7 phase:
+    - 6 file `.server.ts` — flow comment + section divider + inline comment
+    - 6 file `src/lib/directus/*.ts` — section divider + inline comment
+    - 2 file `src/lib/*.ts` — section divider + inline comment
+    - 10 file block `.svelte` — inline comment
+    - 7 file form `.svelte` — inline comment
+    - 13 file layout + shared + ui custom `.svelte` — inline comment
+    - 2 file route `.svelte` — inline comment
+  - Lint pass, svelte-check: 55 lỗi shadcn-svelte đã biết, 0 lỗi mới
+  - Đã fix lỗi `{/* ... */}` (JSX) → `<!-- ... -->` (Svelte) trong template
+
+---
+
 ### Sửa cảnh báo state_referenced_locally (Svelte 5)
 - **Trạng thái:** Hoàn thành
 - **Ngày tạo:** 2026-06-02

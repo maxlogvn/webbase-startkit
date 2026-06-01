@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- NavigationBar: header chính — logo, menu desktop (dropdown), menu mobile (collapsible), search, dark mode
 	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 
@@ -12,9 +13,11 @@
 	import * as Collapsible from '$lib/components/ui/collapsible';
 	import setAttr from '$lib/directus/visualEditing';
 
+	// $derived vì globals, navigation phụ thuộc page.data — thay đổi khi route thay đổi
 	const globals = $derived(page.data.globals);
 	const navigation = $derived(page.data.headerNavigation);
 	const directusURL = PUBLIC_DIRECTUS_URL;
+	// Logo riêng cho light/dark mode — dùng 2 thẻ <img> với conditional rendering
 	const lightLogoUrl = $derived(
 		globals?.logo ? `${directusURL}/assets/${globals.logo}` : '/images/logo.svg'
 	);
@@ -25,6 +28,7 @@
 
 <header class="bg-background font-heading text-foreground sticky top-0 z-[60] w-full">
 	<Container class="flex items-center justify-between p-4">
+		<!-- Logo: light và dark variant — cái nào active tuỳ theo mode -->
 		<a href={resolve('/')} class="flex-shrink-0">
 			<img
 				src={lightLogoUrl}
@@ -43,7 +47,7 @@
 		</a>
 		<nav class="flex items-center gap-4">
 			<SearchModal />
-			<!-- <NavigationMenuItems /> -->
+			<!-- Desktop navigation: hiển thị trên md trở lên, dropdown cho menu có children -->
 			<div
 				class=" hidden gap-2 md:flex"
 				data-directus={navigation
@@ -57,6 +61,7 @@
 			>
 				{#each navigation?.items as item (item.id)}
 					{#if item.children.length === 0}
+						<!-- Item đơn: link thẳng -->
 						<Button
 							href={item.page.permalink}
 							variant="ghost"
@@ -64,6 +69,7 @@
 ">{item.title}</Button
 						>
 					{:else}
+						<!-- Item có children: dropdown menu -->
 						<DropdownMenu.Root>
 							<DropdownMenu.Trigger
 								class="data-[active]:text-accent/50 data-[state=open]:text-accent/50 group bg-background hover:text-accent focus:text-accent inline-flex h-10 w-max items-center justify-center rounded-md  px-4 py-2 font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
@@ -89,6 +95,7 @@
 				{/each}
 			</div>
 
+			<!-- Mobile navigation: dropdown full-width, dùng Collapsible cho menu đa cấp -->
 			<div class="flex md:hidden">
 				<DropdownMenu.Root>
 					<DropdownMenu.Trigger
@@ -118,6 +125,7 @@
 														></DropdownMenu.Item
 													>
 												{:else}
+													<!-- Menu có children: dùng Collapsible để expand/collapse -->
 													<Collapsible.Root>
 														<Collapsible.Trigger
 															class="group font-heading text-nav hover:text-accent flex w-full items-center text-left"

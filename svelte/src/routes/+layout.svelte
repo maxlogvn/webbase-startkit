@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- Layout chính: SEO (title, meta, favicon), navigation, footer, dark mode, visual editing
 	import '../globals.css';
 	import '../fonts.css';
 	import NavigationBar from '$lib/components/layout/NavigationBar.svelte';
@@ -11,8 +12,10 @@
 	import { enableVisualEditing } from '$lib/directus/visualEditing';
 	import { apply } from '@directus/visual-editing';
 
+	// children là Svelte snippet — render nội dung trang con
 	let { children, data } = $props();
 
+	// $derived vì các giá trị SEO phụ thuộc data — thay đổi khi route thay đổi
 	const siteTitle = $derived(data.globals?.title || 'Simple CMS');
 	const siteDescription = $derived(
 		page.data.globals?.description || 'A starter CMS template powered by Svelte and Directus.'
@@ -22,8 +25,10 @@
 	);
 	const accentColor = $derived(data.globals?.accent_color || '#6644ff');
 
+	// Bật visual editing — tự động tắt nếu PUBLIC_ENABLE_VISUAL_EDITING = false
 	enableVisualEditing();
 
+	// Sau mỗi lần điều hướng, apply visual editing overlays lên các element [data-directus]
 	afterNavigate(async () => {
 		// First apply: all [data-directus] elements get overlays
 		await apply({
@@ -32,7 +37,7 @@
 				await invalidateAll();
 			}
 		});
-		// Second apply: add customClass to the Edit All Blocks overlay so the hide rule can target it
+		// Second apply: add customClass to the Edit All Blocks overlay để CSS ẩn button khi cần
 		const editButton = document.querySelector('#visual-editing-button');
 		if (editButton) {
 			await apply({
@@ -48,6 +53,7 @@
 </script>
 
 <svelte:head>
+	<!-- SEO: title, meta description, favicon, accent color CSS variable -->
 	<title>{siteTitle}</title>
 	<meta name="description" content={siteDescription} />
 	<link rel="icon" href={faviconURL} />

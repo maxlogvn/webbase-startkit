@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- Headline: tiêu đề chính của section — responsive font size, hỗ trợ đổi tag
 	interface Props {
 		headline?: string | null;
 		as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';

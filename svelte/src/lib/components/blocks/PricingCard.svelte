@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- PricingCard: từng card trong Pricing block — hiển thị title, price, features, CTA button
 	import { CheckCircle2 } from '@lucide/svelte';
 	import { Badge } from '../ui/badge';
 	import { Separator } from '../ui/separator';
@@ -24,6 +25,7 @@
 		};
 	}
 
+	// $props() snapshot — card từ Directus, không thay đổi reactive
 	let { card }: PricingCardProps = $props();
 </script>
 
@@ -32,7 +34,7 @@
 		card.is_highlighted ? 'border-accent' : 'border-input'
 	}`}
 >
-	<!-- {/* Title and Badge */} -->
+	<!-- Header: Title + Badge (nếu có) -->
 	<div class="mb-4 flex items-start justify-between gap-2">
 		{#if card.title}
 			<h3
@@ -66,6 +68,7 @@
 	</div>
 
 	{#if card.price}
+		<!-- Giá: dùng font-size text-h2 để tạo điểm nhấn -->
 		<p
 			data-directus={setAttr({
 				collection: 'block_pricing_cards',
@@ -95,6 +98,7 @@
 	<Separator class="my-4" />
 
 	{#if card.features && Array.isArray(card.features)}
+		<!-- Danh sách tính năng: flex-grow để đẩy button xuống cuối card -->
 		<div class="flex-grow">
 			<ul
 				class="space-y-4"
@@ -116,6 +120,7 @@
 			</ul>
 		</div>
 	{/if}
+	<!-- CTA button: mt-auto để luôn ở cuối card dù features ngắn hay dài -->
 	<div class="mt-auto pt-4">
 		{#if card.button}
 			<div

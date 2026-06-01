@@ -1,4 +1,6 @@
 <script lang="ts">
+	// -- SearchModal: command palette tìm kiếm nội dung — gọi API /api/search với debounce
+	// Hỗ trợ phím tắt Ctrl+K / Cmd+K, hiển thị kết quả trong shadcn command dialog
 	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
 
 	import { Search } from '@lucide/svelte';
@@ -8,6 +10,7 @@
 	import Badge from './badge/badge.svelte';
 	import { goto } from '$app/navigation';
 
+	// $state vì đây là UI state nội bộ
 	let open = $state(false);
 	let search = $state('');
 	let searched = $state(false);
@@ -22,6 +25,7 @@
 		link: string;
 	};
 
+	// Phím tắt Ctrl+K / Cmd+K — toggle search dialog
 	const handleKeydown = (e: KeyboardEvent) => {
 		if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
 			e.preventDefault();
@@ -29,23 +33,22 @@
 		}
 	};
 
+	// Reset state khi đóng dialog — tránh hiển thị kết quả cũ
 	$effect(() => {
 		if (!open) {
-			// results = [];
 			searched = false;
 			loading = false;
 		}
 	});
 
+	// Fetch kết quả tìm kiếm từ API — yêu cầu tối thiểu 3 ký tự
 	const fetchResults = async (search: string) => {
 		if (search.length < 3 || !open) {
 			results = [];
-			// searched = false;
 			return;
 		}
 
 		loading = true;
-		// searched = true;
 
 		try {
 			const res = await fetch(`/api/search?search=${encodeURIComponent(search)}`);
@@ -59,12 +62,15 @@
 			loading = false;
 		}
 	};
+	// Debounce 300ms để tránh gọi API quá nhiều khi gõ
 	const debouncedFetchResults = debounce(fetchResults, 300);
 
+	// $effect theo dõi search — tự động fetch khi search thay đổi
 	$effect(() => {
 		debouncedFetchResults(search);
 	});
 
+	// Chọn kết quả -> điều hướng và đóng dialog
 	const handleSelect = (result: SearchResult) => {
 		goto(result.link);
 		open = false;

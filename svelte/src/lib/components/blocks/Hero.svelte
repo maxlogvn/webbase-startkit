@@ -1,4 +1,6 @@
 <script lang="ts">
+	// -- Block Hero: hiển thị hero section với 3 layout (center, left, right)
+	// Hỗ trợ tagline, headline, description, ảnh, và button group
 	import { cn } from '$lib/utils';
 	import DirectusImage from '../shared/DirectusImage.svelte';
 	import BaseText from '$lib/components/ui/Text.svelte';
@@ -31,7 +33,9 @@
 		};
 	}
 
+	// Dùng $props() snapshot — layout quyết định flex direction, không thay đổi reactive
 	let { data }: Props = $props();
+	// $derived vì các field này phụ thuộc vào data — thay đổi khi Directus cập nhật
 	const { alignment, headline, description, image, button_group, tagline, layout, id } =
 		$derived(data);
 </script>

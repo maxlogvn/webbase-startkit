@@ -1,12 +1,19 @@
+// ─── Import ──────────────────────────────────────────────────────────────────
+
 import { z } from 'zod';
 import type { FormField } from '$lib/types/directus-schema';
 
+// ─── Builder ─────────────────────────────────────────────────────────────────
+
+// ── Xây dựng Zod schema động từ cấu hình form field của Directus
+// Mỗi field type sẽ có schema validation tương ứng
 export const buildZodSchema = (fields: FormField[]) => {
 	const schema: Record<string, z.ZodTypeAny> = {};
 
 	fields.forEach((field) => {
 		let fieldSchema: z.ZodTypeAny;
 
+		// ── Bước 1: Tạo schema cơ bản theo type của field
 		switch (field.type) {
 			case 'checkbox':
 				fieldSchema = z.boolean().default(false);
@@ -21,6 +28,8 @@ export const buildZodSchema = (fields: FormField[]) => {
 				break;
 
 			case 'file':
+				// File required → bắt buộc phải có file
+				// File optional → có thể undefined
 				if (field.required) {
 					fieldSchema = z.instanceof(File, {
 						message: `${field.label || field.name} is required`
@@ -35,16 +44,19 @@ export const buildZodSchema = (fields: FormField[]) => {
 				break;
 
 			default:
+				// Text, textarea, v.v. — mặc định là string
 				fieldSchema = z.string();
 				break;
 		}
 
+		// ── Bước 2: Áp dụng validation rules từ Directus (VD: "email|min:3|max:100")
 		if (field.validation) {
 			const rules = field.validation.split('|');
 			rules.forEach((rule) => {
 				const [ruleName, ruleValue] = rule.split(':');
 				const normalizedRule = ruleName.toLowerCase();
 
+				// Validation chỉ áp dụng cho string fields
 				if (fieldSchema instanceof z.ZodString) {
 					switch (normalizedRule) {
 						case 'email':
@@ -88,12 +100,14 @@ export const buildZodSchema = (fields: FormField[]) => {
 			});
 		}
 
+		// ── Bước 3: Xử lý required/optional
 		if (field.required) {
+			// String required → không cho phép empty string
 			if (fieldSchema instanceof z.ZodString) {
 				fieldSchema = fieldSchema.nonempty(`${field.label || field.name} is required`);
 			}
 		} else {
-			// Allow empty strings or undefined for optional fields
+			// String optional → cho phép empty string hoặc undefined
 			fieldSchema = fieldSchema.or(z.literal('')).or(z.undefined());
 		}
 

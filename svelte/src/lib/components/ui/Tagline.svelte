@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- Tagline: đoạn giới thiệu ngắn phía trên headline — uppercase, accent color
 	interface TitleProps {
 		tagline?: string | null;
 		class?: string;

@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- Text: render HTML content từ Directus WYSIWYG — dùng @html, kèm prose styling
 	import { cn } from '$lib/utils';
 
 	interface TextProps {

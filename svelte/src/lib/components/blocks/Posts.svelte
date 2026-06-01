@@ -1,4 +1,6 @@
 <script lang="ts">
+	// -- Block Posts: hiển thị danh sách blog post dạng grid với phân trang client-side
+	// Fetch thêm posts từ Directus khi người dùng chuyển trang — không cần load lại trang
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
 	import { fetchPaginatedPosts, fetchTotalPostCount } from '$lib/directus/fetchers';
@@ -21,17 +23,22 @@
 		};
 	}
 
+	// -- Props: $props() chụp snapshot lúc mount — posts từ Directus SSR
 	let { data }: PostsProps = $props();
 	let { tagline, headline, posts, limit, id } = $derived(data);
+	// Lấy trang hiện tại từ URL search params, fallback về 1
 	let initialPage = $state(Number(page.url.searchParams.get('page')) || 1);
 
 	let currentPage = $state(initialPage);
+	// $derived vì perPage phụ thuộc limit từ props
 	let perPage = $derived(limit || 6);
+	// $state vì paginatedPosts thay đổi qua fetch bất đồng bộ — không thể dùng $derived
 	// svelte-ignore state_referenced_locally
 	let paginatedPosts = $state<Post[]>(currentPage === 1 ? posts || [] : []);
 	let totalPages = $state(0);
 	let totalCount = $state(0);
 
+	// Fetch tổng số post để tính số trang — chỉ chạy một lần khi mount
 	const fetchTotalPages = async () => {
 		try {
 			totalCount = await fetchTotalPostCount();
@@ -40,27 +47,33 @@
 			console.error('Error fetching total post count:', error);
 		}
 	};
+	// $effect rỗng dependency = chạy một lần sau mount (componentDidMount)
 	$effect(() => {
 		fetchTotalPages();
 	});
 
+	// Fetch posts cho trang hiện tại — dùng posts SSR ở trang 1 để tránh fetch thừa
 	const fetchPosts = async (currentPage: number) => {
 		try {
+			// Trang 1: dùng posts đã có từ server, không fetch lại
 			if (currentPage === 1) {
 				paginatedPosts = posts || [];
 				return;
 			}
 
+			// Các trang sau: fetch từ Directus client-side
 			paginatedPosts = await fetchPaginatedPosts(perPage, currentPage);
 		} catch (error) {
 			console.error('Error fetching paginated posts:', error);
 			paginatedPosts = [];
 		}
 	};
+	// $effect theo dõi currentPage — tự động fetch khi đổi trang
 	$effect(() => {
 		fetchPosts(currentPage);
 	});
 
+	// Xử lý khi người dùng click pagination — validate page trong khoảng hợp lệ
 	const handlePageChange = (page: number) => {
 		console.log('handlePageChange', page);
 		if (page >= 1 && page <= totalPages) {

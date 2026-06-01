@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- Block Form: hiển thị form động từ Directus với tagline, headline, và form builder
 	import setAttr from '$lib/directus/visualEditing';
 	import type { FormField } from '$lib/types/directus-schema';
 	import FormBuilder from '../forms/FormBuilder.svelte';
@@ -24,7 +25,9 @@
 		};
 	}
 
+	// Dùng const vì data là snapshot từ $props() — form fields thay đổi theo Directus, không theo reactive graph
 	const { data }: FormBlockProps = $props();
+	// Destructure các field cần dùng — $derived vì data thay đổi khi props thay đổi
 	const { tagline, headline, form } = $derived(data);
 </script>
 
@@ -59,6 +62,7 @@
 			mode: 'popover'
 		})}
 	>
+		<!-- FormBuilder tự render fields dựa trên cấu hình từ Directus -->
 		<FormBuilder {form} class="mt-8" />
 	</div>
 </section>

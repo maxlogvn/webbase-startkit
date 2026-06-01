@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- SelectField: dropdown chọn một giá trị — dùng shadcn select
 	import * as Select from '$lib/components/ui/select/index.js';
 
 	interface SelectFieldProps {
@@ -10,8 +11,10 @@
 
 	const { name, options, placeholder, form }: SelectFieldProps = $props();
 
+	// const vì superForm store snapshot lúc init
 	let { form: formData } = form;
 
+	// $derived vì activeLabel phụ thuộc $formData[name] — tự động cập nhật khi chọn giá trị
 	let activeLabel = $derived(
 		options.find((option) => option.value === $formData[name])?.text ||
 			placeholder ||
@@ -19,7 +22,7 @@
 	);
 </script>
 
-<!-- onValueChange={(value) => form.setValue(name, value)} value={form.getValues(name)} -->
+<!-- Bind two-way value vào $formData — hiển thị label hiện tại trên trigger -->
 <Select.Root type="single" {name} bind:value={$formData[name]}>
 	<Select.Trigger>
 		{activeLabel}

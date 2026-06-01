@@ -1,20 +1,19 @@
+// ─── Import ──────────────────────────────────────────────────────────────────
+
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { cubicOut } from 'svelte/easing';
 import type { TransitionConfig } from 'svelte/transition';
 
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+
+// ── Kết hợp class names với Tailwind merge
+// Dùng clsx để gộp class, twMerge để xử lý xung đột Tailwind
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 
-type FlyAndScaleParams = {
-	y?: number;
-	x?: number;
-	start?: number;
-	duration?: number;
-};
-
-// Native debounce utility
+// ── Debounce utility — trì hoãn gọi function cho đến khi không còn gọi mới trong khoảng thời gian chờ
 export function debounce<T extends (...args: any[]) => void>(
 	func: T,
 	wait: number
@@ -27,6 +26,17 @@ export function debounce<T extends (...args: any[]) => void>(
 	};
 }
 
+// ─── Transition: Fly and Scale ───────────────────────────────────────────────
+
+type FlyAndScaleParams = {
+	y?: number;
+	x?: number;
+	start?: number;
+	duration?: number;
+};
+
+// ── Transition kết hợp fly + scale cho dropdown/popover
+// Tạo hiệu ứng mượt mà khi element xuất hiện
 export const flyAndScale = (
 	node: Element,
 	params: FlyAndScaleParams = { y: -8, x: 0, start: 0.95, duration: 150 }
@@ -34,6 +44,7 @@ export const flyAndScale = (
 	const style = getComputedStyle(node);
 	const transform = style.transform === 'none' ? '' : style.transform;
 
+	// ── Chuyển đổi giá trị từ scale A sang scale B
 	const scaleConversion = (valueA: number, scaleA: [number, number], scaleB: [number, number]) => {
 		const [minA, maxA] = scaleA;
 		const [minB, maxB] = scaleB;
@@ -44,6 +55,7 @@ export const flyAndScale = (
 		return valueB;
 	};
 
+	// ── Chuyển object style thành string inline CSS
 	const styleToString = (style: Record<string, number | string | undefined>): string => {
 		return Object.keys(style).reduce((str, key) => {
 			if (style[key] === undefined) return str;

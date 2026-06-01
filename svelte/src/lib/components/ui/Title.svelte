@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- Title: tiêu đề phụ — uppercase, accent color, responsive font
 	interface TitleProps {
 		title?: string | null;
 		class?: string;

@@ -1,10 +1,12 @@
 <script lang="ts">
+	// -- ShareDialog: chia sẻ blog post lên mạng xã hội — copy link + social share buttons
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import { Copy, Share } from '@lucide/svelte';
 	import Button, { buttonVariants } from './button/button.svelte';
 	import { Label } from './label';
 	import { Input } from './input';
 
+	// $state vì copied là UI state tạm thời — tự động reset sau 2s
 	let copied = $state(false);
 
 	let { postUrl, postTitle }: { postUrl: string; postTitle: string } = $props();
@@ -14,6 +16,7 @@
 		setTimeout(() => (copied = false), 2000);
 	};
 
+	// $derived vì socialLinks phụ thuộc postUrl, postTitle — generate link chia sẻ
 	const socialLinks = $derived([
 		{
 			service: 'reddit',
@@ -42,6 +45,7 @@
 		<Dialog.Header>
 			<Dialog.Title>Share this blog post</Dialog.Title>
 		</Dialog.Header>
+		<!-- Social share buttons: Reddit, X (Twitter), LinkedIn -->
 		<div class="mb-1 flex justify-center space-x-4">
 			{#each socialLinks as social (social.service)}
 				<a
@@ -60,6 +64,7 @@
 				</a>
 			{/each}
 		</div>
+		<!-- Copy link input: readonly input + copy button -->
 		<div class="flex items-center space-x-2">
 			<div class="grid flex-1 gap-2">
 				<Label for="link" class="sr-only">Link</Label>

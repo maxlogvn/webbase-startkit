@@ -1,4 +1,5 @@
 <script lang="ts">
+	// -- Footer: hiển thị logo, mô tả, social links, và navigation từ Directus globals
 	import { PUBLIC_DIRECTUS_URL } from '$env/static/public';
 
 	import { page } from '$app/state';
@@ -8,6 +9,7 @@
 
 	const directusURL = PUBLIC_DIRECTUS_URL;
 
+	// $derived vì page.data thay đổi theo route
 	const globals = $derived(page.data?.globals);
 	const navPrimary = $derived(page.data?.footerNavigation);
 	const lightLogoUrl = $derived(
@@ -21,6 +23,7 @@
 <footer class="bg-gray py-16 dark:bg-[var(--background-variant-color)]">
 	<Container class="text-foreground dark:text-white">
 		<div class="flex flex-col items-start justify-between gap-8 pt-8 md:flex-row">
+			<!-- Left: Logo + description + social links -->
 			<div class="flex-1">
 				<a href={resolve('/')}>
 					{#if lightLogoUrl}
@@ -42,11 +45,10 @@
 					<p class="text-description mt-2">{globals.description}</p>
 				{/if}
 
-				<!-- {/* Social Links */} -->
+				<!-- Social links: icon từ thư mục /icons/social/, x (twitter) có mapping riêng -->
 				{#if globals?.social_links}
 					<div class="mt-4 flex space-x-4">
 						{#each globals.social_links as social (social.service)}
-							<!-- key={social.service} -->
 							<a
 								href={social.url.startsWith('/') ? resolve(social.url) : social.url}
 								target="_blank"
@@ -66,6 +68,7 @@
 				{/if}
 			</div>
 
+			<!-- Right: footer navigation links + dark mode toggle -->
 			<div class="flex flex-1 flex-col items-start md:items-end">
 				<nav class="w-full text-left md:w-auto">
 					<ul class="space-y-4">
