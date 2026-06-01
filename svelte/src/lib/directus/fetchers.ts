@@ -233,7 +233,7 @@ export const fetchPageData = async (
 		return page;
 	} catch (error) {
 		console.error('Error fetching page data:', error);
-		throw new Error('Failed to fetch page data');
+		throw new Error('Failed to fetch page data', { cause: error });
 	}
 };
 
@@ -269,7 +269,7 @@ export const fetchPageDataById = async (
 		)) as Page;
 	} catch (error) {
 		console.error('Error fetching versioned page:', error);
-		throw new Error('Failed to fetch versioned page');
+		throw new Error('Failed to fetch versioned page', { cause: error });
 	}
 };
 
@@ -380,7 +380,7 @@ export const fetchPostByIdAndVersion = async (
 		return { post: postData as Post, relatedPosts: relatedPosts as Post[] };
 	} catch (error) {
 		console.error('Error fetching versioned post:', error);
-		throw new Error('Failed to fetch versioned post');
+		throw new Error('Failed to fetch versioned post', { cause: error });
 	}
 };
 
@@ -449,7 +449,7 @@ export const fetchSiteData = async () => {
 		return { globals, headerNavigation, footerNavigation };
 	} catch (error) {
 		console.error('Error fetching site data:', error);
-		throw new Error('Failed to fetch site data');
+		throw new Error('Failed to fetch site data', { cause: error });
 	}
 };
 
@@ -498,7 +498,7 @@ export const fetchPostBySlug = async (
 		return { post, relatedPosts };
 	} catch (error) {
 		console.error('Error in fetchPostBySlug:', error);
-		throw new Error('Failed to fetch blog post and related posts');
+		throw new Error('Failed to fetch blog post and related posts', { cause: error });
 	}
 };
 
@@ -521,7 +521,7 @@ export const fetchRelatedPosts = async (excludeId: string) => {
 		return relatedPosts;
 	} catch (error) {
 		console.error('Error fetching related posts:', error);
-		throw new Error('Failed to fetch related posts');
+		throw new Error('Failed to fetch related posts', { cause: error });
 	}
 };
 
@@ -542,7 +542,7 @@ export const fetchAuthorById = async (authorId: string) => {
 		return author;
 	} catch (error) {
 		console.error(`Error fetching author with ID "${authorId}":`, error);
-		throw new Error(`Failed to fetch author with ID "${authorId}"`);
+		throw new Error(`Failed to fetch author with ID "${authorId}"`, { cause: error });
 	}
 };
 
@@ -566,7 +566,7 @@ export const fetchPaginatedPosts = async (limit: number, page: number): Promise<
 		return response;
 	} catch (error) {
 		console.error('Error fetching paginated posts:', error);
-		throw new Error('Failed to fetch paginated posts');
+		throw new Error('Failed to fetch paginated posts', { cause: error });
 	}
 };
 

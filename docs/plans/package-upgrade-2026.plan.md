@@ -78,7 +78,7 @@ Các warning Medium/Low không block.
 
 ### Task 1.1: Tạo git baseline
 
-- [ ] **Tạo tag baseline**
+- [x] **Tạo tag baseline**
 
 ```bash
 cd svelte
@@ -87,14 +87,14 @@ git tag deps-phase1-baseline
 
 ### Task 1.2: Nâng cấp batch Low risk (14 packages)
 
-- [ ] **Nâng cấp**
+- [x] **Nâng cấp** (prettier downgraded từ 3.8.3 xuống 3.6.2 do incompatibility với prettier-plugin-svelte 3.4.0)
 
 ```bash
 cd svelte
 pnpm up svelte@5.56.0 vite@8.0.16 @sveltejs/vite-plugin-svelte@7.1.2 @tailwindcss/forms@0.5.11 @tailwindcss/typography@0.5.19 dotenv@17.4.2 eslint-plugin-svelte@3.19.0 globals@17.6.0 prettier@3.8.3 svelte-check@4.5.0 sveltekit-superforms@2.30.1 tsx@4.22.4 @directus/visual-editing@2.0.1 yaml@^2.9.0
 ```
 
-- [ ] **Kiểm tra diff + frozen-lockfile + strict-peer**
+- [x] **Kiểm tra diff + frozen-lockfile + strict-peer**
 
 ```bash
 git diff package.json pnpm-lock.yaml
@@ -103,7 +103,7 @@ pnpm install --strict-peer-dependencies
 pnpm dedupe
 ```
 
-- [ ] **Validation gates**
+- [x] **Validation gates** (lint: sửa 13 lỗi `resolve()` + `rel="external"`; prettier pinned 3.6.2)
 
 ```bash
 pnpm run check
@@ -116,14 +116,14 @@ pnpm why eslint && pnpm why typescript
 
 ### Task 1.3: Nâng cấp batch Low/Medium risk (4 packages)
 
-- [ ] **Nâng cấp**
+- [x] **Nâng cấp** (prettier-plugin-tailwindcss@0.8.0 reverted -> 0.6.14 do crash với prettier 3.6.2)
 
 ```bash
 cd svelte
 pnpm up @sveltejs/kit@2.61.1 esbuild@0.28.0 prettier-plugin-tailwindcss@0.8.0 typescript-eslint@8.60.0
 ```
 
-- [ ] **Format codebase + frozen-lockfile + strict-peer**
+- [x] **Format codebase + frozen-lockfile + strict-peer**
 
 ```bash
 pnpm run format
@@ -133,7 +133,7 @@ pnpm install --strict-peer-dependencies
 pnpm dedupe
 ```
 
-- [ ] **Validation gates**
+- [x] **Validation gates** (svelte-check: 59 -> 55 errors, sửa 4 resolve() type issues)
 
 ```bash
 pnpm run check
@@ -146,7 +146,7 @@ pnpm why eslint && pnpm why typescript
 
 ### Task 1.4: Smoke test + commit
 
-- [ ] **Smoke test**
+- [x] **Smoke test** (preview 200 OK)
 
 ```bash
 pnpm preview
@@ -154,7 +154,7 @@ pnpm preview
 
 Kiểm tra smoke matrix.
 
-- [ ] **Commit Phase 1** (nếu pass all gates)
+- [x] **Commit Phase 1** (commit 9fd9614, tag deps-phase1-complete)
 
 ```bash
 git add -A
@@ -167,7 +167,7 @@ git commit -m "deps: nang cap patch & minor packages phase 1"
 
 ### Kiểm tra gating trước Phase 2A
 
-- [ ] **Compatibility verification — TypeScript 6** (chạy trước baseline)
+- [x] **Compatibility verification — TypeScript 6** (chạy trước baseline)
 
 ```bash
 npm view svelte-check peerDependencies.typescript
@@ -177,7 +177,7 @@ npm view typescript-eslint peerDependencies.typescript
 
 Xác nhận tất cả đã support TypeScript 6 trước khi nâng.
 
-- [ ] **Compatibility verification — Directus SDK 21**
+- [x] **Compatibility verification — Directus SDK 21**
 
 Kiểm tra changelog SDK 20 -> 21, đặc biệt:
 - Auth API changes (codebase không dùng `authentication()`)
@@ -189,23 +189,23 @@ Codebase hiện dùng: `rest()`, `withToken()`, `readItems`, `readItem`, `readSi
 
 ### Task 2A.1: Tạo git baseline
 
-- [ ] **Tạo tag**
+- [x] **Tạo tag**
 
 ```bash
 cd svelte
 git tag deps-phase2a-baseline
 ```
 
-### Task 2A.2: Nâng cấp Low risk (2 packages)
+### Task 2A.2: Nâng cấp Low risk (2 packages + prettier unpinned)
 
-- [ ] **Nâng cấp**
+- [x] **Nâng cấp** (thêm prettier@3.8.3; .prettierrc: đảo plugin order fix getVisitorKeys crash)
 
 ```bash
 cd svelte
-pnpm up prettier-plugin-svelte@4.1.0 p-queue@9.3.0
+pnpm up prettier-plugin-svelte@4.1.0 p-queue@9.3.0 prettier@3.8.3
 ```
 
-- [ ] **Diff + frozen + peer + dedupe**
+- [x] **Diff + frozen + peer + dedupe**
 
 ```bash
 git diff package.json pnpm-lock.yaml
@@ -214,7 +214,7 @@ pnpm install --strict-peer-dependencies
 pnpm dedupe
 ```
 
-- [ ] **Validation gates**
+- [x] **Validation gates** (lint: đảo plugin order -> pass)
 
 ```bash
 pnpm run check
@@ -226,14 +226,14 @@ pnpm dedupe --check
 
 ### Task 2A.3: Nâng cấp Medium risk (3 packages)
 
-- [ ] **Nâng cấp (TypeScript 6 + @types/node + Directus SDK 21)**
+- [x] **Nâng cấp (TypeScript 6 + @types/node + Directus SDK 21)**
 
 ```bash
 cd svelte
 pnpm up @types/node@25.9.1 typescript@6.0.3 @directus/sdk@21.3.0
 ```
 
-- [ ] **Diff + frozen + peer + dedupe**
+- [x] **Diff + frozen + peer + dedupe**
 
 ```bash
 git diff package.json pnpm-lock.yaml
@@ -242,7 +242,8 @@ pnpm install --strict-peer-dependencies
 pnpm dedupe
 ```
 
-- [ ] **Validation gates (order: check -> build -> lint cho TS 6)**
+- [x] **Validation gates (order: check -> build -> lint cho TS 6)**
+  check: 55 errors (pre-existing, không có TS 6 latent bugs)
 
 ```bash
 pnpm run check      # chạy trước để phát hiện TS 6 latent bugs
@@ -255,7 +256,7 @@ pnpm dedupe --check
 
 ### Task 2A.4: Verify Directus SDK 21 integration
 
-- [ ] **Kiểm tra các file import Directus**
+- [x] **Kiểm tra các file import Directus** (không có breaking change, pass)
 
 ```bash
 grep -R "@directus/sdk" src/
@@ -270,7 +271,7 @@ Nếu SDK 21 có breaking change ở `rest()` hoặc `withToken()`, sửa theo c
 
 ### Task 2A.5: Smoke test + commit
 
-- [ ] **Smoke test**
+- [x] **Smoke test** (preview 200 OK)
 
 ```bash
 pnpm preview
@@ -278,7 +279,7 @@ pnpm preview
 
 Kiểm tra smoke matrix.
 
-- [ ] **Commit Phase 2A**
+- [x] **Commit Phase 2A** (commit 3388906, tag deps-phase2a-complete)
 
 ```bash
 git add -A
