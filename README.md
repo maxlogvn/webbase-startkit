@@ -6,6 +6,50 @@ Dự án phù hợp cho: landing page, blog, trang marketing công ty, trang bá
 
 **Tại sao Directus + SvelteKit:** Directus cung cấp CMS mạnh mẽ (REST API, đồng bộ realtime, phân quyền). SvelteKit cho tốc độ tải nhanh (SSR mặc định), bundle nhỏ, và trải nghiệm dev mượt mà. Kết hợp cả hai bạn có một site vừa dễ quản lý nội dung vừa nhanh cho người dùng cuối.
 
+## Bắt đầu nhanh
+
+### Yêu cầu
+
+- Git
+- Docker + Docker Compose
+- Node.js 18+
+- pnpm
+
+### 0. Clone dự án
+
+```bash
+git clone https://github.com/maxlogvn/webbase-startkit.git
+cd webbase-startkit
+```
+
+### 1. Khởi động Directus
+
+```bash
+cp .env.example .env
+docker compose up -d
+```
+
+Truy cập http://localhost:8055, tạo tài khoản admin, và tạo static token.
+
+### 2. Áp dụng template CMS
+
+```bash
+npx directus-template-cli@latest apply
+```
+
+Chọn: Local directory -> `./template` -> URL `http://localhost:8055` -> dán token admin.
+
+### 3. Chạy frontend
+
+```bash
+cd svelte
+cp .env.example .env
+pnpm install
+pnpm run dev
+```
+
+Mở http://localhost:3000.
+
 ## Kiến trúc
 
 ```
@@ -61,42 +105,6 @@ webbase-startkit (template SvelteKit)/
 | **Type generation** | `pnpm run generate:types` -- sinh TypeScript types từ Directus schema |
 | **Rate limiting** | Directus SDK client tự động giới hạn 10 request / 500ms, retry khi 429 |
 
-## Bắt đầu nhanh
-
-### Yêu cầu
-
-- Docker + Docker Compose
-- Node.js 18+
-- pnpm
-
-### 1. Khởi động Directus
-
-```bash
-cd directus
-cp .env.example .env
-docker compose up -d
-```
-
-Truy cập http://localhost:8055, tạo tài khoản admin, và tạo static token.
-
-### 2. Áp dụng template CMS
-
-```bash
-npx directus-template-cli@latest apply
-```
-
-Chọn: Local directory -> `./template` -> URL `http://localhost:8055` -> dán token admin.
-
-### 3. Chạy frontend
-
-```bash
-cd svelte
-cp .env.example .env
-pnpm install
-pnpm run dev
-```
-
-Mở http://localhost:3000.
 
 ## Biến môi trường (`svelte/.env`)
 
