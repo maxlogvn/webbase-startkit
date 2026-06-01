@@ -1,6 +1,6 @@
 # webbaseStartkit --template svelte
 
-Starter kit xây dựng trang web với **Directus** làm  backend CMS và **SvelteKit** làm frontend. Bạn quản lý nội dung trong backend CMS (soạn trang kéo thả, tạo form động, viết blog), frontend tự động render ra website tương ứng.
+Starter kit xây dựng trang web full-stack  quản lý nội dung trong backend (soạn trang kéo thả, tạo form động, viết blog), frontend tự động render ra website tương ứng.
 
 Dự án phù hợp cho: landing page, blog, trang marketing công ty, trang bán sản phẩm -- bất kỳ loại site nào cần CMS nhưng muốn frontend nhanh, nhẹ, và linh hoạt.
 
@@ -42,7 +42,7 @@ Vào **User Directory -> chọn user admin -> Token -> nhập token -> Save** (c
 Lệnh này sẽ tạo collection, field, và nội dung mẫu trong Directus:
 
 ```bash
-npx backend-template-cli@latest apply
+npx directus-template-cli@latest apply
 ```
 
 Khi được hỏi, chọn:
