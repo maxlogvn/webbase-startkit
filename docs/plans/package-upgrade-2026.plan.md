@@ -294,7 +294,7 @@ git commit -m "deps: nang cap major non-eslint packages phase 2a"
 
 ### Kiểm tra gating trước Phase 2B (chạy trước baseline)
 
-- [ ] **Verify compatibility matrix**
+- [x] **Verify compatibility matrix**
 
 ```bash
 npm view eslint-plugin-svelte peerDependencies.eslint
@@ -307,14 +307,14 @@ Nếu bất kỳ package nào chưa support ESLint 10 (peer dep range không bao
 
 ### Task 2B.1: Tạo git baseline + clean install
 
-- [ ] **Tạo baseline**
+- [x] **Tạo baseline**
 
 ```bash
 cd svelte
 git tag deps-phase2b-baseline
 ```
 
-- [ ] **Clean install (chỉ `--force`, không chạy `store prune` mặc định)**
+- [x] **Clean install (chỉ `--force`, không chạy `store prune` mặc định)**
 
 Thông thường:
 
@@ -327,14 +327,14 @@ Chỉ chạy `pnpm store prune` nếu nghi store corruption.
 
 ### Task 2B.2: Nâng cấp ESLint ecosystem
 
-- [ ] **Nâng cấp**
+- [x] **Nâng cấp**
 
 ```bash
 cd svelte
 pnpm up eslint@10.4.1 @eslint/js@10.0.1 @eslint/compat@2.1.0
 ```
 
-- [ ] **Diff + frozen**
+- [x] **Diff + frozen**
 
 ```bash
 git diff package.json pnpm-lock.yaml
@@ -343,7 +343,8 @@ pnpm install --frozen-lockfile
 
 ### Task 2B.3: Validation gates (lint first)
 
-- [ ] **Chạy lint trước (quan trọng nhất)**
+- [x] **Chạy lint trước (quan trọng nhất)**
+  - Sửa 8 lỗi `preserve-caught-error`: thêm `{ cause: error }` vào catch blocks
 
 ```bash
 pnpm run lint
@@ -354,7 +355,7 @@ Nếu lỗi flat config:
 - Kiểm tra `@eslint/compat` `includeIgnoreFile` có thay đổi API
 - Kiểm tra `typescript-eslint` config object changes
 
-- [ ] **Các gates còn lại**
+- [x] **Các gates còn lại**
 
 ```bash
 pnpm install --strict-peer-dependencies
@@ -368,7 +369,7 @@ pnpm dedupe --check
 
 ### Task 2B.4: Smoke test + commit
 
-- [ ] **Smoke test**
+- [x] **Smoke test** (preview 200 OK)
 
 ```bash
 pnpm preview
@@ -376,7 +377,7 @@ pnpm preview
 
 Kiểm tra smoke matrix + lint pass trên toàn bộ routes.
 
-- [ ] **Commit Phase 2B**
+- [x] **Commit Phase 2B** (commit 216e7d6, tag deps-phase2b-complete)
 
 ```bash
 git add -A
