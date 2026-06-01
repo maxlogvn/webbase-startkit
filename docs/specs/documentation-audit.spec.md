@@ -2,7 +2,7 @@
 
 ## Mô tả
 
-Rà soát toàn bộ codebase SvelteKit + Directus, xác định tất cả tính năng đã được code, cập nhật Roadmap với ghi chú chi tiết, và bổ sung tài liệu product và overview cho các tính năng chưa có tài liệu.
+Rà soát toàn bộ codebase SvelteKit + Directus, xác định tất cả tính năng đã được code, cập nhật Roadmap với ghi chú chi tiết, và bổ sung tài liệu product cho các tính năng chưa có tài liệu.
 
 ## Yêu cầu
 
@@ -17,21 +17,21 @@ Rà soát toàn bộ codebase SvelteKit + Directus, xác định tất cả tín
 
 ## Danh sách tính năng cần viết tài liệu
 
-| STT | Tên tính năng | Product | Overview |
-|-----|--------------|---------|----------|
-| 1 | Directus SDK client | `products/directus-sdk-client.product.md` | `overviews/directus-sdk-client.overview.md` |
-| 2 | Draft / Preview mode | `products/draft-preview.product.md` | `overviews/draft-preview.overview.md` |
-| 3 | Directus Visual Editor | `products/visual-editing.product.md` | `overviews/visual-editing.overview.md` |
-| 4 | Dynamic form builder + submission | `products/form-builder.product.md` | `overviews/form-builder.overview.md` |
-| 5 | Search API | `products/search-api.product.md` | `overviews/search-api.overview.md` |
-| 6 | Redirect handling | `products/redirect-handling.product.md` | `overviews/redirect-handling.overview.md` |
-| 7 | Type generation từ Directus schema | `products/type-generation.product.md` | `overviews/type-generation.overview.md` |
-| 8 | Dark mode (mode-watcher) | `products/dark-mode.product.md` | `overviews/dark-mode.overview.md` |
-| 9 | Enhanced image (DirectusImage) | `products/enhanced-image.product.md` | `overviews/enhanced-image.overview.md` |
-| 10 | Blog system | `products/blog-system.product.md` | `overviews/blog-system.overview.md` |
-| 11 | Navigation system | `products/navigation-system.product.md` | `overviews/navigation-system.overview.md` |
-| 12 | SEO management | `products/seo-management.product.md` | `overviews/seo-management.overview.md` |
-| 13 | Zod schema builder | `products/zod-schema-builder.product.md` | `overviews/zod-schema-builder.overview.md` |
+| STT | Tên tính năng | Product |
+|-----|--------------|---------|
+| 1 | Directus SDK client | `products/directus-sdk-client.product.md` |
+| 2 | Draft / Preview mode | `products/draft-preview.product.md` |
+| 3 | Directus Visual Editor | `products/visual-editing.product.md` |
+| 4 | Dynamic form builder + submission | `products/form-builder.product.md` |
+| 5 | Search API | `products/search-api.product.md` |
+| 6 | Redirect handling | `products/redirect-handling.product.md` |
+| 7 | Type generation từ Directus schema | `products/type-generation.product.md` |
+| 8 | Dark mode (mode-watcher) | `products/dark-mode.product.md` |
+| 9 | Enhanced image (DirectusImage) | `products/enhanced-image.product.md` |
+| 10 | Blog system | `products/blog-system.product.md` |
+| 11 | Navigation system | `products/navigation-system.product.md` |
+| 12 | SEO management | `products/seo-management.product.md` |
+| 13 | Zod schema builder | `products/zod-schema-builder.product.md` |
 
 ## Cấu trúc mỗi product
 

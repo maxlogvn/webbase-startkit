@@ -2,7 +2,7 @@
 
 ## Mục tiêu
 
-Rà soát toàn bộ codebase, ghi nhận tất cả tính năng đã được code, cập nhật Roadmap với trạng thái chính xác, và bổ sung tài liệu (spec, plan, overview) cho các tính năng chưa có.
+Rà soát toàn bộ codebase, ghi nhận tất cả tính năng đã được code, cập nhật Roadmap với trạng thái chính xác, và bổ sung tài liệu product cho các tính năng chưa có.
 
 ## Phạm vi
 
@@ -41,14 +41,14 @@ Không viết spec hay plan riêng cho từng tính năng vì đây là dự án
 1. **Cập nhật Roadmap** -- done khi ROADMAP.md có trạng thái "Đang làm" (đã xong).
 2. **Viết design** -- done khi bạn approve file này (đang làm).
 3. **Viết spec tổng thể** -- một file `.spec.md` duy nhất mô tả toàn bộ dự án tài liệu hóa (không tách từng tính năng). Done khi được bạn approve.
-4. **Viết plan tổng thể** -- một file `.plan.md` liệt kê các bước cụ thể để viết 13 overview files. Done khi được bạn approve.
+4. **Viết plan tổng thể** -- một file `.plan.md` liệt kê các bước cụ thể để viết 13 product files. Done khi được bạn approve.
 5. **Viết 13 product files** tại `docs/products/` -- tài liệu tính năng cho developer. Done khi tất cả file đã tạo.
 6. **Review + chỉnh sửa** -- đọc lại toàn bộ, sửa lỗi, đảm bảo nhất quán. Done khi không còn lỗi.
 7. **Cập nhật Roadmap** -- đánh dấu "Hoàn thành" cho mục tài liệu hóa. Done khi ROADMAP.md được cập nhật.
 
 > **Lưu ý về thứ tự spec → plan:** Thông thường plan viết trước spec. Ở đây tôi đảo lại vì spec mô tả "cần viết gì" (nội dung), còn plan mô tả "viết thế nào" (các bước gõ phím). Với dự án tài liệu thuần túy, biết nội dung trước mới lên kế hoạch được -- nên spec trước plan là hợp lý.
 
-### Cấu trúc mỗi overview
+### Cấu trúc mỗi product
 - Tính năng làm gì?
 - File/component chính ở đâu?
 - Cách dùng / cấu hình?
@@ -58,6 +58,6 @@ Không viết spec hay plan riêng cho từng tính năng vì đây là dự án
 
 - Không thay đổi code -- chỉ viết tài liệu dựa trên code hiện tại
 - Nếu code và tài liệu mâu thuẫn => ưu tiên code là nguồn sự thật
-- Overview viết bằng tiếng Việt, ngắn gọn, dễ hiểu
-- Roadmap sẽ tham chiếu đến overview files sau khi hoàn thành
+- Product viết bằng tiếng Việt, ngắn gọn, dễ hiểu
+- Roadmap sẽ tham chiếu đến product files sau khi hoàn thành
 - Chỉ có 1 người thực hiện (AI agent)
