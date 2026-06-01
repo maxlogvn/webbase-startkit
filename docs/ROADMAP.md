@@ -20,7 +20,7 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Nâng cấp các gói thư viện phía frontend (2026)
 - **Trạng thái:** Hoàn thành
-- **Tài liệu:** [thiết kế](designs/package-upgrade-2026.design.md) | [đặc tả](specs/package-upgrade-2026.spec.md) | [kế hoạch](plans/package-upgrade-2026.plan.md)
+- **Tài liệu:** [thiết kế](designs/package-upgrade-2026.design.md) | [đặc tả](specs/package-upgrade-2026.spec.md) | [kế hoạch](plans/package-upgrade-2026.plan.md) | [tổng quan](overviews/package-upgrade-2026.overview.md)
 - **Ghi chú:**
   - Đã nâng cấp 42 trên tổng số 44 gói thư viện.
   - Giữ nguyên **Zod** ở phiên bản 3.25.76 vì việc nâng lên phiên bản 4 sẽ cần thay đổi nhiều trong code. Sẽ làm sau.
