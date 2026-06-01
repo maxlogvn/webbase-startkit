@@ -1,33 +1,77 @@
-# Directus CMS Starter — SvelteKit
+# Directus CMS Starter -- SvelteKit
 
-Bộ khởi động gồm **Directus** (headless CMS) và **SvelteKit** (frontend), được cấu hình sẵn để chạy local và deploy lên Vercel.
+Starter kit xây dựng trang web với **Directus** làm headless CMS và **SvelteKit** làm frontend. Bạn quản lý nội dung trong Directus (soạn trang kéo thả, tạo form động, viết blog), frontend tự động render ra website tương ứng.
 
-> Tài liệu đầy đủ về conventions, roadmap và quy trình phát triển:
-> - [`docs/CONVENTIONS.md`](docs/CONVENTIONS.md) -- quy ước code
-> - [`docs/STACK.md`](docs/STACK.md) -- công nghệ sử dụng
-> - [`docs/ROADMAP.md`](docs/ROADMAP.md) -- theo dõi tiến độ
-> - [`docs/WORKFLOW.md`](docs/WORKFLOW.md) -- quy trình phát triển
-> - [`docs/Welcome.md`](docs/Welcome.md) -- tổng quan dự án
+Dự án phù hợp cho: landing page, blog, trang marketing công ty, trang bán sản phẩm -- bất kỳ loại site nào cần CMS nhưng muốn frontend nhanh, nhẹ, và linh hoạt.
 
----
+**Ra đời từ gì:** Fork từ [directus-labs/starters](https://github.com/directus-labs/starters), sau đó tùy chỉnh sâu -- thêm block builder, dynamic form, blog system, visual editing, và nhiều tính năng khác.
 
-## Yêu cầu cài đặt trước
+**Tại sao Directus + SvelteKit:** Directus cung cấp CMS mạnh mẽ (REST API, đồng bộ realtime, phân quyền). SvelteKit cho tốc độ tải nhanh (SSR mặc định), bundle nhỏ, và trải nghiệm dev mượt mà. Kết hợp cả hai bạn có một site vừa dễ quản lý nội dung vừa nhanh cho người dùng cuối.
 
-Đảm bảo máy bạn đã có đủ các công cụ sau:
+## Kiến trúc
 
-| Công cụ | Dùng để làm gì |
+```
+webbase-startkit/
+├── directus/          # Docker Compose cho Directus CMS
+│   ├── docker-compose.yml
+│   ├── template/      # Cấu trúc dữ liệu và nội dung mẫu
+│   └── snapshots/     # Schema snapshots
+├── svelte/            # Frontend SvelteKit
+│   └── src/
+│       ├── lib/
+│       │   ├── components/   # Svelte components
+│       │   │   ├── blocks/   # Block builder (Hero, RichText, Gallery...)
+│       │   │   ├── forms/    # Dynamic form builder
+│       │   │   ├── layout/   # NavigationBar, Footer, PageBuilder
+│       │   │   ├── shared/   # DirectusImage
+│       │   │   └── ui/       # shadcn-svelte + custom UI components
+│       │   ├── directus/     # Directus SDK client, fetchers, utils
+│       │   ├── types/        # TypeScript types (tự động sinh)
+│       │   ├── utils.ts      # Hàm tiện ích (cn, debounce)
+│       │   └── zodSchemaBuilder.ts  # Dynamic Zod schema builder
+│       └── routes/           # SvelteKit routes
+│           ├── [...permalink]/   # Trang CMS động
+│           ├── blog/             # Blog system
+│           └── api/              # API endpoints (search, form submit)
+└── docs/              # Obsidian vault -- tài liệu dự án
+    ├── designs/       # Thiết kế tính năng
+    ├── specs/         # Đặc tả chi tiết
+    ├── plans/         # Kế hoạch thực hiện
+    ├── overviews/     # Báo cáo kết quả
+    ├── products/      # Tài liệu tính năng hoàn chỉnh
+    ├── ROADMAP.md     # Theo dõi tiến độ
+    ├── CONVENTIONS.md # Quy ước code
+    ├── STACK.md       # Công nghệ sử dụng
+    └── WORKFLOW.md    # Quy trình phát triển
+```
+
+## Tính năng
+
+| Tính năng | Mô tả |
 |---|---|
-| **Docker + Docker Compose** | Chạy Directus CMS trong container |
-| **Node.js 18+** | Môi trường runtime cho SvelteKit |
-| **pnpm** | Quản lý package cho frontend |
+| **Block builder** | 7 block components (Hero, RichText, Gallery, Pricing, Posts, Form, Button) -- soạn trang kéo thả trong Directus |
+| **Routing động** | `[...permalink]` cho trang CMS, `blog/[slug]` cho blog, hỗ trợ preview/versioning |
+| **Dynamic form** | Tạo form trong Directus, tự động render ra frontend với Zod validation |
+| **Blog system** | Bài viết, tác giả, bài liên quan, phân trang, chia sẻ mạng xã hội |
+| **Search API** | `GET /api/search?search=...` tìm kiếm pages và posts |
+| **Visual editing** | `?visual-editing=true` -- chỉnh sửa nội dung inline qua Directus overlay |
+| **Dark mode** | Chuyển đổi sáng/tối qua `mode-watcher`, tích hợp Tailwind |
+| **Image optimization** | `DirectusImage.svelte` tự động tạo URL ảnh từ Directus assets |
+| **Navigation** | Menu đa cấp từ Directus, responsive (desktop dropdown + mobile collapsible) |
+| **Redirect handling** | Tự động tải redirect từ Directus khi server khởi động |
+| **SEO** | Title, meta description, favicon, Open Graph tags cho blog |
+| **Type generation** | `pnpm run generate:types` -- sinh TypeScript types từ Directus schema |
+| **Rate limiting** | Directus SDK client tự động giới hạn 10 request / 500ms, retry khi 429 |
 
----
+## Bắt đầu nhanh
 
-## Hướng dẫn khởi động
+### Yêu cầu
 
-### Bước 1 — Khởi động Directus (CMS)
+- Docker + Docker Compose
+- Node.js 18+
+- pnpm
 
-Sao chép file cấu hình môi trường rồi chạy Docker:
+### 1. Khởi động Directus
 
 ```bash
 cd directus
@@ -35,26 +79,17 @@ cp .env.example .env
 docker compose up -d
 ```
 
-Sau khi container khởi động, truy cập http://localhost:8055 để hoàn tất thiết lập tài khoản admin.
+Truy cập http://localhost:8055, tạo tài khoản admin, và tạo static token.
 
-> **Quan trọng:** Bạn cần tạo một **static token** cho tài khoản admin để các bước tiếp theo hoạt động.  
-> Vào *User Directory → chọn user admin → Token → Save*.
-
-### Bước 2 — Áp dụng template CMS
-
-Lệnh này sẽ nhập sẵn cấu trúc dữ liệu và nội dung mẫu vào Directus:
+### 2. Áp dụng template CMS
 
 ```bash
 npx directus-template-cli@latest apply
 ```
 
-Khi được hỏi, chọn lần lượt:
-- **Source type:** Local directory
-- **Đường dẫn:** `./template`
-- **URL Directus:** `http://localhost:8055`
-- **Token:** dán token bạn vừa tạo ở bước 1
+Chọn: Local directory -> `./template` -> URL `http://localhost:8055` -> dán token admin.
 
-### Bước 3 — Chạy SvelteKit (frontend)
+### 3. Chạy frontend
 
 ```bash
 cd svelte
@@ -63,44 +98,32 @@ pnpm install
 pnpm run dev
 ```
 
-Frontend sẽ chạy tại http://localhost:3000. Mở trình duyệt và bắt đầu phát triển!
-
----
+Mở http://localhost:3000.
 
 ## Biến môi trường (`svelte/.env`)
 
-Sao chép file `.env.example` và điền các giá trị tương ứng:
-
-| Biến | Mô tả | Ghi chú |
-|---|---|---|
-| `PUBLIC_DIRECTUS_URL` | URL của Directus instance | Thường là `http://localhost:8055` |
-| `PUBLIC_SITE_URL` | URL công khai của site | Dùng cho SEO/sitemap |
-| `DIRECTUS_SERVER_TOKEN` | Token user Webmaster | Dùng server-side cho draft/preview |
-| `DIRECTUS_ADMIN_TOKEN` | Token admin | Chỉ dùng để sinh TypeScript types, **không** dùng lúc runtime |
-
----
-
-## Các lệnh thường dùng (`svelte/`)
-
-| Lệnh | Mô tả |
+| Biến | Mô tả |
 |---|---|
-| `pnpm run dev` | Khởi động dev server tại port 3000 |
-| `pnpm run build` | Build cho production (dùng adapter-vercel) |
-| `pnpm run check` | Chạy SvelteKit sync và kiểm tra kiểu dữ liệu |
-| `pnpm run lint` | Kiểm tra lỗi code với ESLint và Prettier |
-| `pnpm run format` | Tự động format code với Prettier |
-| `pnpm run generate:types` | Sinh TypeScript types từ schema của Directus |
+| `PUBLIC_DIRECTUS_URL` | URL Directus instance (VD: `http://localhost:8055`) |
+| `PUBLIC_SITE_URL` | URL công khai của site (SEO/sitemap) |
+| `DIRECTUS_SERVER_TOKEN` | Token Webmaster -- dùng server-side cho draft/preview |
+| `DIRECTUS_ADMIN_TOKEN` | Token admin -- chỉ dùng sinh types, không dùng runtime |
 
----
-
-## Deploy lên production
-
-Mặc định, project dùng `adapter-vercel` — bạn chỉ cần push code lên Vercel là xong.
-
-**Muốn deploy lên Netlify thay thế?**
+## Lệnh thường dùng
 
 ```bash
-pnpm add -D @sveltejs/adapter-netlify
+pnpm run dev          # Dev server port 3000
+pnpm run build        # Build production (adapter-vercel)
+pnpm run check        # Type checking (svelte-check)
+pnpm run lint         # ESLint + Prettier
+pnpm run format       # Format code
+pnpm run generate:types  # Sinh TypeScript types từ Directus schema
 ```
 
-Sau đó mở `svelte/svelte.config.js` và đổi dòng import adapter thành `@sveltejs/adapter-netlify`.
+## Tài liệu
+
+- [`docs/CONVENTIONS.md`](docs/CONVENTIONS.md) -- quy ước code
+- [`docs/STACK.md`](docs/STACK.md) -- công nghệ sử dụng
+- [`docs/ROADMAP.md`](docs/ROADMAP.md) -- theo dõi tiến độ
+- [`docs/WORKFLOW.md`](docs/WORKFLOW.md) -- quy trình phát triển
+- [`docs/Welcome.md`](docs/Welcome.md) -- tổng quan tài liệu
