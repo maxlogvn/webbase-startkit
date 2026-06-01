@@ -19,8 +19,8 @@ Trạng thái: [X] Hoàn thành | [/] Đang làm | [-] Sắp làm | [ ] Backlog
 
 ### Nâng cấp packages frontend (2026)
 - **Trạng thái:** Đang làm
-- **Dở ở bước:** Phase 1 Task 1.4 — smoking test + commit Phase 1
-- **Làm tiếp:** commit + tag Phase 1
+- **Dở ở bước:** Phase 2A — complete, chờ quyết định Phase 2B (ESLint 10)
+- **Làm tiếp:** Phase 2B hoặc dừng nếu risk cao
 - **Tài liệu:** [design](designs/package-upgrade-2026.design.md) | [spec](specs/package-upgrade-2026.spec.md) | [plan](plans/package-upgrade-2026.plan.md)
 - **Bị chặn bởi:** Chưa có
 
