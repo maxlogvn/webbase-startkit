@@ -1,4 +1,4 @@
-# Stack
+﻿# Stack
 
 ## Frontend (svelte/)
 
@@ -8,8 +8,8 @@
 | Svelte | 5.55.1 |
 | TypeScript | 5.9.2 |
 | Vite | 8.0.3 |
-| Tailwind CSS | 3.4.17 |
-| shadcn-svelte (bits-ui) | 2.9.4 |
+| Tailwind CSS | **4.3.0** |
+| shadcn-svelte (bits-ui) | **2.18.1** |
 | @directus/sdk | 20.0.3 |
 | Zod | 3.25.76 |
 | adapter-vercel | 6.3.3 |

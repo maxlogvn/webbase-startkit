@@ -1,37 +1,118 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+﻿@import "tailwindcss";
+@import "tw-animate-css";
+
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+	--font-heading: 'Poppins', 'sans-serif';
+	--font-sans: 'Inter', 'sans-serif';
+	--font-code: 'Fira Mono', 'monospace';
+
+	--text-tagline: 24px;
+	--text-tagline--line-height: 33.6px;
+	--text-headline: 56px;
+	--text-headline--line-height: 64px;
+	--text-h1: 56px;
+	--text-h1--line-height: 78.4px;
+	--text-h2: 36px;
+	--text-h2--line-height: 50.4px;
+	--text-h3: 24px;
+	--text-h3--line-height: 33.6px;
+	--text-description: 16px;
+	--text-description--line-height: 22.4px;
+	--text-regular: 16px;
+	--text-regular--line-height: 24px;
+	--text-bold: 16px;
+	--text-bold--line-height: 22.4px;
+	--text-nav: 16px;
+	--text-nav--line-height: 22.4px;
+	--text-code: 14px;
+	--text-code--line-height: 16.8px;
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-background-muted: var(--background-muted);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-soft: var(--soft);
+	--color-blue: #172940;
+	--color-gray: #F5F8FB;
+	--color-gray-muted: #A5B0BD;
+	--color-gray-dark: #42566E;
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+}
 
 :root {
-	--background-color: #ffffff; /* Light background */
-	--foreground-color: #42566e; /* Light text */
-	--background-color-muted: color-mix(
-		in srgb,
-		var(--background-color),
-		var(--foreground-color) 10%
-	);
-	--accent-color: #6644ff; /* Accent color */
-	--background-variant-color: #172940;
-	--accent-color-dark: color-mix(in srgb, var(--accent-color), black 40%);
-	--accent-color-soft: color-mix(in srgb, var(--accent-color), white 20%);
-	--accent-color-light: color-mix(in srgb, var(--accent-color), white 90%);
-	--input-color: color-mix(in srgb, var(--background-color), var(--foreground-color) 30%);
+	--background: #ffffff;
+	--foreground: #42566e;
+	--background-muted: color-mix(in srgb, var(--background), var(--foreground) 10%);
+	--accent: #6644ff;
+	--background-variant: #172940;
+	--secondary: color-mix(in srgb, var(--accent), black 40%);
+	--soft: color-mix(in srgb, var(--accent), white 20%);
+	--primary: color-mix(in srgb, var(--accent), white 90%);
+	--input: color-mix(in srgb, var(--background), var(--foreground) 30%);
+	--primary-foreground: var(--foreground);
+	--secondary-foreground: #ffffff;
+	--accent-foreground: #ffffff;
+	--destructive: #dc2626;
+	--destructive-foreground: #ffffff;
+	--muted: color-mix(in srgb, var(--background), var(--foreground) 5%);
+	--muted-foreground: #A5B0BD;
+	--card: var(--background);
+	--card-foreground: var(--foreground);
+	--popover: var(--background);
+	--popover-foreground: var(--foreground);
+	--border: color-mix(in srgb, var(--background), var(--foreground) 20%);
+	--ring: var(--accent);
+	--radius: 0.5rem;
 }
 
 .dark {
-	--background-color: #0e1a2b; /* Default dark background */
-	--background-color-muted: color-mix(
-		in srgb,
-		var(--background-color),
-		var(--foreground-color) 10%
-	);
-	--background-variant-color: #172940;
-	--foreground-color: #ffffff; /* Default dark text */
+	--background: #0e1a2b;
+	--background-muted: color-mix(in srgb, var(--background), var(--foreground) 10%);
+	--background-variant: #172940;
+	--foreground: #ffffff;
+	--primary: color-mix(in srgb, var(--accent), white 90%);
+	--primary-foreground: var(--foreground);
+	--muted: color-mix(in srgb, var(--background), var(--foreground) 5%);
+	--muted-foreground: #A5B0BD;
+	--card: var(--background);
+	--card-foreground: var(--foreground);
+	--popover: var(--background);
+	--popover-foreground: var(--foreground);
+	--border: color-mix(in srgb, var(--background), var(--foreground) 20%);
+	--input: color-mix(in srgb, var(--background), var(--foreground) 30%);
 }
 
 @layer base {
+	* {
+		@apply border-border;
+	}
+
 	html {
-		@apply bg-[var(--background-color)] text-[var(--foreground-color)];
+		@apply bg-background text-foreground;
 	}
 }
 
@@ -42,11 +123,11 @@
 	button:focus,
 	a:focus,
 	[role='button']:focus {
-		@apply outline-none ring-2 ring-[var(--accent-color)] ring-offset-2 ring-offset-background;
+		@apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
 	}
 
 	[data-background='dark'] {
-		@apply bg-gray dark:bg-[var(--background-variant-color)];
+		@apply bg-gray dark:bg-[var(--background-variant)];
 	}
 
 	:root:not(.dark) [data-background='dark'] {
