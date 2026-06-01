@@ -28,9 +28,9 @@
 	// Bật visual editing — tự động tắt nếu PUBLIC_ENABLE_VISUAL_EDITING = false
 	enableVisualEditing();
 
-	// Sau mỗi lần điều hướng, apply visual editing overlays lên các element [data-directus]
+	// Sau mỗi lần điều hướng, apply visual editing overlays lên các element [data-backend]
 	afterNavigate(async () => {
-		// First apply: all [data-directus] elements get overlays
+		// First apply: all [data-backend] elements get overlays
 		await apply({
 			directusUrl: PUBLIC_DIRECTUS_URL,
 			onSaved: async () => {

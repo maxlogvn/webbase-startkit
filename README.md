@@ -29,7 +29,7 @@ cd webbase-startkit
 Sao chép file env mẫu và chạy Docker:
 
 ```bash
-cd directus
+cd backend
 cp .env.example .env
 docker compose up -d
 ```
@@ -42,7 +42,7 @@ Vào **User Directory -> chọn user admin -> Token -> nhập token -> Save** (c
 Lệnh này sẽ tạo collection, field, và nội dung mẫu trong Directus:
 
 ```bash
-npx directus-template-cli@latest apply
+npx backend-template-cli@latest apply
 ```
 
 Khi được hỏi, chọn:
@@ -66,7 +66,7 @@ Mở **http://localhost:3000** -- trang web đã sẵn sàng.
 
 ```
 webbase-startkit (template SvelteKit)/
-├── directus/          # Docker Compose cho Directus CMS
+├── backend/           # Docker Compose cho Directus CMS
 │   ├── docker-compose.yml
 │   ├── template/      # Cấu trúc dữ liệu và nội dung mẫu
 │   └── snapshots/     # Schema snapshots

@@ -34,7 +34,7 @@ export default ts.config(
 	},
 	{
 		ignores: [
-			'src/lib/types/directus-schema.ts',
+			'src/lib/types/backend-schema.ts',
 			'src/lib/components/ui/**',
 			'.vercel/**',
 			'node_modules/**'

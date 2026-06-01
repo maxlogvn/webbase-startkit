@@ -73,7 +73,7 @@ const getDirectus = () => {
 // ─── Exports ─────────────────────────────────────────────────────────────────
 
 export const useDirectus = () => ({
-	// directus: directus as RestClient<Schema>,
+	// backend: backend as RestClient<Schema>,
 	getDirectus: getDirectus,
 	readItems,
 	readItem,

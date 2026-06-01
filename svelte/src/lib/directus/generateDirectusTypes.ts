@@ -53,7 +53,7 @@ async function generateTypes() {
 		process.exit(1);
 	}
 
-	const outputPath = './src/lib/types/directus-schema.ts';
+	const outputPath = './src/lib/types/backend-schema.ts';
 
 	try {
 		await generateDirectusTypes({ outputPath, directusUrl, directusToken });

@@ -91,7 +91,7 @@ git tag deps-phase1-baseline
 
 ```bash
 cd svelte
-pnpm up svelte@5.56.0 vite@8.0.16 @sveltejs/vite-plugin-svelte@7.1.2 @tailwindcss/forms@0.5.11 @tailwindcss/typography@0.5.19 dotenv@17.4.2 eslint-plugin-svelte@3.19.0 globals@17.6.0 prettier@3.8.3 svelte-check@4.5.0 sveltekit-superforms@2.30.1 tsx@4.22.4 @directus/visual-editing@2.0.1 yaml@^2.9.0
+pnpm up svelte@5.56.0 vite@8.0.16 @sveltejs/vite-plugin-svelte@7.1.2 @tailwindcss/forms@0.5.11 @tailwindcss/typography@0.5.19 dotenv@17.4.2 eslint-plugin-svelte@3.19.0 globals@17.6.0 prettier@3.8.3 svelte-check@4.5.0 sveltekit-superforms@2.30.1 tsx@4.22.4 @backend/visual-editing@2.0.1 yaml@^2.9.0
 ```
 
 - [x] **Kiểm tra diff + frozen-lockfile + strict-peer**
@@ -230,7 +230,7 @@ pnpm dedupe --check
 
 ```bash
 cd svelte
-pnpm up @types/node@25.9.1 typescript@6.0.3 @directus/sdk@21.3.0
+pnpm up @types/node@25.9.1 typescript@6.0.3 @backend/sdk@21.3.0
 ```
 
 - [x] **Diff + frozen + peer + dedupe**

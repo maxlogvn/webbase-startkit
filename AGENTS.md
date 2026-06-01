@@ -42,7 +42,7 @@ Mọi tính năng thay đổi **phải** tuân theo quy trình trong [`docs/WORK
 
 | Thư mục | Mô tả |
 |---|---|
-| `directus/` | Directus CMS, Docker Compose, PostgreSQL, Redis |
+| `backend/` | Directus CMS, Docker Compose, PostgreSQL, Redis |
 | `svelte/` | SvelteKit frontend (package name: `sveltekit`) |
 | `docs/` | Obsidian vault — thiết kế, spec, kế hoạch, tổng quan |
 

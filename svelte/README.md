@@ -35,8 +35,8 @@ Directus Draft Mode out of the box, enabling live previews of unpublished or dra
 [Directus Live Preview](https://directus.io/docs/tutorials/getting-started/implementing-live-preview-in-sveltekit)
 
 - The live preview feature works seamlessly on deployed environments.
-- **For Local Development**: If using local Docker, the CSP configuration is provided in `.env.example`. See [`../../directus/README.md`](../../directus/README.md#content-security-policy-csp-and-preview-issues) for details.
-- **For Directus Cloud**: Directus Cloud requires HTTPS for previews. You'll need to use HTTPS tunneling (ngrok, localtunnel, etc.) or configure CSP in your Directus Cloud settings. See the [Directus CSP documentation](../../directus/README.md#content-security-policy-csp-and-preview-issues) for details.
+- **For Local Development**: If using local Docker, the CSP configuration is provided in `.env.example`. See [`../../backend/README.md`](../../backend/README.md#content-security-policy-csp-and-preview-issues) for details.
+- **For Directus Cloud**: Directus Cloud requires HTTPS for previews. You'll need to use HTTPS tunneling (ngrok, localtunnel, etc.) or configure CSP in your Directus Cloud settings. See the [Directus CSP documentation](../../backend/README.md#content-security-policy-csp-and-preview-issues) for details.
 
 ---
 

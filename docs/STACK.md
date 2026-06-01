@@ -15,7 +15,7 @@
 | adapter-vercel | 6.3.3 |
 | pnpm | -- |
 
-## Backend (directus/)
+## Backend (backend/)
 
 | Công nghệ | Phiên bản |
 |---|---|

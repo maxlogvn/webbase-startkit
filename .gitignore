@@ -1,8 +1,8 @@
 # Directus Specific
-directus/data/
-directus/uploads/
-directus/extensions/.registry
-!directus/**/.gitkeep
+backend/data/
+backend/uploads/
+backend/extensions/.registry
+!backend/**/.gitkeep
 
 # Dependencies
 node_modules
@@ -56,4 +56,4 @@ docs/.obsidian/
 *.tsbuildinfo
 
 # Directus Extensions Dependencies
-directus/extensions/*/node_modules/
+backend/extensions/*/node_modules/

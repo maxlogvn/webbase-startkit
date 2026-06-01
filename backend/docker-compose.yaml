@@ -1,4 +1,4 @@
-name: directus-cms-template
+name: backend-cms-template
 services:
   database:
     image: postgis/postgis:16-master
@@ -32,8 +32,8 @@ services:
     ports:
       - ${DIRECTUS_PORT}:8055
     volumes:
-      - ./uploads:/directus/uploads
-      - ./extensions:/directus/extensions
+      - ./uploads:/backend/uploads
+      - ./extensions:/backend/extensions
     depends_on:
       database:
         condition: service_healthy

@@ -16,7 +16,7 @@ Import `useDirectus()` từ `$lib/directus/directus.ts`. Nó trả về object g
 - `withToken` -- thêm token vào request (dùng cho preview/draft)
 
 ```ts
-import { useDirectus } from '$lib/directus/directus';
+import { useDirectus } from '$lib/backend/backend';
 const { getDirectus, readItems } = useDirectus();
 const directus = getDirectus();
 const pages = await directus.request(readItems('pages', { ... }));

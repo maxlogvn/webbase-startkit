@@ -26,7 +26,7 @@ This directory contains the Docker Compose configuration for running Directus lo
 
    **Interactive mode** (recommended for first-time setup and security):
    ```bash
-   npx directus-template-cli@latest apply
+   npx backend-template-cli@latest apply
    ```
    
    Follow the interactive prompts:
@@ -39,7 +39,7 @@ This directory contains the Docker Compose configuration for running Directus lo
    
    **Programmatic mode** (for automation/scripts):
    ```bash
-   npx directus-template-cli@latest apply -p \
+   npx backend-template-cli@latest apply -p \
      --directusUrl="http://localhost:8055" \
      --directusToken="YOUR_TOKEN_HERE" \
      --templateLocation="./template" \
@@ -68,7 +68,7 @@ The `.env.example` file includes the correct CSP settings for local development.
 If you're using a different port, add it to the `CONTENT_SECURITY_POLICY_DIRECTIVES__FRAME_SRC` value in your `.env` file and restart Directus:
 
 ```bash
-docker compose restart directus
+docker compose restart backend
 ```
 
 ### For Directus Cloud
