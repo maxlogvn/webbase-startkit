@@ -390,7 +390,7 @@ git commit -m "deps: nang cap eslint ecosystem phase 2b"
 
 Không thực hiện trong đợt này. Zod 3.25.76 giữ nguyên.
 
-- [ ] **Ghi nhận deferred migration** (không thay đổi code)
+- [x] **Ghi nhận deferred migration** (không thay đổi code)
 
 ---
 
@@ -398,21 +398,21 @@ Không thực hiện trong đợt này. Zod 3.25.76 giữ nguyên.
 
 ### Task Final: Cập nhật tài liệu + final verification
 
-- [ ] **Cập nhật STACK.md**
+- [x] **Cập nhật STACK.md**
 
 Sửa `docs/STACK.md` — bảng "Frontend (svelte/)" với phiên bản mới.
 
-- [ ] **Final verification**
+- [x] **Final verification**
 
 ```bash
 cd svelte
-pnpm outdated              # xác nhận chỉ còn Zod outdated
+pnpm outdated              # xác nhận chỉ còn Zod outdated + prettier-plugin-tailwindcss pinned
 pnpm run check
 pnpm run lint
 pnpm run build
 ```
 
-- [ ] **Commit final**
+- [x] **Commit final** (commit fa453b5)
 
 ```bash
 git add -A
