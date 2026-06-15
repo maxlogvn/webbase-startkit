@@ -31,7 +31,7 @@ import { createRequire } from 'node:module';
 
 const REPO_URL = 'https://github.com/maxlogvn/webbase-startkit.git';
 const require = createRequire(import.meta.url);
-const { version: APP_VERSION } = require('./package.json');
+const { version: APP_VERSION } = require('../package.json');
 
 // User cố định trong template, dùng để gắn static token cho frontend
 const FRONTEND_BOT_USER_ID = '88a6e8cf-f0f8-41db-a3a2-8a9741c086cc'; // -> DIRECTUS_SERVER_TOKEN
