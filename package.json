@@ -1,6 +1,6 @@
 {
     "name": "@maxlogvn/webbase-startkit",
-    "version": "1.0.10",
+    "version": "1.0.11",
     "type": "module",
 "bin": {
     "create-webbase-startkit": "./bin/install.js"
