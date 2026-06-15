@@ -66,7 +66,7 @@ function checkRequiredTools() {
         { cmd: 'node', args: ['--version'], hint: 'Cai Node.js >= 18: https://nodejs.org' },
     ];
     for (const tool of tools) {
-        const result = spawnSync(tool.cmd, tool.args, { stdio: 'ignore' });
+        const result = spawnSync(tool.cmd, tool.args, { stdio: 'ignore', shell: true });
         if (result.error || result.status !== 0) {
             fail(`Khong tim thay "${tool.cmd}" tren may. ${tool.hint}`);
         }
