@@ -220,16 +220,8 @@ async function main() {
 
     log(8, TOTAL_STEPS, 'Cai dat dependencies cho frontend (pnpm install)...');
 
-    const npmrcPath = path.join(svelteDir, '.npmrc');
-    const existing = existsSync(npmrcPath) ? readFileSync(npmrcPath, 'utf-8') : '';
-    if (!existing.includes('onlyBuiltDependencies')) {
-        writeFileSync(
-            npmrcPath,
-            existing.trimEnd() + '\nonlyBuiltDependencies[]=esbuild\nonlyBuiltDependencies[]=sharp\n',
-        );
-    }
-
-    run('pnpm', ['install'], { cwd: svelteDir });
+    run('pnpm', ['install', '--ignore-scripts'], { cwd: svelteDir });
+    run('pnpm', ['rebuild', 'esbuild', 'sharp'], { cwd: svelteDir });
 
     const svelteRelDir = isCurrentDir ? 'svelte' : path.join(targetDir, 'svelte');
 
