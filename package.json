@@ -2,9 +2,9 @@
     "name": "@maxlogvn/webbase-startkit",
     "version": "1.0.0",
     "type": "module",
-    "bin": {
-        "create-webbase-startkit": "./scripts/install.js"
-    },
+"bin": {
+    "create-webbase-startkit": "./bin/install.js"
+},
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"
     },
