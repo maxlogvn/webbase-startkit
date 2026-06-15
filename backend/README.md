@@ -1,18 +1,19 @@
-# Directus CMS Template - Local Development Setup
+# Directus CMS - Local Development Setup
 
-This directory contains the Docker Compose configuration for running Directus locally. The CMS template files are included in the `template/` directory, but you'll need to apply them using the Directus template CLI tool.
+The Docker Compose configuration for running Directus is in the root directory (`../docker-compose.yaml`). The CMS template files are included in the `template/` directory, but you'll need to apply them using the Directus template CLI tool.
 
 ## Quick Start
 
-1. Copy `.env.example` to `.env`:
+1. Copy `.env.example` to `.env` in this directory:
    ```bash
    cp .env.example .env
    ```
 
-2. Start Directus:
+2. Start Directus (from root directory):
    ```bash
-   docker compose up -d
+   cd .. && docker compose --profile dev up -d
    ```
+   (Docker Compose reads environment from `backend/.env`.)
 
 3. Access Directus at `http://localhost:8055` and complete the admin setup on first launch.
 
@@ -61,14 +62,14 @@ When using Directus Visual Editor with a local development server, you may encou
 
 The `.env.example` file includes the correct CSP settings for local development. When you copy `.env.example` to `.env` (as shown in the Quick Start), the `CONTENT_SECURITY_POLICY_DIRECTIVES__FRAME_SRC` will be configured with common localhost ports:
 
-- `http://localhost:3000` (Next.js, Nuxt default port)
+- `http://localhost:3000` (SvelteKit dev server)
 - `http://localhost:4321` (Astro default port)
-- `http://localhost:5173` (SvelteKit/Vite default port)
+- `http://localhost:5173` (Vite default port)
 
 If you're using a different port, add it to the `CONTENT_SECURITY_POLICY_DIRECTIVES__FRAME_SRC` value in your `.env` file and restart Directus:
 
 ```bash
-docker compose restart backend
+docker compose restart directus
 ```
 
 ### For Directus Cloud
@@ -93,12 +94,11 @@ See `.env.example` for all available configuration options. Key variables includ
 If you encounter migration errors like "column already exists", reset the database:
 
 ```bash
-docker compose down -v
-rm -rf data/database
-docker compose up -d
+docker compose --profile dev down -v
+docker compose --profile dev up -d
 ```
 
-**Warning:** This will delete all data in your local Directus instance.
+**Warning:** This will delete all data in your local Directus instance (including database volume).
 
 ### Preview Not Working
 
