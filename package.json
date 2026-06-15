@@ -2,6 +2,13 @@
     "name": "directus-cms-starter",
     "version": "1.0.1",
     "description": "",
+    "type": "module",
+    "bin": {
+        "create-webbase-startkit": "./scripts/install.js"
+    },
+    "engines": {
+        "node": ">=18"
+    },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
