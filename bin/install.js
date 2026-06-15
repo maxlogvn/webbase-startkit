@@ -63,18 +63,17 @@ function fail(message) {
 }
 
 function printSummary(directusUrl, adminEmail, adminPassword, svelteRelDir) {
-    console.clear();
-    const w = 40;
-    const hr = '\u2500'.repeat(w);
+    process.stdout.write('\x1b[2J\x1b[H');
+    const w = 44;
     const line = (content = '') => {
-        const pad = w - stripAnsi(content).length;
+        const pad = w - 4 - stripAnsi(content).length;
         const left = Math.floor(pad / 2);
         const right = pad - left;
-        return `  ${colors.bold}\u2551${colors.reset}  ${' '.repeat(left)}${content}${' '.repeat(right)}  ${colors.bold}\u2551${colors.reset}`;
+        return `  |  ${' '.repeat(left)}${content}${' '.repeat(right)}  |`;
     };
-    const top = `  ${colors.bold}\u2554${'\u2550'.repeat(w + 4)}\u2557${colors.reset}`;
-    const bottom = `  ${colors.bold}\u255a${'\u2550'.repeat(w + 4)}\u255d${colors.reset}`;
-    const divider = `  ${colors.bold}\u2551${colors.reset}  ${colors.dim}${hr}${colors.reset}  ${colors.bold}\u2551${colors.reset}`;
+    const top = `  +${'-'.repeat(w)}+`;
+    const bottom = `  +${'-'.repeat(w)}+`;
+    const divider = `  |  ${'-'.repeat(w - 4)}  |`;
     const empty = line();
 
     console.log(top);
