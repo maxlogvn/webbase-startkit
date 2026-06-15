@@ -63,10 +63,11 @@
 		"yaml": "^2.9.0",
 		"zod": "3.25.76"
 	},
+	"onlyBuiltDependencies": [
+		"esbuild",
+		"sharp"
+	],
 	"pnpm": {
-		"onlyBuiltDependencies": [
-			"esbuild"
-		],
 		"overrides": {
 			"rollup": "^4.59.0",
 			"tar": "^7.5.11"
