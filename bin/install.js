@@ -64,20 +64,23 @@ function fail(message) {
 
 function printSummary(directusUrl, adminEmail, adminPassword, svelteRelDir) {
     process.stdout.write('\x1b[2J\x1b[H');
-    const w = 44;
-    const line = (content = '') => {
+    const w = 46;
+    const line = (content, align = 'left') => {
         const pad = w - 4 - stripAnsi(content).length;
-        const left = Math.floor(pad / 2);
-        const right = pad - left;
-        return `  |  ${' '.repeat(left)}${content}${' '.repeat(right)}  |`;
+        if (align === 'center') {
+            const left = Math.floor(pad / 2);
+            const right = pad - left;
+            return `  |  ${' '.repeat(left)}${content}${' '.repeat(right)}  |`;
+        }
+        return `  |  ${content}${' '.repeat(pad)}  |`;
     };
     const top = `  +${'-'.repeat(w)}+`;
     const bottom = `  +${'-'.repeat(w)}+`;
     const divider = `  |  ${'-'.repeat(w - 4)}  |`;
-    const empty = line();
+    const empty = line('');
 
     console.log(top);
-    console.log(line(`${colors.cyan}${colors.bold}  WEBBASE STARTKIT - READY${colors.reset}  ${colors.dim}v${APP_VERSION}${colors.reset}`));
+    console.log(line(`${colors.cyan}${colors.bold}  WEBBASE STARTKIT - READY${colors.reset}  ${colors.dim}v${APP_VERSION}${colors.reset}`, 'center'));
     console.log(divider);
     console.log(line(`${colors.yellow}  Directus Admin${colors.reset}`));
     console.log(line(`    URL:      ${directusUrl}`));
