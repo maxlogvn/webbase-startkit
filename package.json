@@ -10,18 +10,6 @@
         "description": "A ready-to-use CMS with block builder, visual editing, and integration with your favorite framework. ",
         "template": "./directus/template",
         "frontends": {
-            "nextjs": {
-                "name": "Next.js",
-                "path": "./nextjs"
-            },
-            "nuxt": {
-                "name": "Nuxt",
-                "path": "./nuxt"
-            },
-            "astro": {
-                "name": "Astro",
-                "path": "./astro"
-            },
             "svelte": {
                 "name": "Svelte",
                 "path": "./svelte"
