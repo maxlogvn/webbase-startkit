@@ -167,13 +167,14 @@ async function main() {
             '--yes',
             'directus-template-cli@latest',
             'apply',
+            '-p',
             `--directusUrl=${directusUrl}`,
             `--userEmail=${adminEmail}`,
             `--userPassword=${adminPassword}`,
             '--templateLocation=./template',
             '--templateType=local',
         ],
-        { cwd: backendDir, input: 'y\n' },
+        { cwd: backendDir },
     );
 
     log(6, TOTAL_STEPS, 'Tao static token cho frontend...');
