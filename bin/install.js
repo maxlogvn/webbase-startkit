@@ -95,10 +95,7 @@ async function waitForDirectus(url, timeoutMs = 5 * 60 * 1000) {
     while (Date.now() - start < timeoutMs) {
         try {
             const res = await fetch(`${url}/server/health`);
-            if (res.ok) {
-                const data = await res.json();
-                if (data.status === 'ok') return;
-            }
+            if (res.status !== 502) return;
         } catch (err) {
             lastError = err.message;
         }
