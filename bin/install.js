@@ -111,7 +111,6 @@ function checkRequiredTools() {
     const tools = [
         { cmd: 'git', args: ['--version'], hint: 'Install Git: https://git-scm.com' },
         { cmd: 'docker', args: ['--version'], hint: 'Install Docker: https://docs.docker.com/get-docker' },
-        { cmd: 'pnpm', args: ['--version'], hint: 'Install pnpm: npm install -g pnpm' },
         { cmd: 'node', args: ['--version'], hint: 'Install Node.js >= 18: https://nodejs.org' },
     ];
     for (const tool of tools) {
@@ -120,6 +119,19 @@ function checkRequiredTools() {
             fail(`"${tool.cmd}" not found. ${tool.hint}`);
         }
     }
+}
+
+function detectPackageManager() {
+    const candidates = [
+        { cmd: 'bun', install: ['install'], rebuild: null },
+        { cmd: 'pnpm', install: ['install', '--ignore-scripts'], rebuild: ['rebuild', 'esbuild', 'sharp'] },
+        { cmd: 'npm', install: ['install'], rebuild: ['rebuild', 'esbuild', 'sharp'] },
+    ];
+    for (const pm of candidates) {
+        const result = spawnSync(pm.cmd, ['--version'], { stdio: 'ignore', shell: true });
+        if (!result.error && result.status === 0) return pm;
+    }
+    fail('No package manager found. Install bun, pnpm, or npm.');
 }
 
 async function promptTargetDir() {
@@ -266,10 +278,13 @@ async function main() {
     svelteEnv = replaceEnvValue(svelteEnv, 'DIRECTUS_ADMIN_TOKEN', adminToken);
     writeFileSync(path.join(svelteDir, '.env'), svelteEnv);
 
-    log(8, TOTAL_STEPS, 'Installing frontend dependencies (pnpm install)...');
+    const pm = detectPackageManager();
+    log(8, TOTAL_STEPS, `Installing frontend dependencies (${pm.cmd} install)...`);
 
-    run('pnpm', ['install', '--ignore-scripts'], { cwd: svelteDir });
-    run('pnpm', ['rebuild', 'esbuild', 'sharp'], { cwd: svelteDir });
+    run(pm.cmd, pm.install, { cwd: svelteDir });
+    if (pm.rebuild) {
+        run(pm.cmd, pm.rebuild, { cwd: svelteDir });
+    }
 
     const svelteRelDir = isCurrentDir ? 'svelte' : path.join(targetDir, 'svelte');
 
