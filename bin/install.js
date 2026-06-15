@@ -27,8 +27,11 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import readline from 'node:readline/promises';
 import { stdin, stdout } from 'node:process';
+import { createRequire } from 'node:module';
 
 const REPO_URL = 'https://github.com/maxlogvn/webbase-startkit.git';
+const require = createRequire(import.meta.url);
+const { version: APP_VERSION } = require('./package.json');
 
 // User cố định trong template, dùng để gắn static token cho frontend
 const FRONTEND_BOT_USER_ID = '88a6e8cf-f0f8-41db-a3a2-8a9741c086cc'; // -> DIRECTUS_SERVER_TOKEN
@@ -36,14 +39,58 @@ const WEBMASTER_USER_ID = 'd56956bf-6ed0-465e-bb4a-ec9bde65c5f0'; // -> DIRECTUS
 
 const TOTAL_STEPS = 8;
 
+const colors = {
+    cyan: '\x1b[36m',
+    green: '\x1b[32m',
+    yellow: '\x1b[33m',
+    red: '\x1b[31m',
+    dim: '\x1b[2m',
+    bold: '\x1b[1m',
+    reset: '\x1b[0m',
+};
+
+function stripAnsi(str) {
+    return str.replace(/\x1b\[\d+m/g, '');
+}
+
 function log(step, total, message) {
-    console.log(`[${step}/${total}] ${message}`);
+    console.log(` ${colors.cyan}[${step}/${total}]${colors.reset} ${message}`);
 }
 
 function fail(message) {
-    console.error('');
-    console.error(`Loi: ${message}`);
+    console.error(`\n ${colors.red}ERROR:${colors.reset} ${message}\n`);
     process.exit(1);
+}
+
+function printSummary(directusUrl, adminEmail, adminPassword, svelteRelDir) {
+    console.clear();
+    const w = 40;
+    const hr = '\u2500'.repeat(w);
+    const line = (content = '') => {
+        const pad = w - stripAnsi(content).length;
+        const left = Math.floor(pad / 2);
+        const right = pad - left;
+        return `  ${colors.bold}\u2551${colors.reset}  ${' '.repeat(left)}${content}${' '.repeat(right)}  ${colors.bold}\u2551${colors.reset}`;
+    };
+    const top = `  ${colors.bold}\u2554${'\u2550'.repeat(w + 4)}\u2557${colors.reset}`;
+    const bottom = `  ${colors.bold}\u255a${'\u2550'.repeat(w + 4)}\u255d${colors.reset}`;
+    const divider = `  ${colors.bold}\u2551${colors.reset}  ${colors.dim}${hr}${colors.reset}  ${colors.bold}\u2551${colors.reset}`;
+    const empty = line();
+
+    console.log(top);
+    console.log(line(`${colors.cyan}${colors.bold}  WEBBASE STARTKIT - READY${colors.reset}  ${colors.dim}v${APP_VERSION}${colors.reset}`));
+    console.log(divider);
+    console.log(line(`${colors.yellow}  Directus Admin${colors.reset}`));
+    console.log(line(`    URL:      ${directusUrl}`));
+    console.log(line(`    Email:    ${adminEmail}`));
+    console.log(line(`    Password: ${adminPassword}`));
+    console.log(empty);
+    console.log(line(`${colors.green}  Frontend${colors.reset}`));
+    console.log(line(`    cd ${svelteRelDir}`));
+    console.log(line(`    pnpm run dev`));
+    console.log(line(`    Open ${colors.cyan}http://localhost:3000${colors.reset}`));
+    console.log(bottom);
+    console.log('');
 }
 
 function run(cmd, args, opts = {}) {
@@ -51,24 +98,24 @@ function run(cmd, args, opts = {}) {
     const stdio = input ? ['pipe', 'inherit', 'inherit'] : 'inherit';
     const result = spawnSync(cmd, args, { stdio, shell: true, ...rest, input });
     if (result.error) {
-        fail(`Khong the chay lenh "${cmd}": ${result.error.message}`);
+        fail(`Failed to run "${cmd}": ${result.error.message}`);
     }
     if (result.status !== 0) {
-        fail(`Lenh "${cmd} ${args.join(' ')}" ket thuc voi loi (exit code ${result.status}).`);
+        fail(`Command "${cmd} ${args.join(' ')}" exited with code ${result.status}.`);
     }
 }
 
 function checkRequiredTools() {
     const tools = [
-        { cmd: 'git', args: ['--version'], hint: 'Cai Git: https://git-scm.com' },
-        { cmd: 'docker', args: ['--version'], hint: 'Cai Docker: https://docs.docker.com/get-docker' },
-        { cmd: 'pnpm', args: ['--version'], hint: 'Cai pnpm: npm install -g pnpm' },
-        { cmd: 'node', args: ['--version'], hint: 'Cai Node.js >= 18: https://nodejs.org' },
+        { cmd: 'git', args: ['--version'], hint: 'Install Git: https://git-scm.com' },
+        { cmd: 'docker', args: ['--version'], hint: 'Install Docker: https://docs.docker.com/get-docker' },
+        { cmd: 'pnpm', args: ['--version'], hint: 'Install pnpm: npm install -g pnpm' },
+        { cmd: 'node', args: ['--version'], hint: 'Install Node.js >= 18: https://nodejs.org' },
     ];
     for (const tool of tools) {
         const result = spawnSync(tool.cmd, tool.args, { stdio: 'ignore', shell: true });
         if (result.error || result.status !== 0) {
-            fail(`Khong tim thay "${tool.cmd}" tren may. ${tool.hint}`);
+            fail(`"${tool.cmd}" not found. ${tool.hint}`);
         }
     }
 }
@@ -76,7 +123,7 @@ function checkRequiredTools() {
 async function promptTargetDir() {
     const rl = readline.createInterface({ input: stdin, output: stdout });
     const answer = await rl.question(
-        'Nhap thu muc cai dat (Enter de dung thu muc hien tai "."): ',
+        '  Install directory (Enter for current "."): ',
     );
     rl.close();
     const target = answer.trim() || '.';
@@ -102,8 +149,8 @@ async function waitForDirectus(url, timeoutMs = 5 * 60 * 1000) {
         await new Promise((resolve) => setTimeout(resolve, 3000));
     }
     fail(
-        `Directus khong san sang sau ${Math.round(timeoutMs / 1000)}s. ` +
-        `Kiem tra log container bang: docker compose logs directus. (${lastError})`,
+        `Directus not ready after ${Math.round(timeoutMs / 1000)}s. ` +
+        `Check container logs: docker compose logs directus. (${lastError})`,
     );
 }
 
@@ -128,15 +175,14 @@ async function main() {
 
     if (isCurrentDir) {
         if (!isDirEmpty('.')) {
-            fail('Thu muc hien tai khong trong. Hay chay script trong mot thu muc trong, hoac nhap ten thu muc moi.');
+            fail('Current directory is not empty. Run in an empty directory or specify a new folder name.');
         }
     } else if (existsSync(targetDir) && !isDirEmpty(targetDir)) {
-        fail(`Thu muc "${targetDir}" da ton tai va khong trong. Chon ten khac hoac xoa thu muc cu.`);
+        fail(`Directory "${targetDir}" already exists and is not empty. Choose another name or delete it.`);
     }
 
-    log(1, TOTAL_STEPS, `Clone repo vao "${targetDir === '.' ? 'thu muc hien tai' : targetDir}"...`);
+    log(1, TOTAL_STEPS, `Cloning repository into "${targetDir}"...`);
     if (isCurrentDir) {
-        // git clone vao thu muc hien tai (phai rong)
         run('git', ['clone', '--depth', '1', REPO_URL, '.']);
     } else {
         run('git', ['clone', '--depth', '1', REPO_URL, targetDir]);
@@ -146,7 +192,7 @@ async function main() {
     const backendDir = path.join(root, 'backend');
     const svelteDir = path.join(root, 'svelte');
 
-    log(2, TOTAL_STEPS, 'Tao file backend/.env...');
+    log(2, TOTAL_STEPS, 'Creating backend environment file...');
     copyFileSync(path.join(backendDir, '.env.example'), path.join(backendDir, '.env'));
     const backendEnv = readFileSync(path.join(backendDir, '.env'), 'utf-8');
     const adminEmail = readEnvValue(backendEnv, 'ADMIN_EMAIL', 'admin@example.com');
@@ -154,13 +200,13 @@ async function main() {
     const directusPort = readEnvValue(backendEnv, 'DIRECTUS_PORT', '8055');
     const directusUrl = `http://localhost:${directusPort}`;
 
-    log(3, TOTAL_STEPS, 'Khoi dong Directus bang Docker Compose (lan dau se mat vai phut de pull image)...');
+    log(3, TOTAL_STEPS, 'Starting Directus via Docker Compose (first run pulls images)...');
     run('docker', ['compose', '-f', 'docker-compose.yaml', 'up', '-d'], { cwd: backendDir });
 
-    log(4, TOTAL_STEPS, `Dang cho Directus san sang tai ${directusUrl}...`);
+    log(4, TOTAL_STEPS, `Waiting for Directus at ${directusUrl}...`);
     await waitForDirectus(directusUrl);
 
-    log(5, TOTAL_STEPS, 'Ap dung schema va noi dung mau vao Directus (directus-template-cli)...');
+    log(5, TOTAL_STEPS, 'Applying template schema and content via directus-template-cli...');
     run(
         'npx',
         [
@@ -177,14 +223,14 @@ async function main() {
         { cwd: backendDir },
     );
 
-    log(6, TOTAL_STEPS, 'Tao static token cho frontend...');
+    log(6, TOTAL_STEPS, 'Generating static tokens for frontend...');
     const loginRes = await fetch(`${directusUrl}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: adminEmail, password: adminPassword }),
     });
     if (!loginRes.ok) {
-        fail('Dang nhap Directus thay bai, khong the tao static token cho frontend.');
+        fail('Directus login failed. Could not generate static tokens.');
     }
     const loginData = await loginRes.json();
     const accessToken = loginData.data.access_token;
@@ -206,11 +252,11 @@ async function main() {
             body: JSON.stringify({ token }),
         });
         if (!res.ok) {
-            fail(`Khong tao duoc static token cho user ${userId}.`);
+            fail(`Failed to set static token for user ${userId}.`);
         }
     }
 
-    log(7, TOTAL_STEPS, 'Tao file svelte/.env...');
+    log(7, TOTAL_STEPS, 'Creating Svelte environment file...');
     let svelteEnv = readFileSync(path.join(svelteDir, '.env.example'), 'utf-8');
     svelteEnv = replaceEnvValue(svelteEnv, 'PUBLIC_DIRECTUS_URL', directusUrl);
     svelteEnv = replaceEnvValue(svelteEnv, 'PUBLIC_SITE_URL', 'http://localhost:3000');
@@ -218,26 +264,14 @@ async function main() {
     svelteEnv = replaceEnvValue(svelteEnv, 'DIRECTUS_ADMIN_TOKEN', adminToken);
     writeFileSync(path.join(svelteDir, '.env'), svelteEnv);
 
-    log(8, TOTAL_STEPS, 'Cai dat dependencies cho frontend (pnpm install)...');
+    log(8, TOTAL_STEPS, 'Installing frontend dependencies (pnpm install)...');
 
     run('pnpm', ['install', '--ignore-scripts'], { cwd: svelteDir });
     run('pnpm', ['rebuild', 'esbuild', 'sharp'], { cwd: svelteDir });
 
     const svelteRelDir = isCurrentDir ? 'svelte' : path.join(targetDir, 'svelte');
 
-    console.log('');
-    console.log('Hoan tat.');
-    console.log('');
-    console.log('Thong tin admin Directus:');
-    console.log(`  URL:      ${directusUrl}`);
-    console.log(`  Email:    ${adminEmail}`);
-    console.log(`  Password: ${adminPassword}`);
-    console.log('');
-    console.log('De chay frontend:');
-    console.log(`  cd ${svelteRelDir}`);
-    console.log('  pnpm run dev');
-    console.log('');
-    console.log('Sau khi chay, mo http://localhost:3000');
+    printSummary(directusUrl, adminEmail, adminPassword, svelteRelDir);
 }
 
 main().catch((err) => fail(err.message));
