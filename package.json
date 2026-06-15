@@ -1,32 +1,39 @@
 {
-    "name": "@maxlogvn/webbase-startkit",
-    "version": "1.1.3",
-    "type": "module",
-"bin": {
+  "name": "@maxlogvn/webbase-startkit",
+  "version": "1.1.3",
+  "type": "module",
+  "bin": {
     "create-webbase-startkit": "./bin/install.js"
-},
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/maxlogvn/webbase-startkit.git"
-    },
-    "engines": { "node": ">=18" },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "directus:template": {
-        "name": "CMS",
-        "description": "A ready-to-use CMS with block builder, visual editing, and integration with your favorite framework. ",
-        "template": "./directus/template",
-        "frontends": {
-            "svelte": {
-                "name": "Svelte",
-                "path": "./svelte"
-            }
-        }
-    },
-    "keywords": [],
-    "author": "N.TheAnh"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxlogvn/webbase-startkit.git"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "docker compose --profile dev up -d",
+    "dev:frontend": "cd svelte && pnpm run dev",
+    "prod": "docker compose --profile prod up -d",
+    "prod:build": "docker compose build frontend",
+    "prod:logs": "docker compose --profile prod logs -f",
+    "stop": "docker compose down"
+  },
+  "directus:template": {
+    "name": "CMS",
+    "description": "A ready-to-use CMS with block builder, visual editing, and integration with your favorite framework. ",
+    "template": "./directus/template",
+    "frontends": {
+      "svelte": {
+        "name": "Svelte",
+        "path": "./svelte"
+      }
+    }
+  },
+  "keywords": [],
+  "author": "N.TheAnh"
 }
