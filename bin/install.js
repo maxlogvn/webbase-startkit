@@ -220,19 +220,7 @@ async function main() {
 
     log(8, TOTAL_STEPS, 'Cai dat dependencies cho frontend (pnpm install)...');
 
-// Cho phep esbuild va sharp chay build script khi cai dat
-    const npmrcPath = path.join(svelteDir, '.npmrc');
-    const npmrcContent = existsSync(npmrcPath)
-        ? readFileSync(npmrcPath, 'utf-8')
-        : '';
-    if (!npmrcContent.includes('allow-build')) {
-        writeFileSync(
-            npmrcPath,
-            npmrcContent + '\nallow-build=esbuild,sharp\n',
-        );
-    }
-
-    run('pnpm', ['install'], { cwd: svelteDir });
+    run('pnpm', ['install', '--allow-build=esbuild,sharp'], { cwd: svelteDir });
 
     const svelteRelDir = isCurrentDir ? 'svelte' : path.join(targetDir, 'svelte');
 
