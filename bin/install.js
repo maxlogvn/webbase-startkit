@@ -219,7 +219,7 @@ async function main() {
     writeFileSync(path.join(svelteDir, '.env'), svelteEnv);
 
     log(8, TOTAL_STEPS, 'Cai dat dependencies cho frontend (pnpm install)...');
-    writeFileSync(path.join(svelteDir, '.npmrc'), 'onlyBuiltDependencies[]=esbuild\nonlyBuiltDependencies[]=sharp\n');
+    run('pnpm', ['approve-builds', '--all'], { cwd: svelteDir });
     run('pnpm', ['install'], { cwd: svelteDir });
 
     const svelteRelDir = isCurrentDir ? 'svelte' : path.join(targetDir, 'svelte');
