@@ -220,7 +220,8 @@ async function main() {
 
     log(8, TOTAL_STEPS, 'Cai dat dependencies cho frontend (pnpm install)...');
 
-    run('pnpm', ['install', '--allow-build=esbuild,sharp'], { cwd: svelteDir });
+    run('pnpm', ['approve-builds', '--all'], { cwd: svelteDir });
+    run('pnpm', ['install'], { cwd: svelteDir });
 
     const svelteRelDir = isCurrentDir ? 'svelte' : path.join(targetDir, 'svelte');
 
