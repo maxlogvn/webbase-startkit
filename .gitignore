@@ -1,5 +1,8 @@
 # Directus Specific
 backend/data/
+
+# Test output
+test/
 backend/uploads/
 backend/extensions/.registry
 !backend/**/.gitkeep
