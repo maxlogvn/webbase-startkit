@@ -1,76 +1,103 @@
-# webbaseStartkit --template svelte
+# webbase-startkit --template svelte
 
-Starter kit xây dựng trang web full-stack  quản lý nội dung trong backend (soạn trang kéo thả, tạo form động, viết blog), frontend tự động render ra website tương ứng.
+Starter kit xay dung trang web full-stack voi Directus CMS + SvelteKit. Soan trang keo tha, tao form dong, viet blog -- frontend tu dong render ra website tuong ung.
 
-Dự án phù hợp cho: landing page, blog, trang marketing công ty, trang bán sản phẩm -- bất kỳ loại site nào cần CMS nhưng muốn frontend nhanh, nhẹ, và linh hoạt.
+Phu hop cho: landing page, blog, trang marketing, trang ban san pham -- bat ky site nao can CMS nhung muon frontend nhanh, nhe, linh hoat.
 
-**Tại sao Directus + SvelteKit:** Directus cung cấp CMS mạnh mẽ (REST API, đồng bộ realtime, phân quyền). SvelteKit cho tốc độ tải nhanh (SSR mặc định), bundle nhỏ, và trải nghiệm dev mượt mà. Kết hợp cả hai bạn có một site vừa dễ quản lý nội dung vừa nhanh cho người dùng cuối.
+## Bat dau nhanh (CLI)
 
-## Bắt đầu nhanh
+Chi can Git + Docker:
 
-### Yêu cầu
+```bash
+npx github:maxlogvn/webbase-startkit
+```
 
-| Công cụ | Phiên bản tối thiểu |
+CLI se tu dong:
+1. Clone repo vao thu muc ban chon
+2. Tao file moi truong backend
+3. Chay Directus + Postgres + Redis bang Docker
+4. Doi Directus san sang
+5. Ap dung schema + noi dung mau
+6. Tao token tinh cho frontend
+7. Tao file moi truong SvelteKit
+8. Cai dat frontend dependencies
+
+## Yeu cau
+
+| Cong cu | Toi thieu |
 |---|---|
 | Git | -- |
 | Docker + Docker Compose | Docker 24+ |
 | Node.js | 18+ |
-| pnpm | 8+ |
+| bun / pnpm / npm | 1 trong 3 (tu dong phat hien) |
 
-### 1. Clone dự án
-
-```bash
-git clone https://github.com/maxlogvn/webbase-startkit.git
-cd webbase-startkit
-```
-
-### 2. Khởi động CMS backend
-
-Sao chép file env mẫu và chạy Docker:
+## Scripts (root)
 
 ```bash
-cd backend
-cp .env.example .env
-docker compose up -d
+pnpm dev            # Backend Docker + Frontend dev server (HMR)
+pnpm prod           # Backend + Frontend container (production)
+pnpm prod:build     # Build frontend Docker image
+pnpm prod:logs      # Xem log production
+pnpm stop           # Tat tat ca container
 ```
 
-Sau khi container chạy, truy cập **http://localhost:8055** và tạo tài khoản admin.  
-Vào **User Directory -> chọn user admin -> Token -> nhập token -> Save** (cần token cho bước sau).
+## Che do phat trien
 
-### 3. Áp dụng cấu trúc CMS
-
-Lệnh này sẽ tạo collection, field, và nội dung mẫu trong Directus:
+1 Terminal:
 
 ```bash
-npx directus-template-cli@latest apply
+pnpm dev
 ```
 
-Khi được hỏi, chọn:
-- **Source type:** `Local directory`
-- **Đường dẫn:** `./template`
-- **URL Directus:** `http://localhost:8055`
-- **Token:** dán token admin vừa tạo ở bước 2
+Lenh nay chay:
+- Backend (Directus + Postgres + Redis) trong Docker
+- Frontend SvelteKit o che do dev co HMR
 
-### 4. Chạy frontend (SvelteKit)
+Truy cap:
+- Frontend: http://localhost:3000
+- Directus Admin: http://localhost:8055
+
+## Che do production (Docker)
 
 ```bash
-cd svelte
-cp .env.example .env
-pnpm install
-pnpm run dev
+# Build frontend image
+pnpm prod:build
+
+# Chay ca stack
+pnpm prod
 ```
 
-Mở **http://localhost:3000** -- trang web đã sẵn sàng.
+Frontend chay trong container, su dung `@sveltejs/adapter-node`.
 
-## Kiến trúc
+### Trien khai len VPS
+
+1. Cai Docker + Node.js + pnpm tren VPS
+2. Clone repo:
+   ```bash
+   git clone https://github.com/maxlogvn/webbase-startkit.git /opt/webbase
+   cd /opt/webbase
+   ```
+3. Tao file `.env` (xem `.env.example`), chinh sua cho production
+4. Build va chay:
+   ```bash
+   pnpm prod:build
+   pnpm prod
+   ```
+5. Cai Nginx lam reverse proxy + SSL (Certbot)
+
+## Kien truc
 
 ```
-webbase-startkit (template SvelteKit)/
-├── backend/           # Docker Compose cho Directus CMS
-│   ├── docker-compose.yml
-│   ├── template/      # Cấu trúc dữ liệu và nội dung mẫu
-│   └── snapshots/     # Schema snapshots
-├── svelte/            # Frontend SvelteKit
+webbase-startkit/
+├── docker-compose.yaml     # Docker Compose profiles (dev/prod)
+├── Dockerfile              # Multi-stage build cho SvelteKit
+├── .env.example            # Bien moi truong cho Docker Compose
+├── bin/install.js          # CLI install script
+├── backend/
+│   ├── .env.example        # Bien moi truong backend
+│   ├── template/           # Cau truc du lieu va noi dung mau
+│   └── extensions/         # Directus extensions
+├── svelte/                 # Frontend SvelteKit
 │   └── src/
 │       ├── lib/
 │       │   ├── components/   # Svelte components
@@ -80,51 +107,46 @@ webbase-startkit (template SvelteKit)/
 │       │   │   ├── shared/   # DirectusImage
 │       │   │   └── ui/       # shadcn-svelte + custom UI components
 │       │   ├── directus/     # Directus SDK client, fetchers, utils
-│       │   ├── types/        # TypeScript types (tự động sinh)
-│       │   ├── utils.ts      # Hàm tiện ích (cn, debounce)
+│       │   ├── types/        # TypeScript types (tu dong sinh)
+│       │   ├── utils.ts      # Ham tien ich (cn, debounce)
 │       │   └── zodSchemaBuilder.ts  # Dynamic Zod schema builder
 │       └── routes/           # SvelteKit routes
-│           ├── [...permalink]/   # Trang CMS động
+│           ├── [...permalink]/   # Trang CMS dong
 │           ├── blog/             # Blog system
 │           └── api/              # API endpoints (search, form submit)
-└── docs/              # Obsidian vault -- tài liệu dự án
-    ├── designs/       # Thiết kế tính năng
-    ├── specs/         # Đặc tả chi tiết
-    ├── plans/         # Kế hoạch thực hiện
-    ├── overviews/     # Báo cáo kết quả
-    ├── products/      # Tài liệu tính năng hoàn chỉnh
-    ├── ROADMAP.md     # Theo dõi tiến độ
-    ├── CONVENTIONS.md # Quy ước code
-    ├── STACK.md       # Công nghệ sử dụng
-    └── WORKFLOW.md    # Quy trình phát triển
+└── docs/                 # Tai lieu du an (mkdocs)
+    ├── products/         # Tai lieu tinh nang
+    ├── ROADMAP.md
+    └── CONVENTIONS.md
 ```
 
+## Bien moi truong
 
+### Backend (`backend/.env`)
 
-## Biến môi trường (`svelte/.env`)
+Xem `backend/.env.example` cho danh sach day du.
 
-| Biến | Mô tả |
+### Frontend (`svelte/.env`)
+
+| Bien | Mo ta |
 |---|---|
 | `PUBLIC_DIRECTUS_URL` | URL Directus instance (VD: `http://localhost:8055`) |
-| `PUBLIC_SITE_URL` | URL công khai của site (SEO/sitemap) |
-| `DIRECTUS_SERVER_TOKEN` | Token Webmaster -- dùng server-side cho draft/preview |
-| `DIRECTUS_ADMIN_TOKEN` | Token admin -- chỉ dùng sinh types, không dùng runtime |
+| `PUBLIC_SITE_URL` | URL cong khai cua site (SEO/sitemap) |
+| `DIRECTUS_SERVER_TOKEN` | Token Webmaster -- server-side cho draft/preview |
+| `DIRECTUS_ADMIN_TOKEN` | Token admin -- chi dung sinh types, khong runtime |
 
-## Lệnh thường dùng
+## Lenh SvelteKit
 
 ```bash
-pnpm run dev          # Dev server port 3000
-pnpm run build        # Build production (adapter-vercel)
-pnpm run check        # Type checking (svelte-check)
-pnpm run lint         # ESLint + Prettier
-pnpm run format       # Format code
-pnpm run generate:types  # Sinh TypeScript types từ Directus schema
+pnpm run dev           # Dev server port 3000
+pnpm run build         # Build production
+pnpm run check         # Type checking (svelte-check)
+pnpm run lint          # ESLint + Prettier
+pnpm run format        # Format code
+pnpm run generate:types  # Sinh TypeScript types tu Directus schema
 ```
 
-## Tài liệu
+## Tai lieu
 
-- [`docs/CONVENTIONS.md`](docs/CONVENTIONS.md) -- quy ước code
-- [`docs/STACK.md`](docs/STACK.md) -- công nghệ sử dụng
-- [`docs/ROADMAP.md`](docs/ROADMAP.md) -- theo dõi tiến độ
-- [`docs/WORKFLOW.md`](docs/WORKFLOW.md) -- quy trình phát triển
-- [`docs/Welcome.md`](docs/Welcome.md) -- tổng quan tài liệu
+- [`docs/CONVENTIONS.md`](docs/CONVENTIONS.md) -- quy uoc code
+- [`docs/ROADMAP.md`](docs/ROADMAP.md) -- theo doi tien do
