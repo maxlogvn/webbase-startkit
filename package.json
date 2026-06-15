@@ -16,8 +16,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "dev": "docker compose --profile dev up -d",
-    "dev:frontend": "cd svelte && pnpm run dev",
+    "dev": "docker compose --profile dev up -d && cd svelte && pnpm run dev",
     "prod": "docker compose --profile prod up -d",
     "prod:build": "docker compose build frontend",
     "prod:logs": "docker compose --profile prod logs -f",
