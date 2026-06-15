@@ -49,7 +49,7 @@ function fail(message) {
 function run(cmd, args, opts = {}) {
     const { input, ...rest } = opts;
     const stdio = input ? ['pipe', 'inherit', 'inherit'] : 'inherit';
-    const result = spawnSync(cmd, args, { stdio, ...rest, input });
+    const result = spawnSync(cmd, args, { stdio, shell: true, ...rest, input });
     if (result.error) {
         fail(`Khong the chay lenh "${cmd}": ${result.error.message}`);
     }
