@@ -215,7 +215,7 @@ async function main() {
     const directusUrl = `http://localhost:${directusPort}`;
 
     log(3, TOTAL_STEPS, 'Starting Directus via Docker Compose (first run pulls images)...');
-    run('docker', ['compose', '--profile', 'dev', 'up', '-d'], { cwd: root });
+    run('docker', ['compose', '--env-file', './backend/.env', '--profile', 'dev', 'up', '-d'], { cwd: root });
 
     log(4, TOTAL_STEPS, `Waiting for Directus at ${directusUrl}...`);
     await waitForDirectus(directusUrl);
