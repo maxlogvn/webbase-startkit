@@ -1,6 +1,6 @@
 {
   "id": 1,
-  "project_name": "CMS",
+  "project_name": "AdminPanel",
   "project_url": null,
   "project_color": "#6644FF",
   "project_logo": null,
@@ -31,7 +31,7 @@
       "transforms": []
     }
   ],
-  "custom_css": ".v-divider.inlineTitle.large.add-margin-top {\n    margin-top: 0 !important;\n}\n\nbody {\n    font-size: 16px !important;\n}\n\n.drawer-item-content {\n   --theme--form--row-gap: 16px;\n   --theme--form--column-gap: 32px;\n}\n\n#overlay-outlet {\n   --theme--form--row-gap: 16px;\n   --theme--form--column-gap: 32px;\n}\n    ",
+  "custom_css": "@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');\n\nbody, .v-application, .v-application * {\n  font-family: 'Roboto', sans-serif;\n}\n\n\n.v-divider.inlineTitle.large.add-margin-top {\n    margin-top: 0 !important;\n}\n\nbody {\n    font-size: 16px !important;\n}\n\n.drawer-item-content {\n   --theme--form--row-gap: 16px;\n   --theme--form--column-gap: 32px;\n}\n\n#overlay-outlet {\n   --theme--form--row-gap: 16px;\n   --theme--form--column-gap: 32px;\n}\n    ",
   "storage_default_folder": "ece7bab9-5433-4a63-b9f7-bde8b517d6d9",
   "basemaps": null,
   "mapbox_key": null,
@@ -62,14 +62,6 @@
       "enabled": true
     },
     {
-      "type": "link",
-      "id": "docs",
-      "name": "Directus Docs",
-      "url": "https://docs.directus.io",
-      "icon": "help_outline",
-      "enabled": true
-    },
-    {
       "type": "module",
       "id": "settings",
       "enabled": true,
@@ -77,16 +69,16 @@
     },
     {
       "type": "module",
-      "id": "global-search",
-      "enabled": true
+      "id": "deployments",
+      "enabled": false
     }
   ],
   "project_descriptor": null,
-  "default_language": "en-US",
+  "default_language": "vi-VN",
   "custom_aspect_ratios": null,
   "public_favicon": null,
-  "default_appearance": "auto",
-  "default_theme_light": "Directus Default",
+  "default_appearance": "dark",
+  "default_theme_light": "Directus Minimal",
   "theme_light_overrides": {
     "form": {
       "rowGap": "16px",
@@ -123,8 +115,8 @@
     },
     "fonts": {
       "display": {
-        "fontFamily": "\"Poppins\", system-ui",
-        "fontWeight": "600"
+        "fontFamily": "\"Roboto\", system-ui",
+        "fontWeight": "{}"
       },
       "sans": {
         "fontFamily": "\"DM Sans\", system-ui"
@@ -190,7 +182,7 @@
     },
     "fonts": {
       "display": {
-        "fontFamily": "\"Poppins\", system-ui"
+        "fontFamily": "\"Roboto\", system-ui"
       },
       "sans": {
         "fontFamily": "\"DM Sans\", system-ui"
@@ -225,9 +217,92 @@
   "public_registration_verify_email": true,
   "public_registration_role": null,
   "public_registration_email_filter": null,
+  "visual_editor_urls": [
+    {
+      "url": "http://localhost:3000?visual-editing=true"
+    },
+    {
+      "url": "http://localhost:3000/blog?visual-editing=true"
+    },
+    {
+      "url": "http://localhost:3000?visual-editing=true"
+    },
+    {
+      "url": "http://localhost:3000/blog?visual-editing=true"
+    }
+  ],
+  "project_id": "019ecb36-77ee-74fd-a41d-8f26999a7f0b",
+  "mcp_enabled": false,
+  "mcp_allow_deletes": false,
+  "mcp_prompts_collection": "ai_prompts",
+  "mcp_system_prompt_enabled": true,
+  "mcp_system_prompt": null,
+  "project_owner": "damodvn@gmail.com",
+  "project_usage": "personal",
+  "org_name": null,
+  "product_updates": true,
+  "project_status": null,
+  "ai_openai_api_key": null,
+  "ai_anthropic_api_key": null,
+  "ai_system_prompt": null,
+  "ai_google_api_key": null,
+  "ai_openai_compatible_api_key": null,
+  "ai_openai_compatible_base_url": null,
+  "ai_openai_compatible_name": null,
+  "ai_openai_compatible_models": null,
+  "ai_openai_compatible_headers": null,
+  "ai_openai_allowed_models": [
+    "gpt-5-nano",
+    "gpt-5-mini",
+    "gpt-5"
+  ],
+  "ai_anthropic_allowed_models": [
+    "claude-haiku-4-5",
+    "claude-sonnet-4-5"
+  ],
+  "ai_google_allowed_models": [
+    "gemini-3-pro-preview",
+    "gemini-3-flash-preview",
+    "gemini-2.5-pro",
+    "gemini-2.5-flash"
+  ],
+  "collaborative_editing_enabled": false,
   "command_palette_settings": {
     "searchMode": "as_you_type",
     "collections": [
+      {
+        "collection": "pages",
+        "displayTemplate": "{{title}}",
+        "descriptionField": "permalink",
+        "fields": [
+          "title",
+          "permalink"
+        ],
+        "limit": 10,
+        "availableGlobally": false
+      },
+      {
+        "collection": "posts",
+        "displayTemplate": "{{title}}",
+        "descriptionField": "description",
+        "fields": [
+          "title",
+          "description"
+        ],
+        "limit": 10,
+        "availableGlobally": true
+      },
+      {
+        "collection": "forms",
+        "displayTemplate": "{{title}}",
+        "descriptionField": null,
+        "fields": [
+          "values.field_name",
+          "title"
+        ],
+        "limit": 10,
+        "availableGlobally": false
+      },
       {
         "collection": "pages",
         "displayTemplate": "{{title}}",
@@ -264,19 +339,5 @@
     ],
     "triggerRate": 250,
     "commandPaletteEnabled": true
-  },
-  "visual_editor_urls": [
-    {
-      "url": "http://localhost:3000?visual-editing=true"
-    },
-    {
-      "url": "http://localhost:3000/blog?visual-editing=true"
-    }
-  ],
-  "accepted_terms": true,
-  "mcp_enabled": true,
-  "mcp_allow_deletes": false,
-  "mcp_prompts_collection": "ai_prompts",
-  "mcp_system_prompt_enabled": true,
-  "mcp_system_prompt": null
+  }
 }

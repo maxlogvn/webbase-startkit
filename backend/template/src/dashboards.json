@@ -4,9 +4,17 @@
     "name": "Form Submissions",
     "icon": "forms_apps_script",
     "note": "Quick dashboard to tracking performance of your forms",
-    "date_created": "2024-09-12T20:44:53.881Z",
-    "user_created": "d56956bf-6ed0-465e-bb4a-ec9bde65c5f0",
+    "date_created": "2026-06-15T12:17:56.768Z",
+    "user_created": "cd581cd6-6b8e-4313-b61a-7ec9aa6ac918",
     "color": null,
-    "panels": null
+    "panels": [
+      "01914ef3-5512-4c89-9709-904f9b47ddeb",
+      "19b3d901-aa7c-4a04-bc9a-800e43510e69",
+      "3861ceb1-11ff-4e9d-a985-60d862d90aa3",
+      "53575d2f-e3a0-4532-a176-d047cbbc11a7",
+      "8cb3b63c-d8e3-4078-9160-096e32b9fcb0",
+      "b770ea7e-1b49-441f-ba6f-2d4b90e08070",
+      "dc01026c-1728-4e71-ab45-7cea9fc4751c"
+    ]
   }
 ]

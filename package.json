@@ -20,7 +20,8 @@
     "prod": "docker compose --profile prod up -d",
     "prod:build": "docker compose build frontend",
     "prod:logs": "docker compose --profile prod logs -f",
-    "stop": "docker compose down"
+    "stop": "docker compose down",
+    "export:template": "node scripts/export-template.mjs"
   },
   "directus:template": {
     "name": "CMS",

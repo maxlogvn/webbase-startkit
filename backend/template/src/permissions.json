@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "collection": "pages",
     "action": "read",
     "permissions": {
@@ -24,6 +25,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 2,
     "collection": "posts",
     "action": "read",
     "permissions": {
@@ -48,6 +50,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 3,
     "collection": "block_hero",
     "action": "read",
     "permissions": {},
@@ -59,6 +62,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 4,
     "collection": "block_richtext",
     "action": "read",
     "permissions": {},
@@ -70,6 +74,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 5,
     "collection": "globals",
     "action": "read",
     "permissions": {},
@@ -109,6 +114,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 6,
     "collection": "page_blocks",
     "action": "read",
     "permissions": {
@@ -130,6 +136,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 7,
     "collection": "forms",
     "action": "read",
     "permissions": {
@@ -159,6 +166,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 8,
     "collection": "navigation",
     "action": "read",
     "permissions": {
@@ -178,6 +186,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 9,
     "collection": "navigation_items",
     "action": "read",
     "permissions": {
@@ -212,6 +221,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 10,
     "collection": "block_gallery",
     "action": "read",
     "permissions": {},
@@ -223,6 +233,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 11,
     "collection": "blog_settings",
     "action": "read",
     "permissions": {},
@@ -234,6 +245,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 12,
     "collection": "chat_config",
     "action": "read",
     "permissions": {},
@@ -245,6 +257,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 13,
     "collection": "block_button_group",
     "action": "read",
     "permissions": {},
@@ -256,6 +269,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 14,
     "collection": "block_button",
     "action": "read",
     "permissions": {},
@@ -267,6 +281,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 15,
     "collection": "block_button",
     "action": "update",
     "permissions": {},
@@ -278,6 +293,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 16,
     "collection": "block_button",
     "action": "delete",
     "permissions": {},
@@ -289,6 +305,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 17,
     "collection": "block_button",
     "action": "create",
     "permissions": {},
@@ -300,6 +317,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 18,
     "collection": "block_button",
     "action": "read",
     "permissions": {},
@@ -311,6 +329,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 19,
     "collection": "block_button_group",
     "action": "create",
     "permissions": {},
@@ -322,6 +341,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 20,
     "collection": "block_button_group",
     "action": "read",
     "permissions": {},
@@ -333,6 +353,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 21,
     "collection": "block_button_group",
     "action": "update",
     "permissions": {},
@@ -344,6 +365,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 22,
     "collection": "block_button_group",
     "action": "delete",
     "permissions": {},
@@ -355,6 +377,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 23,
     "collection": "block_gallery",
     "action": "create",
     "permissions": {},
@@ -366,6 +389,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 24,
     "collection": "block_gallery",
     "action": "read",
     "permissions": {},
@@ -377,6 +401,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 25,
     "collection": "block_gallery",
     "action": "update",
     "permissions": {},
@@ -388,6 +413,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 26,
     "collection": "block_gallery",
     "action": "delete",
     "permissions": {},
@@ -399,6 +425,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 27,
     "collection": "block_hero",
     "action": "delete",
     "permissions": {},
@@ -410,6 +437,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 28,
     "collection": "block_hero",
     "action": "update",
     "permissions": {},
@@ -421,6 +449,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 29,
     "collection": "block_hero",
     "action": "read",
     "permissions": {},
@@ -432,6 +461,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 30,
     "collection": "block_hero",
     "action": "create",
     "permissions": {},
@@ -443,6 +473,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 31,
     "collection": "block_richtext",
     "action": "create",
     "permissions": {},
@@ -454,6 +485,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 32,
     "collection": "block_richtext",
     "action": "read",
     "permissions": {},
@@ -465,6 +497,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 33,
     "collection": "block_richtext",
     "action": "update",
     "permissions": {},
@@ -476,6 +509,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 34,
     "collection": "block_richtext",
     "action": "delete",
     "permissions": {},
@@ -487,6 +521,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 35,
     "collection": "blog_settings",
     "action": "delete",
     "permissions": {},
@@ -498,6 +533,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 36,
     "collection": "blog_settings",
     "action": "create",
     "permissions": {},
@@ -509,6 +545,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 37,
     "collection": "blog_settings",
     "action": "update",
     "permissions": {},
@@ -520,6 +557,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 38,
     "collection": "blog_settings",
     "action": "read",
     "permissions": {},
@@ -531,6 +569,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 39,
     "collection": "forms",
     "action": "update",
     "permissions": {},
@@ -542,6 +581,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 40,
     "collection": "forms",
     "action": "read",
     "permissions": {},
@@ -553,6 +593,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 41,
     "collection": "forms",
     "action": "create",
     "permissions": {},
@@ -564,6 +605,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 42,
     "collection": "forms",
     "action": "delete",
     "permissions": {},
@@ -575,6 +617,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 43,
     "collection": "globals",
     "action": "create",
     "permissions": {},
@@ -598,6 +641,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 44,
     "collection": "globals",
     "action": "read",
     "permissions": {},
@@ -621,6 +665,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 45,
     "collection": "globals",
     "action": "update",
     "permissions": {},
@@ -644,6 +689,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 46,
     "collection": "navigation",
     "action": "create",
     "permissions": {},
@@ -655,6 +701,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 47,
     "collection": "navigation",
     "action": "read",
     "permissions": {},
@@ -666,6 +713,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 48,
     "collection": "navigation",
     "action": "update",
     "permissions": {},
@@ -677,6 +725,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 49,
     "collection": "navigation",
     "action": "delete",
     "permissions": {},
@@ -688,6 +737,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 50,
     "collection": "navigation_items",
     "action": "create",
     "permissions": {},
@@ -699,6 +749,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 51,
     "collection": "navigation_items",
     "action": "read",
     "permissions": {},
@@ -710,6 +761,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 52,
     "collection": "navigation_items",
     "action": "delete",
     "permissions": {},
@@ -721,6 +773,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 53,
     "collection": "navigation_items",
     "action": "update",
     "permissions": {},
@@ -732,6 +785,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 54,
     "collection": "page_blocks",
     "action": "create",
     "permissions": {},
@@ -743,6 +797,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 55,
     "collection": "page_blocks",
     "action": "read",
     "permissions": {},
@@ -754,6 +809,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 56,
     "collection": "page_blocks",
     "action": "update",
     "permissions": {},
@@ -765,6 +821,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 57,
     "collection": "page_blocks",
     "action": "delete",
     "permissions": {},
@@ -776,6 +833,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 58,
     "collection": "pages",
     "action": "read",
     "permissions": {},
@@ -787,6 +845,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 59,
     "collection": "pages",
     "action": "create",
     "permissions": {},
@@ -798,6 +857,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 60,
     "collection": "pages",
     "action": "update",
     "permissions": {},
@@ -809,6 +869,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 61,
     "collection": "pages",
     "action": "delete",
     "permissions": {},
@@ -820,6 +881,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 62,
     "collection": "posts",
     "action": "create",
     "permissions": {},
@@ -831,6 +893,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 63,
     "collection": "posts",
     "action": "read",
     "permissions": {},
@@ -842,6 +905,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 64,
     "collection": "posts",
     "action": "update",
     "permissions": {},
@@ -853,6 +917,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 65,
     "collection": "posts",
     "action": "delete",
     "permissions": {},
@@ -864,6 +929,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 66,
     "collection": "projects_settings",
     "action": "read",
     "permissions": {},
@@ -875,6 +941,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 67,
     "collection": "directus_files",
     "action": "read",
     "permissions": {
@@ -909,6 +976,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 68,
     "collection": "directus_dashboards",
     "action": "create",
     "permissions": {},
@@ -920,6 +988,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 69,
     "collection": "directus_dashboards",
     "action": "read",
     "permissions": {},
@@ -931,6 +1000,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 70,
     "collection": "directus_dashboards",
     "action": "update",
     "permissions": {},
@@ -942,6 +1012,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 71,
     "collection": "directus_dashboards",
     "action": "delete",
     "permissions": {},
@@ -953,6 +1024,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 72,
     "collection": "directus_panels",
     "action": "create",
     "permissions": {},
@@ -964,6 +1036,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 73,
     "collection": "directus_panels",
     "action": "read",
     "permissions": {},
@@ -975,6 +1048,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 74,
     "collection": "directus_panels",
     "action": "update",
     "permissions": {},
@@ -986,6 +1060,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 75,
     "collection": "directus_panels",
     "action": "delete",
     "permissions": {},
@@ -997,6 +1072,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 76,
     "collection": "directus_users",
     "action": "read",
     "permissions": {},
@@ -1008,6 +1084,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 77,
     "collection": "directus_users",
     "action": "update",
     "permissions": {
@@ -1037,6 +1114,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 78,
     "collection": "directus_roles",
     "action": "read",
     "permissions": {},
@@ -1048,6 +1126,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 79,
     "collection": "directus_shares",
     "action": "read",
     "permissions": {
@@ -1072,6 +1151,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 80,
     "collection": "directus_shares",
     "action": "create",
     "permissions": {},
@@ -1083,6 +1163,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 81,
     "collection": "directus_shares",
     "action": "update",
     "permissions": {
@@ -1098,6 +1179,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 82,
     "collection": "directus_shares",
     "action": "delete",
     "permissions": {
@@ -1113,6 +1195,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 83,
     "collection": "directus_flows",
     "action": "read",
     "permissions": {
@@ -1134,6 +1217,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 84,
     "collection": "block_form",
     "action": "read",
     "permissions": null,
@@ -1145,6 +1229,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 85,
     "collection": "block_posts",
     "action": "read",
     "permissions": null,
@@ -1156,6 +1241,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 86,
     "collection": "form_fields",
     "action": "read",
     "permissions": {
@@ -1177,6 +1263,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 87,
     "collection": "form_fields",
     "action": "read",
     "permissions": null,
@@ -1188,6 +1275,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 88,
     "collection": "form_fields",
     "action": "create",
     "permissions": null,
@@ -1199,6 +1287,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 89,
     "collection": "form_fields",
     "action": "update",
     "permissions": null,
@@ -1210,6 +1299,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 90,
     "collection": "form_fields",
     "action": "delete",
     "permissions": null,
@@ -1221,6 +1311,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 91,
     "collection": "form_submission_values",
     "action": "create",
     "permissions": null,
@@ -1232,6 +1323,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 92,
     "collection": "form_submission_values",
     "action": "read",
     "permissions": null,
@@ -1243,6 +1335,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 93,
     "collection": "form_submissions",
     "action": "create",
     "permissions": null,
@@ -1254,6 +1347,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 94,
     "collection": "form_submissions",
     "action": "read",
     "permissions": null,
@@ -1265,6 +1359,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 95,
     "collection": "block_posts",
     "action": "create",
     "permissions": null,
@@ -1276,6 +1371,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 96,
     "collection": "block_posts",
     "action": "read",
     "permissions": null,
@@ -1287,6 +1383,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 97,
     "collection": "block_posts",
     "action": "update",
     "permissions": null,
@@ -1298,6 +1395,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 98,
     "collection": "block_posts",
     "action": "delete",
     "permissions": null,
@@ -1309,6 +1407,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 99,
     "collection": "block_form",
     "action": "create",
     "permissions": null,
@@ -1320,6 +1419,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 100,
     "collection": "block_form",
     "action": "read",
     "permissions": null,
@@ -1331,6 +1431,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 101,
     "collection": "block_form",
     "action": "update",
     "permissions": null,
@@ -1342,6 +1443,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 102,
     "collection": "block_form",
     "action": "delete",
     "permissions": null,
@@ -1353,6 +1455,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 103,
     "collection": "directus_files",
     "action": "create",
     "permissions": null,
@@ -1374,6 +1477,7 @@
     "policy": "ee1055a2-7c03-4b0b-9b65-ca68491b6329"
   },
   {
+    "id": 104,
     "collection": "form_submission_values",
     "action": "create",
     "permissions": null,
@@ -1385,6 +1489,7 @@
     "policy": "ee1055a2-7c03-4b0b-9b65-ca68491b6329"
   },
   {
+    "id": 105,
     "collection": "form_submissions",
     "action": "create",
     "permissions": null,
@@ -1396,6 +1501,7 @@
     "policy": "ee1055a2-7c03-4b0b-9b65-ca68491b6329"
   },
   {
+    "id": 106,
     "collection": "form_submission_values",
     "action": "read",
     "permissions": null,
@@ -1407,6 +1513,7 @@
     "policy": "ee1055a2-7c03-4b0b-9b65-ca68491b6329"
   },
   {
+    "id": 107,
     "collection": "form_submissions",
     "action": "read",
     "permissions": null,
@@ -1418,6 +1525,7 @@
     "policy": "ee1055a2-7c03-4b0b-9b65-ca68491b6329"
   },
   {
+    "id": 108,
     "collection": "block_gallery_items",
     "action": "create",
     "permissions": null,
@@ -1429,6 +1537,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 109,
     "collection": "block_gallery_items",
     "action": "read",
     "permissions": null,
@@ -1440,6 +1549,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 110,
     "collection": "block_gallery_items",
     "action": "update",
     "permissions": null,
@@ -1451,6 +1561,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 111,
     "collection": "block_gallery_items",
     "action": "delete",
     "permissions": null,
@@ -1462,6 +1573,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 112,
     "collection": "block_pricing",
     "action": "create",
     "permissions": null,
@@ -1473,6 +1585,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 113,
     "collection": "block_pricing",
     "action": "read",
     "permissions": null,
@@ -1484,6 +1597,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 114,
     "collection": "block_pricing",
     "action": "update",
     "permissions": null,
@@ -1495,6 +1609,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 115,
     "collection": "block_pricing",
     "action": "delete",
     "permissions": null,
@@ -1506,6 +1621,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 116,
     "collection": "block_pricing_cards",
     "action": "create",
     "permissions": null,
@@ -1517,6 +1633,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 117,
     "collection": "block_pricing_cards",
     "action": "read",
     "permissions": null,
@@ -1528,6 +1645,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 118,
     "collection": "block_pricing_cards",
     "action": "update",
     "permissions": null,
@@ -1539,6 +1657,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 119,
     "collection": "block_pricing_cards",
     "action": "delete",
     "permissions": null,
@@ -1550,6 +1669,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 120,
     "collection": "block_gallery_items",
     "action": "read",
     "permissions": null,
@@ -1561,6 +1681,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 121,
     "collection": "block_pricing",
     "action": "read",
     "permissions": null,
@@ -1572,6 +1693,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 122,
     "collection": "block_pricing_cards",
     "action": "read",
     "permissions": null,
@@ -1583,6 +1705,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 123,
     "collection": "directus_users",
     "action": "read",
     "permissions": {
@@ -1606,6 +1729,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 124,
     "collection": "directus_files",
     "action": "read",
     "permissions": {
@@ -1625,6 +1749,7 @@
     "policy": "ee1055a2-7c03-4b0b-9b65-ca68491b6329"
   },
   {
+    "id": 125,
     "collection": "page_blocks",
     "action": "read",
     "permissions": null,
@@ -1636,6 +1761,7 @@
     "policy": "3ba01681-3a5f-4fe3-8e95-4706b39f7dc5"
   },
   {
+    "id": 126,
     "collection": "pages",
     "action": "read",
     "permissions": null,
@@ -1647,6 +1773,7 @@
     "policy": "3ba01681-3a5f-4fe3-8e95-4706b39f7dc5"
   },
   {
+    "id": 127,
     "collection": "posts",
     "action": "read",
     "permissions": null,
@@ -1658,6 +1785,7 @@
     "policy": "3ba01681-3a5f-4fe3-8e95-4706b39f7dc5"
   },
   {
+    "id": 128,
     "collection": "posts",
     "action": "create",
     "permissions": null,
@@ -1679,6 +1807,7 @@
     "policy": "a15b697e-29d5-4164-8d24-eb228ba901e3"
   },
   {
+    "id": 129,
     "collection": "posts",
     "action": "read",
     "permissions": {
@@ -1698,6 +1827,7 @@
     "policy": "a15b697e-29d5-4164-8d24-eb228ba901e3"
   },
   {
+    "id": 130,
     "collection": "posts",
     "action": "update",
     "permissions": {
@@ -1725,6 +1855,7 @@
     "policy": "a15b697e-29d5-4164-8d24-eb228ba901e3"
   },
   {
+    "id": 131,
     "collection": "directus_folders",
     "action": "read",
     "permissions": null,
@@ -1736,6 +1867,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 132,
     "collection": "directus_files",
     "action": "read",
     "permissions": null,
@@ -1747,6 +1879,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 133,
     "collection": "directus_folders",
     "action": "create",
     "permissions": null,
@@ -1758,6 +1891,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 134,
     "collection": "directus_folders",
     "action": "read",
     "permissions": null,
@@ -1769,6 +1903,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 135,
     "collection": "directus_folders",
     "action": "update",
     "permissions": null,
@@ -1780,6 +1915,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 136,
     "collection": "directus_folders",
     "action": "delete",
     "permissions": null,
@@ -1791,6 +1927,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 137,
     "collection": "directus_files",
     "action": "create",
     "permissions": null,
@@ -1802,6 +1939,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 138,
     "collection": "directus_files",
     "action": "read",
     "permissions": null,
@@ -1813,6 +1951,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 139,
     "collection": "directus_files",
     "action": "update",
     "permissions": null,
@@ -1824,6 +1963,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 140,
     "collection": "directus_files",
     "action": "delete",
     "permissions": null,
@@ -1835,6 +1975,7 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928"
   },
   {
+    "id": 141,
     "collection": "directus_files",
     "action": "create",
     "permissions": null,
@@ -1846,6 +1987,7 @@
     "policy": "a15b697e-29d5-4164-8d24-eb228ba901e3"
   },
   {
+    "id": 142,
     "collection": "directus_files",
     "action": "read",
     "permissions": null,
@@ -1857,6 +1999,7 @@
     "policy": "a15b697e-29d5-4164-8d24-eb228ba901e3"
   },
   {
+    "id": 143,
     "collection": "directus_files",
     "action": "update",
     "permissions": {
@@ -1876,6 +2019,7 @@
     "policy": "a15b697e-29d5-4164-8d24-eb228ba901e3"
   },
   {
+    "id": 144,
     "collection": "directus_files",
     "action": "delete",
     "permissions": {
@@ -1895,6 +2039,7 @@
     "policy": "a15b697e-29d5-4164-8d24-eb228ba901e3"
   },
   {
+    "id": 145,
     "collection": "redirects",
     "action": "read",
     "permissions": null,
@@ -1906,6 +2051,7 @@
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17"
   },
   {
+    "id": 146,
     "collection": "ai_prompts",
     "action": "create",
     "permissions": null,
@@ -1917,6 +2063,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 147,
     "collection": "ai_prompts",
     "action": "read",
     "permissions": {
@@ -1945,6 +2092,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 148,
     "collection": "ai_prompts",
     "action": "update",
     "permissions": {
@@ -1964,6 +2112,7 @@
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
   },
   {
+    "id": 149,
     "collection": "ai_prompts",
     "action": "delete",
     "permissions": {
@@ -1981,5 +2130,356 @@
       "*"
     ],
     "policy": "52598a64-071d-4071-96fa-4b620d6189b5"
+  },
+  {
+    "policy": null,
+    "permissions": {},
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_collections",
+    "action": "read"
+  },
+  {
+    "policy": null,
+    "permissions": {},
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_fields",
+    "action": "read"
+  },
+  {
+    "policy": null,
+    "permissions": {},
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_relations",
+    "action": "read"
+  },
+  {
+    "policy": null,
+    "permissions": {},
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_translations",
+    "action": "read"
+  },
+  {
+    "policy": null,
+    "permissions": {
+      "user": {
+        "_eq": "$CURRENT_USER"
+      }
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_activity",
+    "action": "read"
+  },
+  {
+    "policy": null,
+    "permissions": {
+      "user_created": {
+        "_eq": "$CURRENT_USER"
+      }
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_comments",
+    "action": "read"
+  },
+  {
+    "policy": null,
+    "permissions": {},
+    "validation": {
+      "comment": {
+        "_nnull": true
+      }
+    },
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_comments",
+    "action": "create"
+  },
+  {
+    "policy": null,
+    "permissions": {
+      "user_created": {
+        "_eq": "$CURRENT_USER"
+      }
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "comment"
+    ],
+    "system": true,
+    "collection": "directus_comments",
+    "action": "update"
+  },
+  {
+    "policy": null,
+    "permissions": {
+      "user_created": {
+        "_eq": "$CURRENT_USER"
+      }
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_comments",
+    "action": "delete"
+  },
+  {
+    "policy": null,
+    "permissions": {
+      "_or": [
+        {
+          "user": {
+            "_eq": "$CURRENT_USER"
+          }
+        },
+        {
+          "_and": [
+            {
+              "user": {
+                "_null": true
+              }
+            },
+            {
+              "role": {
+                "_eq": "$CURRENT_ROLE"
+              }
+            }
+          ]
+        },
+        {
+          "_and": [
+            {
+              "user": {
+                "_null": true
+              }
+            },
+            {
+              "role": {
+                "_null": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_presets",
+    "action": "read"
+  },
+  {
+    "policy": null,
+    "permissions": {},
+    "validation": {
+      "user": {
+        "_eq": "$CURRENT_USER"
+      }
+    },
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_presets",
+    "action": "create"
+  },
+  {
+    "policy": null,
+    "permissions": {
+      "user": {
+        "_eq": "$CURRENT_USER"
+      }
+    },
+    "validation": {
+      "user": {
+        "_eq": "$CURRENT_USER"
+      }
+    },
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_presets",
+    "action": "update"
+  },
+  {
+    "policy": null,
+    "permissions": {
+      "user": {
+        "_eq": "$CURRENT_USER"
+      }
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_presets",
+    "action": "delete"
+  },
+  {
+    "policy": null,
+    "permissions": {
+      "id": {
+        "_in": "$CURRENT_ROLES"
+      }
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_roles",
+    "action": "read"
+  },
+  {
+    "policy": null,
+    "permissions": {},
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_settings",
+    "action": "read"
+  },
+  {
+    "policy": null,
+    "permissions": {},
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_translations",
+    "action": "read"
+  },
+  {
+    "policy": null,
+    "permissions": {
+      "recipient": {
+        "_eq": "$CURRENT_USER"
+      }
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_notifications",
+    "action": "read"
+  },
+  {
+    "policy": null,
+    "permissions": {
+      "recipient": {
+        "_eq": "$CURRENT_USER"
+      }
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "status"
+    ],
+    "system": true,
+    "collection": "directus_notifications",
+    "action": "update"
+  },
+  {
+    "policy": null,
+    "permissions": {
+      "user_created": {
+        "_eq": "$CURRENT_USER"
+      }
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "system": true,
+    "collection": "directus_shares",
+    "action": "read"
+  },
+  {
+    "policy": null,
+    "permissions": {
+      "id": {
+        "_eq": "$CURRENT_USER"
+      }
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "id",
+      "first_name",
+      "last_name",
+      "last_page",
+      "email",
+      "password",
+      "location",
+      "title",
+      "description",
+      "tags",
+      "provider",
+      "preferences_divider",
+      "avatar",
+      "language",
+      "appearance",
+      "theme_light",
+      "theme_dark",
+      "tfa_secret",
+      "status",
+      "role"
+    ],
+    "system": true,
+    "collection": "directus_users",
+    "action": "read"
   }
 ]

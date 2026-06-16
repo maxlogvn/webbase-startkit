@@ -46,6 +46,11 @@ export async function fetchRedirects(): Promise<SvelteRedirect[]> {
 				continue;
 			}
 
+			// Bỏ qua self-redirect (source === destination) tránh redirect loop
+			if (redirect.url_from === redirect.url_to) {
+				continue;
+			}
+
 			// Response code mặc định là 301 nếu không được set
 			let responseCode = redirect.response_code ? parseInt(redirect.response_code) : 301;
 
