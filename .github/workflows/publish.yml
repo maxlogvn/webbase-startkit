@@ -36,6 +36,8 @@ jobs:
           else
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish
         if: steps.check.outputs.changed == 'true'
