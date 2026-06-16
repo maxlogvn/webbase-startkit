@@ -8,6 +8,7 @@
 	import Container from '$lib/components/ui/Container.svelte';
 	import SearchModal from '../ui/SearchModal.svelte';
 	import LightSwitch from './LightSwitch.svelte';
+	import UserMenu from '$lib/components/auth/UserMenu.svelte';
 	import { PUBLIC_DIRECTUS_URL } from '$env/static/public';
 	import { ChevronDown, Menu } from '@lucide/svelte';
 	import * as Collapsible from '$lib/components/ui/collapsible';
@@ -158,6 +159,7 @@
 				</DropdownMenu.Root>
 			</div>
 
+			<UserMenu user={page.data.user} />
 			<LightSwitch />
 		</nav>
 	</Container>

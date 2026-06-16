@@ -33,5 +33,12 @@ export const load = (async (event) => {
 	// ── Bước 3: Lấy accent color từ globals, fallback về màu mặc định
 	const accentColor = globals?.accent_color || '#6644ff';
 
-	return { globals, headerNavigation, footerNavigation, accentColor, visualEditingEnabled };
+	return {
+		globals,
+		headerNavigation,
+		footerNavigation,
+		accentColor,
+		visualEditingEnabled,
+		user: event.locals.user
+	};
 }) satisfies LayoutServerLoad;

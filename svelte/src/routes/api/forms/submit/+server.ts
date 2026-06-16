@@ -62,10 +62,11 @@ function parseFields(raw: string): FormField[] | Response {
 
 // ─── Actions ─────────────────────────────────────────────────────────────────
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request, locals }) => {
 	const { getDirectus, uploadFiles, createItem, withToken } = useDirectus();
 	const directus = getDirectus();
-	const TOKEN = DIRECTUS_SERVER_TOKEN;
+	// Uu tien user token neu co, fallback ve SERVER_TOKEN
+	const TOKEN = locals.token || DIRECTUS_SERVER_TOKEN;
 
 	// ── Bước 1: Kiểm tra token — cần thiết để ghi vào Directus
 	if (!TOKEN) {

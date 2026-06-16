@@ -8,6 +8,9 @@ import {
 	rest,
 	readUser,
 	createItem,
+	updateItem,
+	updateMe,
+	readMe,
 	uploadFiles,
 	withToken
 } from '@directus/sdk';
@@ -73,13 +76,15 @@ const getDirectus = () => {
 // ─── Exports ─────────────────────────────────────────────────────────────────
 
 export const useDirectus = () => ({
-	// backend: backend as RestClient<Schema>,
 	getDirectus: getDirectus,
 	readItems,
 	readItem,
 	readSingleton,
 	readUser,
 	createItem,
+	updateItem,
+	updateMe,
+	readMe,
 	uploadFiles,
 	withToken
 });

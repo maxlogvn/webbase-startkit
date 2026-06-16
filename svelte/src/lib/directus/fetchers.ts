@@ -17,6 +17,19 @@ import {
 	withToken,
 	readItems
 } from '@directus/sdk';
+import { PUBLIC_DIRECTUS_URL } from '$env/static/public';
+
+// ─── Auth Types ─────────────────────────────────────────────────────────────
+
+export interface AuthProvider {
+	id: string;
+	provider: string;
+	label: string;
+	icon: string;
+	enabled: boolean;
+	sort: number;
+	color?: string | null;
+}
 
 // ─── Constants: Page fields ──────────────────────────────────────────────────
 const pageFields = [
@@ -600,5 +613,93 @@ export const fetchTotalPostCount = async (): Promise<number> => {
 		console.error('Error fetching total post count:', error);
 
 		return 0;
+	}
+};
+
+// ─── Fetchers: Auth ─────────────────────────────────────────────────────────
+
+/** Goi Directus REST API truc tiep cho collection khong nam trong Schema. */
+async function directusFetch<T>(
+	path: string,
+	token?: string,
+	init?: RequestInit
+): Promise<T | null> {
+	try {
+		const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+		if (token) headers['Authorization'] = `Bearer ${token}`;
+
+		const res = await fetch(`${PUBLIC_DIRECTUS_URL}${path}`, { ...init, headers });
+		if (!res.ok) return null;
+		const json = await res.json();
+		return json.data as T;
+	} catch (err) {
+		console.error(`[directusFetch] ${path} failed:`, err);
+		return null;
+	}
+}
+
+/** Lay danh sach auth_providers (chi enabled). */
+export const fetchAuthProviders = async (token?: string): Promise<AuthProvider[] | null> => {
+	return directusFetch<AuthProvider[]>(
+		'/items/auth_providers?filter[enabled][_eq]=true&sort[]=sort',
+		token
+	);
+};
+
+/** Lay danh sach tat ca auth_providers (admin). */
+export const fetchAllAuthProviders = async (token: string): Promise<AuthProvider[] | null> => {
+	return directusFetch<AuthProvider[]>('/items/auth_providers?sort[]=sort&limit=-1', token);
+};
+
+/** Cap nhat auth_provider (admin toggle). */
+export const updateAuthProvider = async (
+	token: string,
+	id: string,
+	data: Partial<AuthProvider>
+): Promise<void> => {
+	const result = await directusFetch<{ id: string }>(`/items/auth_providers/${id}`, token, {
+		method: 'PATCH',
+		body: JSON.stringify(data)
+	});
+	if (!result) {
+		throw new Error('Failed to update auth provider');
+	}
+};
+
+/** Lay thong tin user hien tai. */
+export const fetchCurrentUser = async (token: string): Promise<DirectusUser | null> => {
+	const { getDirectus, withToken, readMe } = useDirectus();
+	const directus = getDirectus();
+
+	try {
+		const user = (await directus.request(
+			withToken(
+				token,
+				readMe({
+					fields: ['id', 'email', 'first_name', 'avatar']
+				})
+			)
+		)) as DirectusUser;
+
+		return user;
+	} catch (error) {
+		console.error('[fetcher] fetchCurrentUser failed:', error);
+		return null;
+	}
+};
+
+/** Cap nhat thong tin user hien tai. */
+export const updateCurrentUser = async (
+	token: string,
+	data: { first_name?: string; email?: string }
+): Promise<void> => {
+	const { getDirectus, withToken, updateMe } = useDirectus();
+	const directus = getDirectus();
+
+	try {
+		await directus.request(withToken(token, updateMe(data)));
+	} catch (error) {
+		console.error('[fetcher] updateCurrentUser failed:', error);
+		throw error;
 	}
 };

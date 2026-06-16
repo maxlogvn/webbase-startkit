@@ -18,6 +18,13 @@ import type { Handle } from '@sveltejs/kit';
 import { redirect as svelteRedirect } from '@sveltejs/kit';
 import type { SvelteRedirect } from '$lib/directus/fetchRedirects';
 import { fetchRedirects } from '$lib/directus/fetchRedirects';
+import {
+	getSession,
+	refreshTokens,
+	fetchUserInfo,
+	setSession,
+	clearSession
+} from '$lib/server/session';
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
@@ -55,6 +62,31 @@ export const handle: Handle = async ({ event, resolve }) => {
 		throw svelteRedirect(match.permanent ? 301 : 302, match.destination);
 	}
 
-	// ── Bước 5: Không match, tiếp tục xử lý bình thường
+	// ── Bước 5: Xử lý session — đọc cookie, refresh token nếu cần
+	const session = getSession(event.cookies);
+	if (session) {
+		const refreshed = await refreshTokens(session.refreshToken);
+		if (refreshed) {
+			const freshUser = await fetchUserInfo(refreshed.accessToken);
+			if (freshUser) {
+				setSession(event.cookies, refreshed.refreshToken, freshUser);
+				event.locals.user = freshUser;
+			} else {
+				// Giữ user cũ nếu fetch user info thất bại
+				event.locals.user = session.user;
+			}
+			event.locals.token = refreshed.accessToken;
+		} else {
+			// Refresh failed — clear session
+			clearSession(event.cookies);
+			event.locals.user = null;
+			event.locals.token = null;
+		}
+	} else {
+		event.locals.user = null;
+		event.locals.token = null;
+	}
+
+	// ── Bước 6: Không match redirect, tiếp tục xử lý bình thường
 	return resolve(event);
 };
